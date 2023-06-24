@@ -92,6 +92,8 @@ int main() {
         }
     }
 
+    // shortest path will be stored in 'dist' array
+
     int src = 1;
     vector<int> dist(n);
     fill_n(dist.begin(), n, INT_MAX);
