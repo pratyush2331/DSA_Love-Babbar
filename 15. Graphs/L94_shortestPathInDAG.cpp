@@ -35,6 +35,7 @@ class Graph {
         }
     }
 
+    // for toplogical sort - DFS
     void dfs(int node, unordered_map<int, bool>& visited, stack<int>& s) {
         visited[node] = true;
 
@@ -44,11 +45,11 @@ class Graph {
             }
         }
 
-        s.push(node);
+        s.push(node); // storing toplogical sort in stack 's'
     }
 
-    void getShortestPath(int src, vector<int>& dist, stack<int>& s) {
-        dist[src] = 0;
+    void getShortestPath(int src, stack<int>& s, vector<int>& dist) {
+        dist[src] = 0; // distance from src to src is 0
 
         while(!s.empty()) {
             int top = s.top();
@@ -84,22 +85,21 @@ int main() {
 
     int n = 6; // no. of vertices
 
-    // Topological Sort
+    // Topological Sort - DFS
     unordered_map<int, bool> visited;
     stack<int> s;
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++) { // for loop is for disconnected graphs
         if(!visited[i]) {
             g.dfs(i, visited, s);
         }
     }
 
-    // shortest path will be stored in 'dist' array
-
+    // shortest path from "src = 1" will be stored in 'dist' array
     int src = 1;
     vector<int> dist(n);
     fill_n(dist.begin(), n, INT_MAX);
 
-    g.getShortestPath(src, dist, s);
+    g.getShortestPath(src, s, dist);
 
     cout << "asnwer is : ";
     for(int i = 0; i < n; i++) {
