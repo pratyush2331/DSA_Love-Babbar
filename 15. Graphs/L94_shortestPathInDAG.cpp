@@ -20,6 +20,7 @@ class Graph {
     public:
     unordered_map<int, list<pair<int,int>>> adjList;
     
+    // function to add edge with weight in adjList
     void addEdge(int u, int v, int weight) {
         pair<int,int> p = make_pair(v, weight);
         adjList[u].push_back(p);
