@@ -11,7 +11,9 @@ using namespace std;
 
 
 vector<int> dijkstra(vector<vector<int>>& vec, int vertices, int edges, int source) {
-    // Create adjacency list
+    // Code here
+
+    // Create adjList
     unordered_map<int, vector<pair<int, int>>> adjList;
     for (int i = 0; i < edges; i++) {
         int u = vec[i][0];
@@ -31,24 +33,17 @@ vector<int> dijkstra(vector<vector<int>>& vec, int vertices, int edges, int sour
     pq.push(make_pair(0, source));
 
     while (!pq.empty()) {
-        int node = pq.top().second;
         int nodeDistance = pq.top().first;
+        int topNode = pq.top().second;
         pq.pop();
 
-        // If the nodeDistance is greater than the distance from the source to this node,
-        // it means that this node has already been visited with a shorter distance,
-        // so we can skip it.
-        if (nodeDistance > dist[node])
-            continue;
-
         // Traverse neighbors
-        for (auto neighbor : adjList[node]) {
-            int neighborNode = neighbor.first;
-            int edgeWeight = neighbor.second;
-
-            if (dist[node] + edgeWeight < dist[neighborNode]) {
-                dist[neighborNode] = dist[node] + edgeWeight;
-                pq.push(make_pair(dist[neighborNode], neighborNode));
+        for (auto neighbor : adjList[topNode]) {
+            if (dist[topNode] + neighbor.second < dist[neighbor.first]) {
+                // distance update
+                dist[neighbor.first] = dist[topNode] + neighbor.second;
+                // push record in priority queue
+                pq.push(make_pair(dist[neighbor.first], neighbor.first));
             }
         }
     }

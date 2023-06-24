@@ -24,11 +24,11 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
         adjList[v].push_back(make_pair(u,w));
     }
     
-    // to store dist from src node to other nodes
+    // Initialize distance from source to all vertices as infinity
     vector<int> dist(vertices);
     fill_n(dist.begin(), vertices, INT_MAX);
 
-    // to store top {distance, node} --> always pointing to minimum distance
+    // set to store nodes and their distances {node, distance}
     // we can also use min heap
     set<pair<int,int>> st;
     // distance from sorce = 0
@@ -45,10 +45,10 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
         int topNode = top.second;
         
         // traverse neighbours
-        for(auto i : adjList[topNode]) {
-            if(nodeDistance + i.second < dist[i.first]) {
+        for(auto neighbor : adjList[topNode]) {
+            if(nodeDistance + neighbor.second < dist[neighbor.first]) {
                 // check if it's already present in the set
-                auto record = st.find(make_pair(dist[i.first],i.first));
+                auto record = st.find(make_pair(dist[neighbor.first],neighbor.first));
                 
                 // if record found then erase it
                 if(record != st.end()) {
@@ -56,10 +56,10 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
                 }
                 
                 // distance update
-                dist[i.first] = nodeDistance + i.second;
+                dist[neighbor.first] = nodeDistance + neighbor.second;
                 
                 // push record in set
-                st.insert(make_pair(dist[i.first],i.first));
+                st.insert(make_pair(dist[neighbor.first],neighbor.first));
             }
         }
     }
