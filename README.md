@@ -9,12 +9,12 @@
 ### Hope you will like this repository.
 ### Don't forget to *follow me* for more such helpful resources in future...✌️
 
-```sh
-## [GitHub]
-## [LinkedIn]
-## [Instagram]
-## [Twitter]
-```
+
+> ## [GitHub]
+> ## [LinkedIn]
+> ## [Instagram]
+> ## [Twitter]
+
 
 
 
