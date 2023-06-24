@@ -6,3 +6,7 @@
 
 ### Hope you will like this repository.
 ### Don't forget to follow me for more such helpful resources in future...✌️
+
+## LinkedIn: https://www.linkedin.com/in/pratyush-raj-40b45ab2/
+## Instagram: https://www.instagram.com/pratyush2331/
+## Twitter: https://twitter.com/pratyush2331/
