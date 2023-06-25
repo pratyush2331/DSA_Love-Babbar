@@ -11,7 +11,6 @@ using namespace std;
 
 #define INF INT_MAX
 
-
 vector<int> dijkstra(vector<vector<int>>& vec, int vertices, int edges, int source) {
     // Code here
 
@@ -40,7 +39,7 @@ vector<int> dijkstra(vector<vector<int>>& vec, int vertices, int edges, int sour
         int topNode = pq.top().second;
         pq.pop();
 
-        // Traverse neighbors
+        // traverse neighbors
         for(auto neighbor : adjList[topNode]) {
             if(nodeDistance + neighbor.second < dist[neighbor.first]) {
                 // distance update
