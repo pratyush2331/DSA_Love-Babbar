@@ -33,7 +33,7 @@ vector<int> dijkstra(vector<vector<int>>& vec, int vertices, int edges, int sour
 
     // Priority queue (min heap) to store nodes and their distances {distance, node}
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-    pq.push(make_pair(0, source));
+    pq.push({0, source});
 
     while(!pq.empty()) {
         int nodeDistance = pq.top().first;
@@ -42,9 +42,10 @@ vector<int> dijkstra(vector<vector<int>>& vec, int vertices, int edges, int sour
 
         // Traverse neighbors
         for(auto neighbor : adjList[topNode]) {
-            if(dist[topNode] + neighbor.second < dist[neighbor.first]) {
+            if(nodeDistance + neighbor.second < dist[neighbor.first]) {
                 // distance update
-                dist[neighbor.first] = dist[topNode] + neighbor.second;
+                dist[neighbor.first] = nodeDistance + neighbor.second;
+
                 // push record in priority queue
                 pq.push(make_pair(dist[neighbor.first], neighbor.first));
             }

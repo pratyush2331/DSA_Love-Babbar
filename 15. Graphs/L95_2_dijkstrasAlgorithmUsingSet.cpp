@@ -34,7 +34,7 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
     set<pair<int,int>> st;
     // distance from sorce to source = 0
     dist[source] = 0;
-    st.insert(make_pair(0,source));
+    st.insert({0,source});
     
     while(!st.empty()) {
         // fetch top record
