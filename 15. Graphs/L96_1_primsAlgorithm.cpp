@@ -81,7 +81,7 @@ vector<pair<pair<int, int>, int>> calculatePrimsMST(int n, int m, vector<pair<pa
     vector<bool> mst(n+1, false);
     vector<int> parent(n+1, -1);
 
-    key[1] = false;
+    key[1] = 0;
 
     for(int i = 1; i < n; i++) { // do for 'n' times
         int mini = INT_MAX;
