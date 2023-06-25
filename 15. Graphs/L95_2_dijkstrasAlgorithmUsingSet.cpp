@@ -47,10 +47,9 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
         
         // traverse neighbours
         for(auto neighbor : adjList[topNode]) {
-            if(nodeDistance + neighbor.second < dist[neighbor.first]) {
-                // erase if existed
+            if(nodeDistance + neighbor.second < dist[neighbor.first]) { // means (new_dist < old_dist)
                 // advantage of 'set' over 'priority_queue'
-                if(dist[neighbor.first] != INF) { // means (new_dist < old_dist). So, erase the old_dist
+                if(dist[neighbor.first] != INF) {
                     st.erase({dist[neighbor.first],neighbor.first});
                 }
                 

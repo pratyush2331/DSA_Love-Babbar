@@ -41,7 +41,7 @@ vector<int> dijkstra(vector<vector<int>>& vec, int vertices, int edges, int sour
 
         // traverse neighbors
         for(auto neighbor : adjList[topNode]) {
-            if(nodeDistance + neighbor.second < dist[neighbor.first]) {
+            if(nodeDistance + neighbor.second < dist[neighbor.first]) { // means (new_dist < old_dist)
                 // distance update
                 dist[neighbor.first] = nodeDistance + neighbor.second;
 
