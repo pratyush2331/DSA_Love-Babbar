@@ -9,6 +9,8 @@ SC : O(V + E)
 #include <bits/stdc++.h> 
 using namespace std;
 
+#define INF INT_MAX
+
 
 vector<int> dijkstra(vector<vector<int>>& vec, int vertices, int edges, int source) {
     // Code here
@@ -25,21 +27,22 @@ vector<int> dijkstra(vector<vector<int>>& vec, int vertices, int edges, int sour
     }
 
     // Initialize distance from source to all vertices as infinity
-    vector<int> dist(vertices, INT_MAX);
+    vector<int> dist(vertices, INF);
+    // distance from sorce to source = 0
     dist[source] = 0;
 
-    // Priority queue (min heap) to store nodes and their distances
+    // Priority queue (min heap) to store nodes and their distances {distance, node}
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
     pq.push(make_pair(0, source));
 
-    while (!pq.empty()) {
+    while(!pq.empty()) {
         int nodeDistance = pq.top().first;
         int topNode = pq.top().second;
         pq.pop();
 
         // Traverse neighbors
-        for (auto neighbor : adjList[topNode]) {
-            if (dist[topNode] + neighbor.second < dist[neighbor.first]) {
+        for(auto neighbor : adjList[topNode]) {
+            if(dist[topNode] + neighbor.second < dist[neighbor.first]) {
                 // distance update
                 dist[neighbor.first] = dist[topNode] + neighbor.second;
                 // push record in priority queue

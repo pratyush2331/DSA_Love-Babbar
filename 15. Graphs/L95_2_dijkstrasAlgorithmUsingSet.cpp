@@ -9,6 +9,7 @@ SC : O(V + E)
 #include <bits/stdc++.h> 
 using namespace std;
 
+#define INF INT_MAX
 
 vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int source) {
     // Code here
@@ -26,12 +27,12 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
     
     // Initialize distance from source to all vertices as infinity
     vector<int> dist(vertices);
-    fill_n(dist.begin(), vertices, INT_MAX);
+    fill_n(dist.begin(), vertices, INF);
 
     // set to store nodes and their distances {node, distance}
     // we can also use min heap
     set<pair<int,int>> st;
-    // distance from sorce = 0
+    // distance from sorce to source = 0
     dist[source] = 0;
     st.insert(make_pair(0,source));
     
@@ -47,12 +48,10 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
         // traverse neighbours
         for(auto neighbor : adjList[topNode]) {
             if(nodeDistance + neighbor.second < dist[neighbor.first]) {
-                // check if it's already present in the set
-                auto record = st.find(make_pair(dist[neighbor.first],neighbor.first));
-                
-                // if record found then erase it
-                if(record != st.end()) {
-                    st.erase(record);
+                // erase if existed
+                // advantage of 'set' over 'priority_queue'
+                if(dist[neighbor.first] != INF) { // means (new_dist < old_dist). So, erase the old_dist
+                    st.erase({dist[neighbor.first],neighbor.first});
                 }
                 
                 // distance update
