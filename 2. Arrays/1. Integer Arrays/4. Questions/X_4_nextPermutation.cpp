@@ -4,8 +4,10 @@
 #include<iostream>
 using namespace std;
 
-// TC : O(3n)
-// SC : O(1)
+/*
+TC : O(3n)
+SC : O(1)
+*/
 
 class Solution {
     private:
