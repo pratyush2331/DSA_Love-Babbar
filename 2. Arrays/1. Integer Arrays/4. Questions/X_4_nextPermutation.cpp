@@ -4,6 +4,8 @@
 #include<iostream>
 using namespace std;
 
+// method-1
+
 /*
 TC : O(3n)
 SC : O(1)
@@ -44,6 +46,19 @@ class Solution {
         reverse(nums, index+1, n-1); // TC: O(n)
     }
 };
+
+
+
+
+// method-2 : using STL
+/*
+class Solution {
+    public:
+    void nextPermutation(vector<int>& nums) {
+        next_permutation(nums.begin(), nums.end());
+    }
+};
+*/
 
 int main() {
     
