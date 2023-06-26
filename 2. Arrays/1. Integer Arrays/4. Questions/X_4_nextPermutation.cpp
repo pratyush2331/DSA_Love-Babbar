@@ -30,9 +30,9 @@ class Solution {
         }
         
         if(index != -1) {
-            for(int i=n-1;i>index;i--){ // TC: O(n)
-                if(nums[i]>nums[index]){
-                    swap(nums[i],nums[index]);
+            for(int i = n-1; i > index; i--){ // TC: O(n)
+                if(nums[i] > nums[index]){
+                    swap(nums[i], nums[index]);
                     break;
                 }
             }
