@@ -1,11 +1,11 @@
 // sort012(int arr[], int size);
 
 /*
-// Input:
+Input:
 6
 2 1 2 0 1 0
 
-// Output:
+Output:
 Before Sorting: 2 1 2 0 1 0 
 
 After Sorting : 0 0 1 1 2 2  
