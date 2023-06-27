@@ -23,11 +23,9 @@ class Solution {
     void nextPermutation(vector<int>& nums) {
         int n = nums.size();
 
-        int peak = INT_MIN;
         int index = -1;
         for(int i = n-2; i >= 0; i--) { // TC: O(n)
             if(nums[i] < nums[i+1]) {
-                peak = nums[i];
                 index = i;
                 break;
             }
