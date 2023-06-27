@@ -1,6 +1,11 @@
 // Count Strongly Connected Components (Kosaraju’s Algorithm)
 // CodeStudio : https://www.codingninjas.com/studio/problems/count-strongly-connected-components-kosaraju-s-algorithm_1171151
 
+/*
+TC : O(V + E)
+SC : O(V + E)
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
