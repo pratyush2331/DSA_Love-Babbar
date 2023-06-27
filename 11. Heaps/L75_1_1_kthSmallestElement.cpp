@@ -38,10 +38,6 @@ class Solution{
         // step-3: return pq.top()
         return pq.top();
     }
-        
-        // step-3: return pq.top()
-        return pq.top();
-    }
 };
 
 int main() {
