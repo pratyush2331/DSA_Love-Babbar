@@ -49,6 +49,7 @@ SC : O(n)
 class Solution {
     public:
     int fib(int n) {
+        // base case
         if(n <= 1) { // as n can be 0, otherwise it'll give runtime error
             return n;
         }
@@ -56,7 +57,7 @@ class Solution {
         // step-1
         vector<int> dp(n+1);
 
-        // step-2 : base case
+        // step-2
         dp[0] = 0;
         dp[1] = 1;
 
