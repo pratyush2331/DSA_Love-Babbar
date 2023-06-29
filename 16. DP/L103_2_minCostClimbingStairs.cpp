@@ -66,10 +66,8 @@ SC : O(2n)
 class Solution {
     int solve(vector<int>& cost, int n, vector<int>& dp) { // TC: O(n)
         // base case
-        if(n == 0)
-            return cost[0];
-        if(n == 1)
-            return cost[1];
+        if(n == 0 || n == 1)
+            return cost[n];
         
         if(dp[n] != -1)
             return dp[n];
@@ -99,10 +97,8 @@ SC : O(n)
 class Solution {
     int solve(vector<int>& cost, int n) {
         // base case
-        if(n == 0)
-            return cost[0];
-        if(n == 1)
-            return cost[1];
+        if(n == 0 || n == 1)
+            return cost[n];
         
         int ans = cost[n] + min(solve(cost, n-1), solve(cost, n-2));
         return ans;
