@@ -1,4 +1,6 @@
-// CodeStudio : Count Ways To Reach The N-th Stairs
+// Count Ways To Reach The N-th Stairs
+// CodeStudio : https://www.codingninjas.com/studio/problems/count-ways-to-reach-nth-stairs_798650
+
 /*
 constraint : step size can be either 1 or 2 only
 
