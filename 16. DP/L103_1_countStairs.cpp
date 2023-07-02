@@ -4,13 +4,13 @@
 #include<iostream>
 using namespace std;
 
+#define MOD 1000000007
+
 // Method 3 (DP) : Space Optimization
 /*
 TC : O(n)
 SC : O(1)
 */
-#define MOD 1000000007
-
 int countDistinctWays(int nStairs) {
     // base case
     if(nStairs == 0) {
@@ -37,17 +37,12 @@ int countDistinctWays(int nStairs) {
 
 
 
-
-
-
 // Method 2 (DP) : Bottom Up Approach = Tabulation
 /*
 TC : O(n)
 SC : O(n)
 */
 /*
-#define MOD 1000000007
-
 int countDistinctWays(int nStairs) {
     // base case
     if(nStairs == 0) {
@@ -75,17 +70,12 @@ int countDistinctWays(int nStairs) {
 
 
 
-
-
-
 // Method 1 (DP) : Top Down Approach = recursion + memoization
 /*
 TC : O(n)
 SC : O(2n)
 */
 /*
-#define MOD 1000000007
-
 int countWays(int nStairs, vector<int>& dp) {
     if(nStairs == 0)
         return 1;
@@ -108,17 +98,12 @@ int countDistinctWays(int nStairs) {
 
 
 
-
-
-
 // Method 0 : using Recursion --> will give TLE
 /*
 TC : O(2^n)
 SC : O(n)
 */
 /*
-#define MOD 1000000007
-
 int countDistinctWays(int nStairs) {
     // base case
     if(nStairs == 0)
