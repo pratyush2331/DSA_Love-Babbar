@@ -34,12 +34,73 @@ using namespace std;
 
 #define MOD 1000000007
 
+// Method-3 (DP) : space optimization
+/*
+TC : O(n)
+SC : O(1)
+*/
+// /*
+int countWays(int n) {
+    if(n == 0)
+        return 1;
+    if(n == 1 || n == 2)
+        return n;
+    
+    //vector<long> dp(n+1, -1);
+
+    long a = 1;
+    long b = 1;
+    long c = 2;
+
+    long ans;
+    for(int i = 3; i <= n; i++) {
+        ans = a + b + c;
+        // shifting
+        a = b;
+        b = c;
+        c = ans;
+    }
+    
+    return ans;
+}
+// */
+
+
+
+// Method-2 (DP) : bottom-up approach = tabulation
+/*
+TC : O(n)
+SC : O(n)
+*/
+/*
+int countWays(int n) {
+    if(n == 0)
+        return 1;
+    if(n == 1 || n == 2)
+        return n;
+    
+    vector<long> dp(n+1, -1);
+
+    dp[0] = 1;
+    dp[1] = 1;
+    dp[2] = 2;
+
+    for(int i = 3; i <= n; i++) {
+        dp[i] = dp[i-1] + dp[i-2] + dp[i-3];
+    }
+    
+    return dp[n];
+}
+*/
+
+
+// */
 // Method-1 (DP) : top-down approach = recursion + memoization
 /*
 TC : O(n)
 SC : O(2n)
 */
-// /*
+/*
 int solve(int n, vector<int>& dp) {
     if(n == 0)
         return 1;
@@ -59,7 +120,7 @@ int countWays(int n) {
     
     return solve(n, dp);
 }
-// */
+*/
 
 
 
