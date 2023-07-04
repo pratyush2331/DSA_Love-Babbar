@@ -15,7 +15,7 @@ class Solution{
     }
     
     long long mul(int a, int b) {
-        return (a%MOD * 1ll * b%MOD) % MOD;
+        return (a%MOD * 1ll * b%MOD) % MOD; // type casting to 'long long', as it may be the case when product of 2 integers can't be stored in integer
     }
     
     
