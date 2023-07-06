@@ -1,49 +1,66 @@
-// CodeStudio : Sub Sequences of String
-
-/*
-Sample Input 1:
-1 
-abc
-Sample Output 1:
-a ab abc ac b bc c
-
-Sample Input 2:
-1
-bbb
-Sample Output 2:
-b b b bb bb bb bbb
-*/
-
-#include<iostream>
-#include<vector>
+#include<bits/stdc++.h>
 using namespace std;
 
-void solve(string str, int index, string output, vector<string>& ans) {
-    // base case
-    if(index >= str.length()) {
-        if(output != "") { // store in ans, if output is not an empty string
-            ans.push_back(output);
+// Method1 : Bit manipulation
+/*
+TC : O(2^n)
+SC : O(2^n)
+*/
+// /*
+vector<string> subsequences(string str){
+	vector<string> ans;
+
+    int n = str.length();
+    for(int num = 0; num < (1<<n); num++) {
+        string sub = "";
+        for(int i = 0; i < n; i++) {
+            if(num & (1<<i))
+                sub += str[i];
         }
-        return;
+
+        if(sub != "")
+            ans.push_back(sub);
+    }
+
+    return ans;	
+}
+// */
+
+
+
+
+// Method0 : Recursion
+/*
+TC : O(2^n)
+SC : O(2^n)
+*/
+/*
+void solve(string str, string  output, int index, vector<string>& ans) {
+    // base case
+    if(index >= str.size()) {
+        if(output != "")
+            ans.push_back(output);
+        return ;
     }
     
     // exclude
-    solve(str, index+1, output, ans);
+    solve(str, output, index+1, ans);
     
     // include
     char element = str[index];
     output.push_back(element);
-    solve(str, index+1, output, ans);
+    solve(str, output, index+1, ans);
 }
 
 vector<string> subsequences(string str){
-	vector<string> ans; // to store all subsequences
-    string output; // to store 1 subsequence at a time
-    int index = 0; // to decide which index to take & not-take
-    solve(str, index, output, ans);
-	
-    return ans;
+	vector<string> ans;
+    string output;
+    int index = 0;
+    solve(str, output, 0, ans);
+    
+    return ans;	
 }
+*/
 
 
 int main() {

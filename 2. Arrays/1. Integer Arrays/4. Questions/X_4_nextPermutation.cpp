@@ -1,11 +1,10 @@
 // 31. Next Permutation
 // LeetCode : https://leetcode.com/problems/next-permutation/
 
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 // method-1
-
 /*
 TC : O(3n)
 SC : O(1)
@@ -38,7 +37,6 @@ class Solution {
                     break;
                 }
             }
-            
         }
 
         reverse(nums, index+1, n-1); // TC: O(n)
