@@ -1,4 +1,5 @@
 // CodeStudio : Sub Sequences of String
+
 /*
 Sample Input 1:
 1 
@@ -17,30 +18,29 @@ b b b bb bb bb bbb
 #include<vector>
 using namespace std;
 
-void solve(string str, string output, int index, vector<string>& ans) {
+void solve(string str, int index, string output, vector<string>& ans) {
     // base case
     if(index >= str.length()) {
-        if(output != "") {
+        if(output != "") { // store in ans, if output is not an empty string
             ans.push_back(output);
         }
-        return ;
+        return;
     }
     
     // exclude
-    solve(str, output, index+1, ans);
+    solve(str, index+1, output, ans);
     
     // include
     char element = str[index];
     output.push_back(element);
-    solve(str, output, index+1, ans);
+    solve(str, index+1, output, ans);
 }
 
 vector<string> subsequences(string str){
-	
-	vector<string> ans;
-    string output;
-    int index = 0;
-    solve(str, output, index, ans);
+	vector<string> ans; // to store all subsequences
+    string output; // to store 1 subsequence at a time
+    int index = 0; // to decide which index to take & not-take
+    solve(str, index, output, ans);
 	
     return ans;
 }
@@ -53,10 +53,7 @@ int main() {
     vector<string> ans = subsequences(str);
 
     for(int i = 0; i < ans.size(); i++) {
-        for(int j = 0; j < ans[i].size(); j++) {
-            cout << ans[i][j];
-        }
-        cout << endl;
+        cout << ans[i] << endl;
     }
     
     return 0;
