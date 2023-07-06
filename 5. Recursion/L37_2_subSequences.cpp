@@ -18,6 +18,7 @@ vector<string> subsequences(string str){
                 sub += str[i];
         }
 
+        // store in ans, if output is not an empty string
         if(sub != "")
             ans.push_back(sub);
     }
@@ -28,37 +29,37 @@ vector<string> subsequences(string str){
 
 
 
-
 // Method0 : Recursion
 /*
 TC : O(2^n)
 SC : O(2^n)
 */
 /*
-void solve(string str, string  output, int index, vector<string>& ans) {
+void solve(string str, int index, string output, vector<string>& ans) {
     // base case
-    if(index >= str.size()) {
-        if(output != "")
+    if(index >= str.length()) {
+        if(output != "") { // store in ans, if output is not an empty string
             ans.push_back(output);
-        return ;
+        }
+        return;
     }
     
     // exclude
-    solve(str, output, index+1, ans);
+    solve(str, index+1, output, ans);
     
     // include
     char element = str[index];
     output.push_back(element);
-    solve(str, output, index+1, ans);
+    solve(str, index+1, output, ans);
 }
 
 vector<string> subsequences(string str){
-	vector<string> ans;
-    string output;
-    int index = 0;
-    solve(str, output, 0, ans);
-    
-    return ans;	
+	vector<string> ans; // to store all subsequences
+    string output; // to store 1 subsequence at a time
+    int index = 0; // to decide which index to take & not-take
+    solve(str, index, output, ans);
+	
+    return ans;
 }
 */
 
