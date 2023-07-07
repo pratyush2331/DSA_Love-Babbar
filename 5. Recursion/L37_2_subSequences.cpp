@@ -56,9 +56,8 @@ void solve(string str, int index, string output, vector<string>& ans) {
 vector<string> subsequences(string str){
 	vector<string> ans; // to store all subsequences
     string output; // to store 1 subsequence at a time
-    int index = 0; // to decide which index to take & not-take
 
-    solve(str, index, output, ans);
+    solve(str, 0, output, ans);
     
     return ans;
 }
