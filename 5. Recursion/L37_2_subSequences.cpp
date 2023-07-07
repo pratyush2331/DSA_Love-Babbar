@@ -48,8 +48,7 @@ void solve(string str, int index, string output, vector<string>& ans) {
     solve(str, index+1, output, ans);
     
     // include
-    char element = str[index];
-    output.push_back(element);
+    output.push_back(str[index]);
     solve(str, index+1, output, ans);
 }
 
