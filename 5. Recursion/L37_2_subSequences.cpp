@@ -1,3 +1,6 @@
+// Subsequences of String [OR] Power Set
+// CodeStudio : https://www.codingninjas.com/studio/problems/subsequences-of-string_985087
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -32,7 +35,7 @@ vector<string> subsequences(string str){
 // Method0 : Recursion
 /*
 TC : O(2^n)
-SC : O(2^n)
+SC : O(2^n) + O(n)
 */
 /*
 void solve(string str, int index, string output, vector<string>& ans) {
