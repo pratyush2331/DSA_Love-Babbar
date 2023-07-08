@@ -1,4 +1,4 @@
-// 53. Maximum Subarray
+// 53. Maximum Subarray [OR] Kadane's Algorithm
 // LeetCode : https://leetcode.com/problems/maximum-subarray/
 
 #include<iostream>
@@ -8,9 +8,8 @@ using namespace std;
 class Solution {
     public:
     int maxSubArray(vector<int>& nums) {
-        int n = nums.size();
         int ans = INT_MIN, sum = 0;
-        for(int i = 0; i < n; i++) {
+        for(int i = 0; i < nums.size(); i++) {
             sum += nums[i];
             ans = max(ans, sum);
             if(sum < 0) sum = 0;
