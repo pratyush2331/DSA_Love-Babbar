@@ -154,7 +154,12 @@ int solve(int index, int W, vector<int>& wt, vector<int>& val) {
 		return 0;
 	}
 
-	int include = val[index] + solve(index-1, W - wt[index], wt, val);
+	// include
+	int include = 0;
+	if(wt[index] <= W)
+		include = val[index] + solve(index-1, W - wt[index], wt, val);
+	
+	// exclude
 	int exclude = 0 + solve(index-1, W, wt, val);
 
 	return max(include, exclude);
