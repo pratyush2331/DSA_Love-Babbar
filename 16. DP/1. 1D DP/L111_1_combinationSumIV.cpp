@@ -43,7 +43,7 @@ class Solution {
     // method 1 : recursion + memoization
     /*
     TC : O(n * target)
-    SC : O(target) + O(target) --> dp[] array + recursive stack
+    SC : 2 * O(target) --> dp[] array + recursive stack
     */
     /*
     int solve(vector<int>& nums, int target, vector<int>& dp) {
