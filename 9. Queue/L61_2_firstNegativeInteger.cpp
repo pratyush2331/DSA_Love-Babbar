@@ -7,8 +7,8 @@ using namespace std;
 
 // Implementing using QUEUE
 vector<long long> printFirstNegativeInteger(long long int A[], long long int N, long long int K) {
-    queue<long long int> dq; // for storing index of -ve elements
     vector<long long> ans; // for storing first -ve element for every window
+    queue<long long int> dq; // for storing index of -ve elements
     
     // process first window of K size
     for(int i = 0; i < K; i++) {

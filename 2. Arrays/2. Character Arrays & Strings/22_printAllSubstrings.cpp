@@ -1,5 +1,7 @@
 // Print All Substrings
-// For a given input string(str), write a function to print all the possible substrings.
+
+// same question : "LoveBabbar_DSA\5. Recursion\L37_2_subSequences.cpp"
+
 /*
 Sample Input 1:
 abc
@@ -11,8 +13,8 @@ abc
 b 
 bc 
 c 
-------------------------------------------------------------------------------------------
- Sample Input 2:
+
+Sample Input 2:
 co
 
 Sample Output 2:

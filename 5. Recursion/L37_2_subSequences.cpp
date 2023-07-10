@@ -1,6 +1,8 @@
 // Subsequences of String [OR] Power Set
 // CodeStudio : https://www.codingninjas.com/studio/problems/subsequences-of-string_985087
 
+// same question : "LoveBabbar_DSA\2. Arrays\2. Character Arrays & Strings\22_printAllSubstrings.cpp"
+
 #include<bits/stdc++.h>
 using namespace std;
 
