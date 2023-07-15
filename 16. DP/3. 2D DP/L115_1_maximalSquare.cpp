@@ -8,7 +8,7 @@ using namespace std;
 class Solution {
     // method-3 : space optimization
     /*
-    TC : O(n * m)
+    TC : O(n*m)
     SC : O(m)
     */
     // /*
@@ -47,8 +47,8 @@ class Solution {
 
     // method-2 : tabulation
     /*
-    TC : O(n * m)
-    SC : O(n * m)
+    TC : O(n*m)
+    SC : O(n*m)
     */
     /*
     public:
@@ -84,8 +84,8 @@ class Solution {
 
     // method-1 : recursion + memoization
     /*
-    TC : O()
-    SC : O()
+    TC : O(n*m)
+    SC : O(n*m) + O(n+m)
     */
     /*
     int solve(vector<vector<char>>& matrix, int i, int j, int& maxi, vector<vector<int>>& dp) {
@@ -125,8 +125,8 @@ class Solution {
 
     // method-0 : recursion --> will give TLE
     /*
-    TC : O()
-    SC : O()
+    TC : O(3^(n+m))
+    SC : O(n+m)
     */
     /*
     int solve(vector<vector<char>>& matrix, int i, int j, int& maxi) {
