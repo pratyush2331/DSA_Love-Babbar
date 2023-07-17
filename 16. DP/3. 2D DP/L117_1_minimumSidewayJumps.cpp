@@ -102,8 +102,6 @@ class Solution {
         
         if(obstacles[currPos+1] != currLane) {
             return solve(obstacles, currLane, currPos+1, dp);
-            // dp[currLane][currPos] = dp[currLane][currPos+1];
-            // return dp[currLane][currPos];
         }
         else {
             // sideway jumps
