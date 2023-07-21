@@ -51,6 +51,13 @@ int gcd(int a, int b) {
 }
 // */
 
+// using inbuilt function
+/*
+int gcd(int a, int b){
+    return __gcd(a,b);
+}
+*/
+
 int main() {
     int a, b;
     cout << "Enter 2 numbers : ";
