@@ -1,5 +1,23 @@
-// Toggle the switch
+// 
 
+#include<iostream>
+using namespace std;
+
+int main() {
+    
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+// Toggle the switch
+/*
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -30,6 +48,7 @@ int main() {
     
     return 0;
 }
+*/
 
 
 
