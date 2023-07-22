@@ -33,7 +33,6 @@ int firstOcc(int arr[], int n, int key) {
     int mid = s + (e-s)/2;
 
     int ans = -1;
-
     while(s <= e) {             // for n == 1
         if(key == arr[mid]) {
             ans = mid;
@@ -55,7 +54,6 @@ int lastOcc(int arr[], int n, int key) {
     int mid = s + (e-s)/2;
 
     int ans = -1;
-
     while(s <= e) {             // for n == 1
         if(key == arr[mid]) {
             ans = mid;

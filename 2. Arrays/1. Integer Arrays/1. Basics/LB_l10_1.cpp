@@ -13,10 +13,8 @@ using namespace std;
 
 void swapAlternate(int arr[], int size)
 {
-    int index = 0;
-    while(index+1 < size){
-        swap(arr[index], arr[index+1]);
-        index += 2;
+    for(int i = 0; i < size-1; i+=2) {
+        swap(arr[i], arr[i+1]);
     }
 }
 
