@@ -24,7 +24,15 @@ rotate 2 steps to the right: [3,99,-1,-100]
 #include<vector>
 using namespace std;
 
-// BEST APPROACH      ----------          TC: O(n),   SC: O(1)
+
+
+
+// BEST APPROACH
+/*
+TC: O(n)
+SC: O(1)
+*/
+
 void reverse(vector<int>& nums, int s, int e) {
     while(s < e) {
         swap(nums[s++], nums[e--]);
@@ -48,7 +56,14 @@ void rotate(vector<int>& nums, int k) {
 }
 
 
-// AVG APPROACH      ----------          TC: O(n),   SC: O(n)
+
+
+// BRUTE FORCE
+/*
+TC: O(n)
+SC: O(n)
+*/
+
 /*
 void rotate(vector<int>& nums, int k) {
     int n = nums.size();
@@ -62,6 +77,8 @@ void rotate(vector<int>& nums, int k) {
     nums = ans;
 }
 */
+
+
 
 
 void printArray(vector<int> nums, int n) {
