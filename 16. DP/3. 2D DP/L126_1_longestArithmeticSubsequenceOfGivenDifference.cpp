@@ -10,7 +10,7 @@ using namespace std;
 
 
 class Solution {
-public:
+    public:
     int longestSubsequence(vector<int>& arr, int difference) {
         int n = arr.size();
         
@@ -19,8 +19,8 @@ public:
         int ans = 0;
         for(int i = 0; i < n; i++) {
             int temp = arr[i] - difference; // since we are searching in left side of ith index, that's why we are subtracting 'difference' from 'arr[i]'
-            int tempAns = 0;
 
+            int tempAns = 0;
             // check answer exists already for temp or not
             if(dp.count(temp))
                 tempAns = dp[temp];
