@@ -1,6 +1,8 @@
 // 122. Best Time to Buy and Sell Stock II
 // LeetCode : https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
 
+// 2D DP
+
 #include<iostream>
 using namespace std;
 
