@@ -8,13 +8,10 @@ using namespace std;
 class Solution {
     // method-3 : space optimization code of LCS
     /*
-    TC : O(m*n)
-    SC : O(min(m,n))
+    TC : O(n*n)
+    SC : O(n)
     */
     int longestCommonSubsequence(string a, string b) {
-        // to reduce SC further from O(n) to O(min(m,n))
-        if(a.length() < b.length()) swap(a,b);
-
         vector<int> curr(b.length()+1, 0);
         vector<int> next(b.length()+1, 0);
 
