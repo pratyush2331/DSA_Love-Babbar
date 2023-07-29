@@ -1,12 +1,18 @@
-// Largest Rectangle in Histogram
-// LeetCode : https://leetcode.com/problems/largest-rectangle-in-histogram/description/
+// 85. Maximal Rectangle
+// LeetCode : https://leetcode.com/problems/maximal-rectangle/
 
 #include<iostream>
 #include<vector>
 #include<stack>
 using namespace std;
 
+
 class Solution {
+    // using code of Largest Area Histogram (STACK)
+    /*
+    TC : O(n * (m+n))
+    SC : O(n)
+    */
     vector<int> nextSmallerElement(vector<int> arr, int n) {
         stack<int> s;
         s.push(-1);
@@ -64,7 +70,27 @@ class Solution {
 
         return area;
     }
+
+    public:
+    int maximalRectangle(vector<vector<char>>& matrix) {
+        int maxi = INT_MIN;
+        
+        vector<int> histogram(matrix[0].size());
+
+        for(int i = 0; i < matrix.size(); i++) {
+            for(int j = 0; j < matrix[0].size(); j++) {
+                if(matrix[i][j] == '1')
+                    histogram[j]++;
+                else
+                    histogram[j] = 0;
+            }
+            maxi = max(maxi, largestRectangleArea(histogram));
+        }
+
+        return maxi;
+    }
 };
+
 
 int main() {
     
