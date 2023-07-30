@@ -5,9 +5,9 @@ using namespace std;
 
 class Stack {
     // properties:
-        int* arr;
-        int top;
-        int size;
+    int* arr;
+    int top;
+    int size;
 
     // behaviour
   public:
