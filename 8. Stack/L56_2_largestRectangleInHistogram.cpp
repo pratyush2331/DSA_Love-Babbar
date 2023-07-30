@@ -7,7 +7,7 @@
 using namespace std;
 
 class Solution {
-    vector<int> nextSmallerElement(vector<int> arr, int n) {
+    vector<int> nextSmallerElementIndex(vector<int> arr, int n) {
         stack<int> s;
         s.push(-1);
         vector<int> ans(n);
@@ -24,7 +24,7 @@ class Solution {
         return ans;
     }
 
-    vector<int> prevSmallerElement(vector<int> arr, int n) {
+    vector<int> prevSmallerElementIndex(vector<int> arr, int n) {
         stack<int> s;
         s.push(-1);
         vector<int> ans(n);
@@ -46,10 +46,10 @@ class Solution {
         int n = heights.size();
 
         vector<int> next(n);
-        next = nextSmallerElement(heights, n);
+        next = nextSmallerElementIndex(heights, n);
 
         vector<int> prev(n);
-        prev = prevSmallerElement(heights, n);
+        prev = prevSmallerElementIndex(heights, n);
 
         int area = INT_MIN;
         for(int i = 0; i < n; i++) {
@@ -59,6 +59,7 @@ class Solution {
             }
             int b = next[i] - prev[i] - 1;
             int newArea = l*b;
+
             area = max(area, newArea);
         }
 
