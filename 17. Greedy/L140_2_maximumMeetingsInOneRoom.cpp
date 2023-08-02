@@ -14,9 +14,9 @@ class Solution{
         
         vector<vector<int>> v(N, vector<int>(3));
         for(int i = 0; i < N; i++) {
-            v[i][0] = F[i];
-            v[i][1] = S[i];
-            v[i][2] = i;
+            v[i][0] = F[i]; // finish time
+            v[i][1] = S[i]; // start time
+            v[i][2] = i;    // index
         }
         
         sort(v.begin(), v.end());
@@ -24,7 +24,7 @@ class Solution{
         int curr = v[0][0];
         
         for(int i = 1; i < N; i++) {
-            if(curr < v[i][1]) {
+            if(v[i][1] > curr) {
                 ans.push_back(v[i][2] + 1);
                 curr = v[i][0];
             }
