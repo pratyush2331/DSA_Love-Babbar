@@ -11,7 +11,6 @@ SC : O(n)
 #include<iostream>
 using namespace std;
 
-
 //class implemented
 /*
 struct Item{
