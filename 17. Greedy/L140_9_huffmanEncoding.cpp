@@ -1,6 +1,12 @@
 // Huffman Encoding
 // GFG : https://practice.geeksforgeeks.org/problems/huffman-encoding3345/1
 
+
+/*
+TC : O(n.logn)
+SC : O(n)
+*/
+
 #include<iostream>
 using namespace std;
 
