@@ -1,6 +1,13 @@
 // Fractional Knapsack
 // GFG : https://practice.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1
 
+
+/*
+TC : O(n.logn)
+SC : O(n)
+*/
+
+
 #include<iostream>
 using namespace std;
 
