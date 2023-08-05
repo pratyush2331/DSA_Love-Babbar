@@ -9,6 +9,10 @@ class Solution{
     public:
     int minimumDays(int S, int N, int M){
         // code here
+        
+        // very imp edge case
+        if(N-M == 1 && S >= 7) return -1;
+
         int sunday = S / 7;
         int buyingDays = S - sunday;
         int totalFood = S * M;
