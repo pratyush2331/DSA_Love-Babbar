@@ -6,12 +6,32 @@ using namespace std;
 
 
 class Solution {
+    // method-4 : combinatorics
+    /*
+    TC : O(min(m-1, n-1))
+    SC : O(1)
+    */
+    // /*
+    public:
+    int uniquePaths(int m, int n) {
+        int N = m + n - 2;
+        int r = (m-1 < n-1) ? m-1 : n-1;
+        double res = 1;
+        for(int i = 1; i <= r; i++) {
+            res = res * (N - r + i)/i;
+        }
+        return (int)res;
+    }
+    // */
+
+
+
     // method-3 : space optimization
     /*
     TC : O(m * n)
     SC : O(n)
     */
-    // /*
+    /*
     public:
     int uniquePaths(int m, int n) {
         vector<int> prev(n, 0);
@@ -39,7 +59,7 @@ class Solution {
 
         return prev[n-1];
     }
-    // */
+    */
 
 
 
@@ -110,8 +130,8 @@ class Solution {
 
     // method-0 : recursion --> will give TLE
     /*
-    TC : O()
-    SC : O()
+    TC : O(2 ^ (m*n))
+    SC : O((m-1) + O(n-1))
     */
     /*
     int f(int i, int j) {
