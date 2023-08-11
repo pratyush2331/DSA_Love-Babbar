@@ -1,45 +1,32 @@
-// 62. Unique Paths
-// LeetCode : https://leetcode.com/problems/unique-paths/
+// 63. Unique Paths II
+// LeetCode : https://leetcode.com/problems/unique-paths-ii/
 
 #include<iostream>
 using namespace std;
 
 
 class Solution {
-    // method-4 : combinatorics
+    // method-2 : space optimization
     /*
-    TC : O(min(m-1, n-1))
-    SC : O(1)
+    TC : O(M*N)
+    SC : O(2*N) = O(N)
     */
     // /*
     public:
-    int uniquePaths(int m, int n) {
-        int N = m + n - 2;
-        int r = (m-1 < n-1) ? m-1 : n-1;
-        double res = 1;
-        for(int i = 1; i <= r; i++) {
-            res = res * (N - r + i)/i;
-        }
-        return (int)res;
-    }
-    // */
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+        int m = obstacleGrid.size();
+        int n = obstacleGrid[0].size();
 
-
-
-    // method-3 : space optimization
-    /*
-    TC : O(m * n)
-    SC : O(n)
-    */
-    /*
-    public:
-    int uniquePaths(int m, int n) {
         vector<int> prev(n, 0);
         vector<int> curr(n, 0);
         
         for(int i = 0; i < m; i++) {
             for(int j = 0; j < n; j++) {
-                // from base case
+                // from base cases
+                if(obstacleGrid[i][j] == 1) {
+                    curr[j] = 0;
+                    continue;
+                }
                 if(i == 0 && j == 0) {
                     curr[0] = 1;
                     continue;
@@ -59,23 +46,30 @@ class Solution {
 
         return prev[n-1];
     }
-    */
+    // */
 
 
 
     // method-2 : tabulation
     /*
-    TC : O(m * n)
-    SC : O(m * n)
+    TC : O(M*N)
+    SC : O(M*N)
     */
     /*
     public:
-    int uniquePaths(int m, int n) {
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+        int m = obstacleGrid.size();
+        int n = obstacleGrid[0].size();
+
         vector<vector<int>> dp(m, vector<int>(n, 0));
         
         for(int i = 0; i < m; i++) {
             for(int j = 0; j < n; j++) {
-                // from base case
+                // from base cases
+                if(obstacleGrid[i][j] == 1) {
+                    dp[i][j] = 0;
+                    continue;
+                }
                 if(i == 0 && j == 0) {
                     dp[0][0] = 1;
                     continue;
@@ -96,33 +90,33 @@ class Solution {
     }
     */
 
-
+    
 
     // method-1 : recursion + memoization
     /*
-    TC : O(m * n)
-    SC : O((m-1) + (n-1)) + O(m*n)
+    TC : O(M*N)
+    SC : O((M-1)+(N-1)) + O(M*N)
     */
     /*
-    int f(int i, int j, vector<vector<int>>& dp) {
-        if(i < 0 || j < 0)
+    int f(int i, int j, vector<vector<int>>& obstacleGrid, vector<vector<int>>& dp) {
+        if(i < 0 || j < 0 || obstacleGrid[i][j] == 1)
             return 0;
-        if(i == 0 && j == 0)
+        if( i == 0 && j == 0)
             return 1;
         
         if(dp[i][j] != -1)
             return dp[i][j];
         
-        int up = f(i-1, j, dp);
-        int left = f(i, j-1, dp);
+        int up = f(i-1, j, obstacleGrid, dp);
+        int left = f(i, j-1, obstacleGrid, dp);
 
         return dp[i][j] = up + left;
     }
 
     public:
-    int uniquePaths(int m, int n) {
-        vector<vector<int>> dp(m, vector<int>(n, -1));
-        return f(m-1, n-1, dp);
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+        vector<vector<int>> dp(obstacleGrid.size(), vector<int>(obstacleGrid[0].size(), -1));
+        return f(obstacleGrid.size()-1, obstacleGrid[0].size()-1, obstacleGrid, dp);
     }
     */
 
@@ -130,25 +124,25 @@ class Solution {
 
     // method-0 : recursion --> will give TLE
     /*
-    TC : O(2 ^ (m*n))
-    SC : O((m-1) + O(n-1))
+    TC : O()
+    SC : O()
     */
     /*
-    int f(int i, int j) {
-        if(i < 0 || j < 0)
+    int f(int i, int j, vector<vector<int>>& obstacleGrid) {
+        if(i < 0 || j < 0 || obstacleGrid[i][j] == 1)
             return 0;
         if(i == 0 && j == 0)
             return 1;
         
-        int up = f(i-1, j);
-        int left = f(i, j-1);
+        int up = f(i-1, j, obstacleGrid);
+        int left = f(i, j-1, obstacleGrid);
 
         return up + left;
     }
 
     public:
-    int uniquePaths(int m, int n) {
-        return f(m-1, n-1);
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+        return f(obstacleGrid.size()-1, obstacleGrid[0].size()-1, obstacleGrid);
     }
     */
 };
