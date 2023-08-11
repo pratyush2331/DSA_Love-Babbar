@@ -134,8 +134,8 @@ class Solution {
 
     // method-0 : recursion --> will give TLE
     /*
-    TC : O()
-    SC : O()
+    TC : O(3^N)
+    SC : O(N)
     */
     /*
     int f(int i, int j, vector<vector<int>>& matrix) {
