@@ -1,5 +1,5 @@
 // Ninja’s Training
-// LeetCode : https://www.codingninjas.com/studio/problems/ninja-s-training_3621003
+// CodeStudio : https://www.codingninjas.com/studio/problems/ninja-s-training_3621003
 
 #include<iostream>
 using namespace std;
