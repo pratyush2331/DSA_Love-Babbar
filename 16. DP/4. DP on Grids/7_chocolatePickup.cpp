@@ -1,11 +1,9 @@
 // Chocolate Pickup
 // CodeStudio : https://www.codingninjas.com/studio/problems/chocolate-pickup_3125885
 
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-
-#include <bits/stdc++.h>
 
 // method-3 : space optimization
 /*
@@ -13,11 +11,8 @@ TC : O(M*N*N) * 9
 SC : O(N*N)
 */
 // /*
-int maximumChocolates(int r, int c, vector<vector<int>> &grid) {
+int maximumChocolates(int m, int n, vector<vector<int>> &grid) {
     // Write your code here.
-    int m = grid.size();
-    int n = grid[0].size();
-
     vector<vector<int>> curr(n, vector<int>(n, 0));
     vector<vector<int>> next(n, vector<int>(n, 0));
 
@@ -67,11 +62,8 @@ TC : O(M*N*N) * 9
 SC : O(M*N*N)
 */
 /*
-int maximumChocolates(int r, int c, vector<vector<int>> &grid) {
+int maximumChocolates(int m, int n, vector<vector<int>> &grid) {
     // Write your code here.
-    int m = grid.size();
-    int n = grid[0].size();
-
     vector<vector<vector<int>>> dp(m, vector<vector<int>>(n, vector<int>(n, 0)));
 
     // from base case
@@ -149,14 +141,11 @@ int f(int i, int j1, int j2, vector<vector<int>> &grid, vector<vector<vector<int
     return dp[i][j1][j2] = maxi;
 }
 
-int maximumChocolates(int r, int c, vector<vector<int>> &grid) {
+int maximumChocolates(int m, int n, vector<vector<int>> &grid) {
     // Write your code here.
-    int m = grid.size();
-    int n = grid[0].size();
-
     vector<vector<vector<int>>> dp(m, vector<vector<int>>(n, vector<int>(n, -1)));
 
-    return f(0, 0, grid[0].size()-1, grid, dp);
+    return f(0, 0, n-1, grid, dp);
 }
 */
 
@@ -197,9 +186,9 @@ int f(int i, int j1, int j2, vector<vector<int>> &grid) {
     return maxi;
 }
 
-int maximumChocolates(int r, int c, vector<vector<int>> &grid) {
+int maximumChocolates(int m, int n, vector<vector<int>> &grid) {
     // Write your code here.
-    return f(0, 0, grid[0].size()-1, grid);
+    return f(0, 0, n, grid);
 }
 */
 
