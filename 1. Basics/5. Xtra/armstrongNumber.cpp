@@ -20,6 +20,7 @@ using namespace std;
 
 int main() {
     int num;
+    cout << "Enter positive number : ";
     cin >> num;
 
     // Checking for non-positive integers
