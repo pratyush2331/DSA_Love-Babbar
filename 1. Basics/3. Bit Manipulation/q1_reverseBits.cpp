@@ -5,7 +5,7 @@
 using namespace std;
 
 class Solution {
-public:
+    public:
     uint32_t reverseBits(uint32_t n) {
         uint32_t ans;
         for(int i = 0; i < 32; i++) {
