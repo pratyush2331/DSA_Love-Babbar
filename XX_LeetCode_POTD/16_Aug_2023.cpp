@@ -25,6 +25,7 @@ class Solution {
         ans.push_back(pq.top().first);
 
         for(int i = k; i < nums.size(); i++) {
+            // if not in range
             while(!pq.empty() && pq.top().second <= (i-k)) {
                 pq.pop();
             }
