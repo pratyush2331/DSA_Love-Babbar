@@ -6,6 +6,11 @@ using namespace std;
 
 
 class Solution {
+    // method-1 : priority_queue
+    /*
+    TC : O(n.logn)
+    SC : O(n)
+    */
     // /*
     public:
     vector<int> maxSlidingWindow(vector<int>& nums, int k) {
