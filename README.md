@@ -1,8 +1,9 @@
 # DSA_Love-Babbar
 
-## Hi guys! [Pratyush](https://github.com/pratyush2331/) here
+## Hello folks! [Pratyush](https://github.com/pratyush2331/) here
 
 ## Here, I'll upload all my DSA codes in a structured manner, which I'm using for placements.
+## This repo contains all codes of Love Babbar DSA Course on YouTube along with many additional but essential codes which I found useful.
 
 
 
