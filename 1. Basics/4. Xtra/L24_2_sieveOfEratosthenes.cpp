@@ -1,6 +1,5 @@
-// 204. Count Primes
+// 204. Count Primes [OR] Sieve of Eratosthenes
 // LeetCode : https://leetcode.com/problems/count-primes/
-// Sieve of Eratosthenes
 
 /*
 total primes strictly less than n
@@ -13,23 +12,27 @@ using namespace std;
 
 // Method-2: Sieve of Eratosthenes, TC : O(n*log(logn))
 // /*
-int countPrimes(int n) {
-    vector<bool> prime(n+1, true); // sb ko prime kr de rhe h
+// class Solution {
+// public:
+    int countPrimes(int n) {
+        vector<bool> prime(n+1, true); // sb ko prime kr de rhe h
 
-    prime[0] = prime[1] = false; // 0 aur 1 ko non-prime kr diye
+        prime[0] = prime[1] = false; // 0 aur 1 ko non-prime kr diye
 
-    int count = 0;
-    for(int i = 2; i < n; i++) {
-        if(prime[i]) {
-            // cout << i << " ";
-            count++;
-            for(int j = i*i; j < n; j = j+i) {
-                prime[j] = false;
+        int count = 0;
+        for(int i = 2; i < n; i++) {
+            if(prime[i]) {
+                // cout << i << " ";
+                count++;
+                for(long long j = 2*i; j < n; j = j+i) {
+                    prime[j] = false;
+                }
             }
         }
+        return count;
     }
-    return count;
-}
+// };
+
 // */
 
 
@@ -48,6 +51,7 @@ int countPrimes(int n) {
     int count = 0;
     for(int i = 2; i < n; i++) {
         if(isPrime(i)) {
+            // cout << i << " ";
             count++;
         }
     }
