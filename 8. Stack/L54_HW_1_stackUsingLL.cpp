@@ -18,17 +18,11 @@ class StackNode {
 StackNode* top = NULL; //top of stack initialized to NULL
 int size = 0; // size of stack initialized to 0
 
-
 bool isEmpty() {
-    if(top == NULL) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return top == NULL;
 }
 
-void push(int x) {
+void push(int x) { // insert at head logic
     StackNode* node = new StackNode(x);
     node->next = top;
     top = node;
@@ -36,9 +30,9 @@ void push(int x) {
     size++;
 }
 
-int pop() {
+int pop() { // delete at head logic
     if(isEmpty()) {
-        cout << " Stack is empty" << endl;
+        cout << " Stack Underflow! " << endl;
         return INT_MIN;
     }
     else {
@@ -53,7 +47,7 @@ int pop() {
 
 int peek() {
     if(isEmpty()) {
-        cout << " stack is empty" << endl;
+        cout << " stack is empty! " << endl;
         return INT_MIN;
     }
     else {
@@ -66,50 +60,48 @@ int peek() {
 int main(){
     
     //menu for operations
-    cout<<"press 1 for push\n";
-    cout<<"press 2 for pop()\n";
-    cout<<"press 3 for top()\n";
-    cout<<"press 4 for size()\n";
-    cout<<"press 0 for exit\n";
+    cout << "press 1 for push\n";
+    cout << "press 2 for pop()\n";
+    cout << "press 3 for top()\n";
+    cout << "press 4 for size()\n";
+    cout << "press 0 for exit\n";
     
     
     int choice;
-    cout<<"press your choice\n";
-    cin>>choice;
+    cout << "press your choice\n";
+    cin >> choice;
     
     while(choice){
-        if(choice==1){
+        if(choice == 1){
             int data;
-            cout<<"Enter element\n";
-            cin>>data;
+            cout << "Enter element\n";
+            cin >> data;
             push(data);
         }
         
-        else if(choice==2){
-            int item=pop();
-            if(item==INT_MIN){}
-            else
-                cout<<"Popped element: "<<item<<endl;
+        else if(choice == 2){
+            int item = pop();
+            if(item != INT_MIN)
+                cout << "Popped element: " << item << endl;
         }
 
-        else if(choice==3){
+        else if(choice == 3){
             int item=peek();
-            if(item==INT_MIN){}
-            else
-                cout<<"Top element: "<<item<<endl;
+            if(item != INT_MIN)
+                cout << "Top element: " << item << endl;
         }
         
-        else if(choice==4){
-            cout<<"Size is: "<<size<<endl;
+        else if(choice == 4){
+            cout << "Size is: " << size << endl;
         }
         
         else
-            cout<<"Invalid number, try again!\n";
+            cout << "Invalid number, try again!\n";
 
-        cout<<"press your choice\n";
-        cin>>choice;
+        cout << "press your choice\n";
+        cin >> choice;
     }
     
-    cout<<"Exiting...\n";
+    cout << "Exiting...\n";
     return 0;
 }
