@@ -9,8 +9,8 @@ class StackNode {
     int data;
     StackNode* next;
 
-    StackNode(int a) { // Constructor
-        this->data = a;
+    StackNode(int val) { // Constructor
+        this->data = val;
         this->next = NULL;
     }
 };
