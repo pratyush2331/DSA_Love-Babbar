@@ -7,7 +7,7 @@
 using namespace std;
 
 
-template <typename T>
+template<typename T>
 class graph {
     public:
     // adjacency list
@@ -51,7 +51,7 @@ int main() {
     for(int i = 0; i < m; i++) {
         int u, v;
         cin >> u >> v;
-        // creating an undirected graph (direction = 0)
+        // creating an undirected graph (direction = 0 --> undirected)
         g.addEdge(u, v, 0);
     }
 
