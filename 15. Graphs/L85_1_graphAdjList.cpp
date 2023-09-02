@@ -10,23 +10,24 @@ using namespace std;
 template<typename T>
 class graph {
     public:
+    
     // adjacency list
-    unordered_map<T, list<T>> adj; // SC: O(n*(n-1)/2) = O(n^2) = O(V^2)
+    unordered_map<T, list<T>> adjList; // SC: O(n*(n-1)/2) = O(n^2) = O(V^2)
 
     void addEdge(T u, T v, bool direction) { // TC: O(1), SC: O(1)
         // direction = 0 --> undirected
         // direction = 1 --> directed
 
         // create an edge from u to v
-        adj[u].push_back(v);
+        adjList[u].push_back(v);
 
         if(direction == 0) {
-            adj[v].push_back(u);
+            adjList[v].push_back(u);
         }
     }
 
     void printAdjList() { // TC: O(V + E), SC: O(V + E)
-        for(auto i : adj) {
+        for(auto i : adjList) {
             cout << i.first << " -> ";
             for(auto j : i.second) {
                 cout << j << ", ";

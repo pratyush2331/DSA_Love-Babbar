@@ -1,12 +1,23 @@
-// Graph revision
+// 
 
 #include<iostream>
+#include<unordered_map>
+#include<list>
 using namespace std;
 
 template<typename T>
 class graph {
     public:
 
+    unordered_map<T, list<T>> adj;
+
+    void addEdge(T u, T v, bool direction) {
+        adj
+    }
+
+    void printAdjList() {
+
+    }
 };
 
 int main() {
@@ -20,14 +31,15 @@ int main() {
 
     graph<int> g;
 
-    cout << "enter edges : " << endl;
+    cout << "Enter edges : " << endl;
     for(int i = 0; i < m; i++) {
         int u, v;
         cin >> u >> v;
+
         g.addEdge(u, v, 0);
     }
 
-    cout << "printing graph " << endl;
+    cout << "Printing graph : " << endl;
     g.printAdjList();
     
     return 0;

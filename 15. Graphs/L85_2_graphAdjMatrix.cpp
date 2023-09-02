@@ -4,16 +4,17 @@
 #include<vector>
 using namespace std;
 
-template <typename T>
+template<typename T>
 class graph {
     public:
+    
     int n;
     // adjacency matrix
-    vector<vector<bool>> adj; // SC: O(n^2) = O(V^2)
+    vector<vector<bool>> adjMatrix; // SC: O(n^2) = O(V^2)
 
     graph(int numNodes) {
         n = numNodes;
-        adj = vector<vector<bool>>(n, vector<bool>(n, 0));
+        adjMatrix = vector<vector<bool>>(n, vector<bool>(n, 0));
     }
 
     void addEdge(T u, T v, bool direction) { // TC: O(1), SC: O(1)
@@ -21,17 +22,17 @@ class graph {
         // direction = 1 --> directed
 
         // create an edge from u to v
-        adj[u][v] = 1;
+        adjMatrix[u][v] = 1;
 
         if(direction == 0) {
-            adj[v][u] = 1;
+            adjMatrix[v][u] = 1;
         }
     }
 
     void printAdjMatrix() { // TC: O(n^2) = O(V^2), SC: O(n^2) = O(V^2)
         for(int i = 0; i < n; i++) {
             for(int j = 0; j < n; j++) {
-                cout << adj[i][j] << " ";
+                cout << adjMatrix[i][j] << " ";
             }
             cout << endl;
         }
