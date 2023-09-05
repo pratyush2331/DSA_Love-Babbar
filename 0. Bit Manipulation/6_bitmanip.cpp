@@ -28,6 +28,27 @@ int main() {
     // remove the last setbit
     int n = 10;
     cout << " after removing last set bit : " << (n & (n-1)) << endl;
+
+    // swapping 2 numbers
+    int n1 = -5, n2 = 10;
+    cout << n1 << " " << n2 << endl;
+    n1 = n1 ^ n2;
+    n2 = n1 ^ n2;
+    n1 = n1 ^ n2;
+    cout << n1 << " " << n2 << endl;
+
+    // get i-th bit
+    int num = 13, i = 2;
+    cout << (bool)(num & (1 << i)) << endl;
+
+    // set the i-th bit
+    cout << (num | (1 << i)) << endl;
+
+    // clear the i-th bit
+    cout << (num & ~(1 << i)) << endl;
+
+    // toggle the i-th bit
+    cout << (num ^ (1 << i)) << endl;
     
     return 0;
 }

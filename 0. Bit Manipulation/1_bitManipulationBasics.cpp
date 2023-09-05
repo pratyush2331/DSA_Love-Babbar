@@ -16,8 +16,7 @@ bool setBit(int& num, int i) {
 
 // Clear i-th Bit
 bool clearBit(int& num, int i) {
-    int mask = ~(1 << i);
-	return num = num & mask;
+	return num = num & ~(1 << i);
 }
 
 
