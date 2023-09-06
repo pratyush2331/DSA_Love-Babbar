@@ -27,6 +27,7 @@ public:
             // Remove the leftmost element from the window
             int leftElement = nums[i - k];
             sum -= leftElement;
+            
             if(window[leftElement] > 1) {
                 window[leftElement]--;
             }
@@ -46,7 +47,6 @@ public:
         return maxi;
     }
 };
-
 
 
 int main() {
