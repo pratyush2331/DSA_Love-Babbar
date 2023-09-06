@@ -14,7 +14,8 @@ public:
         }
         
         // finding msb of xorAns and making mask
-        int mask = xorAns & ~(xorAns - 1);
+        int mask = xorAns & ~(xorAns - 1); // fast
+        // int mask = xorAns & -xorAns; // --> slow
         
         // finding 1st number
         int a = 0;
