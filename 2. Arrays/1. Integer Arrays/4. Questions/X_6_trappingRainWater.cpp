@@ -8,7 +8,7 @@ using namespace std;
 class Solution {
     public:
 
-    // method-1 : optimal solution in single traversal
+    // method-1 : 2 pointer approach
     /*
     TC : O(n)
     SC : O(1)
@@ -17,21 +17,21 @@ class Solution {
     int trap(vector<int>& height) {
         int trappedWater = 0;
         int maxLeft = 0, maxRight = 0;
-        int i = 0, j = height.size()-1;
-        while(i < j) {
-            if(height[i] <= height[j]) {
-                if(height[i] > maxLeft)
-                    maxLeft = height[i];
+        int left = 0, right = height.size()-1;
+        while(left < right) {
+            if(height[left] <= height[right]) {
+                if(height[left] >= maxLeft)
+                    maxLeft = height[left];
                 else
-                    trappedWater += (maxLeft - height[i]);
-                i++;
+                    trappedWater += (maxLeft - height[left]);
+                left++;
             }
             else {
-                if(height[j] > maxRight)
-                    maxRight = height[j];
+                if(height[right] >= maxRight)
+                    maxRight = height[right];
                 else
-                    trappedWater += (maxRight - height[j]);
-                j--;
+                    trappedWater += (maxRight - height[right]);
+                right--;
             }
         }
         return trappedWater;
@@ -40,7 +40,7 @@ class Solution {
 
 
 
-    // method-0 : brute force
+    // method-0 : using 2 additional arrays fro preprocessing
     /*
     TC : O(3n) = O(n)
     SC : O(2n) = O(n)
