@@ -1,5 +1,5 @@
-// Non Repeating Numbers
-// GFG : https://practice.geeksforgeeks.org/problems/finding-the-numbers0215/1
+// Non Repeating Numbers [GFG] : https://practice.geeksforgeeks.org/problems/finding-the-numbers0215/1
+// 260. Single Number III [LeetCode] : https://leetcode.com/problems/single-number-iii/
 
 #include<iostream>
 using namespace std;
