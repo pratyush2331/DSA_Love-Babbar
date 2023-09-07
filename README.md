@@ -21,6 +21,6 @@
 
 
 [GitHub]: <https://github.com/pratyush2331/>
-[LinkedIn]: <https://www.linkedin.com/in/pratyush-raj-40b45ab2/>
+[LinkedIn]: <https://www.linkedin.com/in/pratyush2331/>
 [Instagram]: <https://www.instagram.com/pratyush2331/>
 [Twitter]: <https://twitter.com/pratyush2331/>
