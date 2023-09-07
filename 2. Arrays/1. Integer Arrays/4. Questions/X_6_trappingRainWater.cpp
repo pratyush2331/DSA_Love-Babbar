@@ -18,7 +18,7 @@ class Solution {
         int trappedWater = 0;
         int maxLeft = 0, maxRight = 0;
         int left = 0, right = height.size()-1;
-        while(left < right) {
+        while(left < right) { // left part
             if(height[left] <= height[right]) {
                 if(height[left] >= maxLeft)
                     maxLeft = height[left];
@@ -26,7 +26,7 @@ class Solution {
                     trappedWater += (maxLeft - height[left]);
                 left++;
             }
-            else {
+            else { // right part
                 if(height[right] >= maxRight)
                     maxRight = height[right];
                 else
@@ -40,7 +40,7 @@ class Solution {
 
 
 
-    // method-0 : using 2 additional arrays fro preprocessing
+    // method-0 : using 2 additional arrays for preprocessing
     /*
     TC : O(3n) = O(n)
     SC : O(2n) = O(n)
