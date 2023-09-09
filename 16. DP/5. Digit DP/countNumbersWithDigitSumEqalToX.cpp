@@ -36,6 +36,7 @@ int bruteForce(int L, int R, int X) {
 // ----------------------------------------------------------------------------------------------------
 // For unrestricted range tight = 0
 int solve(string& num, int n, int x, bool tight) {
+    if(x < 0) return 0;
     if(n == 1) {
         if(x >= 0 && x <= 9)
             return 1;
@@ -60,6 +61,7 @@ int solve(string& num, int n, int x, bool tight) {
 int dp[101][181][2];
 
 int solveDP(string& num, int n, int x, bool tight) {
+    if(x < 0) return 0;
     if(n == 1) {
         if(x >= 0 && x <= 9)
             return 1;
