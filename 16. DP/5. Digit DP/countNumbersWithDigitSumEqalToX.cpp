@@ -9,6 +9,8 @@ using namespace std;
 
 
 // method-0 : Brute Force --> will give TLE
+// TC : O((R - L+1) * log(R))
+// SC : O(1)
 // ----------------------------------------------------------------------------------------------------
 bool check(int num, int X) {
     int sum_digit = 0;
@@ -30,7 +32,9 @@ int bruteForce(int L, int R, int X) {
 
 
 // Digit DP using recursion
+// TC : O((R - L+1) * log(R))
 // ----------------------------------------------------------------------------------------------------
+// For unrestricted range tight = 0
 int solve(string& num, int n, int x, bool tight) {
     if(n == 1) {
         if(x >= 0 && x <= 9)
@@ -50,6 +54,8 @@ int solve(string& num, int n, int x, bool tight) {
 
 
 // Digit DP using recursion + memoization
+// TC : O(X * log(R))
+// SC : O(X * log(R))
 // ----------------------------------------------------------------------------------------------------
 int dp[101][181][2];
 
