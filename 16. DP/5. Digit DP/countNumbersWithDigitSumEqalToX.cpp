@@ -22,6 +22,7 @@ bool check(int num, int X) {
 }
 
 int bruteForce(int L, int R, int X) {
+    if(X < 0) return 0;
     int cnt = 0;
     for(int num = L; num <= R; num++) {
         if(check(num, X)) cnt++;
@@ -31,8 +32,8 @@ int bruteForce(int L, int R, int X) {
 // ----------------------------------------------------------------------------------------------------
 
 
-// Digit DP using recursion
-// TC : O((R - L+1) * log(R))
+// using recursion --> will work for log(R) <= 8
+// TC : O(10 ^ log(R))
 // ----------------------------------------------------------------------------------------------------
 // For unrestricted range tight = 0
 int solve(string& num, int n, int x, bool tight) {
@@ -84,7 +85,7 @@ int solveDP(string& num, int n, int x, bool tight) {
 
 
 int main() {
-    string L = "1", R = "1504456745678975";
+    string L = "1", R = "1504456740987654456789876548956789098765567323456123456789789045678904567889751234567890";
     int X = 5;
 
     // Brute Force --> will give TLE
