@@ -1,39 +1,38 @@
-// Digit DP
-// 1 <= L <= R <= 10^18
-
-#include<iostream>
-#include<cstring>
+#include <iostream>
+#include <vector>
+#include <map>
 using namespace std;
 
-int dp[101][181][2];
-int solveDP(string& num, int n, int x, int tight) {
-    if(x < 0) return 0;
-    if(n == 1) {
-        if(x >= 0 && x <= 9)
-            return 1;
-        return 0;
+int beautifulNodes(int N, int A[]) {
+    for (int i = 1; i <= N; i++) {
+        mp[A[i]]++;
     }
 
-    int ans = 0;
-    int ub = tight ? (num[num.length() - n] - '0') : 9;
-    for(int digit = 0; digit <= ub; digit++) {
-        ans += solveDP(num, n-1, x - digit, tight & (digit == ub));
+    int beautiful_nodes_count = 0;
+    for (int i = 2; i <= N; i++) {
+        
     }
-
-    return ans;
+    
+    return beautiful_nodes_count;
 }
 
 int main() {
-    string num;
-    cout << "Enter upper value : ";
-    cin >> num;
+    int t; // Number of test cases
+    cin >> t;
 
-    int x;
-    cout << "Enter x : ";
-    cin >> x;
+    while (t--) {
+        // Input for each test case
+        int N;
+        cin >> N;
+        vector<int> A(N+1);
+        for (int i = 2; i <= N; i++) {
+            cin >> A[i];
+        }
 
-    memset(dp, -1, sizeof(dp));
-    cout << solveDP(num, num.length(), x, 1) << endl;
-    
+        // Calculate and print the count of beautiful nodes for each test case
+        int result = beautifulNodes(N, A);
+        cout << result << endl;
+    }
+
     return 0;
 }
