@@ -1,5 +1,6 @@
 // BFS in Graph
-// CodeStudio : https://www.codingninjas.com/codestudio/problems/bfs-in-graph_973002
+// GFG [directed connected graph] : https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1
+// CodeStudio [undirected disconnected graph] : https://www.codingninjas.com/codestudio/problems/bfs-in-graph_973002
 
 /*
 You are given an undirected and disconnected graph G(V,E) having V vertices numbered from 0 to V-1 and E edges.

@@ -1,12 +1,12 @@
 // DFS Traversal
-// CodeStudio : https://www.codingninjas.com/codestudio/problems/dfs-traversal_630462?leftPanelTab=0
+// GFG [undirected connected graph] : https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1
+// CodeStudio [undirected disconnected graph] : https://www.codingninjas.com/codestudio/problems/dfs-traversal_630462?leftPanelTab=0
 
 #include<iostream>
 using namespace std;
 
 void DFS(int node, unordered_map<int, set<int>>& adjList, unordered_map<int, bool>& visited, vector<int>& component) {
     component.push_back(node);
-
     visited[node] = true;
 
     // go to depth
@@ -20,7 +20,6 @@ void DFS(int node, unordered_map<int, set<int>>& adjList, unordered_map<int, boo
 vector<vector<int>> depthFirstSearch(int V, int E, vector<vector<int>> &edges)
 {
     // Write your code here
-
     vector<vector<int>> ans;
 
     // preparing adj list
@@ -35,7 +34,6 @@ vector<vector<int>> depthFirstSearch(int V, int E, vector<vector<int>> &edges)
 
     // visited map
     unordered_map<int, bool> visited;
-
     // since, graph can be disconnected
     for(int i = 0; i < V; i++) {
         if(!visited[i]) {

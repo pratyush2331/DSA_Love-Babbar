@@ -23,14 +23,14 @@ bool isCyclicBFS(int node, unordered_map<int, list<int>>& adjList, unordered_map
         q.pop();
 
         for(auto i : adjList[frontNode]) {
-            if(visited[i] == true && i != parent[frontNode]) {
-                return true;
-            }
             if(!visited[i]) {
                 q.push(i);
                 visited[i] = true;
 
                 parent[i] = frontNode;
+            }
+            else if(visited[i] == true && i != parent[frontNode]) {
+                return true;
             }
         }
     }
@@ -50,11 +50,10 @@ bool isCyclicDFS(int node, int parent, unordered_map<int, list<int>>& adjList, u
         if(visited[i] == true && i != parent) {
             return true;
         }
-        if(!visited[i]) {
-            bool cycleDetected = isCyclicDFS(i, node, adjList, visited);
-            if(cycleDetected) {
+        else if(!visited[i]) {
+            bool ans = isCyclicDFS(i, node, adjList, visited);
+            if(ans)
                 return true;
-            }
         }
     }
 
@@ -81,10 +80,7 @@ string cycleDetection (vector<vector<int>>& edges, int n, int m)
     // to handle disconnected components
     for(int i = 0; i < n; i++) {
         if(!visited[i]) {
-            // using BFS
             // bool ans = isCyclicBFS(i, adjList, visited);
-
-            // using DFS
             bool ans = isCyclicDFS(i, -1, adjList, visited);
             
             if(ans == true)
