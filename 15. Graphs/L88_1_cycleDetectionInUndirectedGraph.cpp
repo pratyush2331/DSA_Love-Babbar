@@ -12,11 +12,11 @@ SC : O(V+E)
 */
 bool isCyclicBFS(int node, unordered_map<int, list<int>>& adjList, unordered_map<int, bool>& visited) { // TC: O(V + E)
     unordered_map<int, int> parent; //SC: O(V)
-    parent[node] = -1;
 
     queue<int> q;
     q.push(node);
     visited[node] = true;
+    parent[node] = -1;
 
     while(!q.empty()) {
         int frontNode = q.front();
@@ -26,7 +26,6 @@ bool isCyclicBFS(int node, unordered_map<int, list<int>>& adjList, unordered_map
             if(!visited[i]) {
                 q.push(i);
                 visited[i] = true;
-
                 parent[i] = frontNode;
             }
             else if(visited[i] == true && i != parent[frontNode]) {
@@ -47,13 +46,13 @@ bool isCyclicDFS(int node, int parent, unordered_map<int, list<int>>& adjList, u
     visited[node] = true;
 
     for(auto i : adjList[node]) {
-        if(visited[i] == true && i != parent) {
-            return true;
-        }
-        else if(!visited[i]) {
+        if(!visited[i]) {
             bool ans = isCyclicDFS(i, node, adjList, visited);
             if(ans)
                 return true;
+        }
+        else if(visited[i] == true && i != parent) {
+            return true;
         }
     }
 
