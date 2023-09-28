@@ -43,14 +43,14 @@ vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e) {
         int frontNode = q.front();
         q.pop();
 
-        // store ans
+        // imp : store ans
         ans.push_back(frontNode);
 
-        // neighbour indegree--
-        for(auto i : adjList[frontNode]) {
-            indegree[i]--;
-            if(indegree[i] == 0)
-                q.push(i);
+        // decrement neighbour's indegree by 1
+        for(int nbr : adjList[frontNode]) {
+            indegree[nbr]--;
+            if(indegree[nbr] == 0)
+                q.push(nbr);
         }
     }
 
