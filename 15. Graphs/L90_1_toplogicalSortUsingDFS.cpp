@@ -19,7 +19,6 @@ void topoSort(int node, vector<vector<int>>& adjList, vector<bool>& visited, sta
             topoSort(nbr, adjList, visited, s);
         }
     }
-
     
     // imp
     s.push(node);
