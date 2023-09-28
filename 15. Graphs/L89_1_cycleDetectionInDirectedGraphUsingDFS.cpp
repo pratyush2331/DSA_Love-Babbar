@@ -16,24 +16,23 @@ bool isCyclicDFS(int node, unordered_map<int, list<int>>& adjList, unordered_map
   dfsVisited[node] = true;
 
   for(auto i : adjList[node]) {
-    if(visited[i] == true && dfsVisited[i] == true) {
-      // cycle is present
-      return true;
-    }
     if(!visited[i]) {
       // dfs ke liye call kardo
       bool ans = isCyclicDFS(i, adjList, visited, dfsVisited);
       if(ans == true)
         return true;
     }
+    else if(visited[i] && dfsVisited[i]) {
+      // cycle is present
+      return true;
+    }
   }
 
   dfsVisited[node] = false;
-
   return false;
 }
 
-int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {
+int detectCycleInDirectedGraph(int n, vector<pair<int, int>>& edges) {
   // Write your code here.
 
   // create adjList
@@ -48,7 +47,7 @@ int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {
   // call dfs for all components
   unordered_map<int, bool> visited; // SC: O(E)
   unordered_map<int, bool> dfsVisited; // SC: O(E)
-  for(int i = 0; i < edges.size(); i++) {
+  for(int i = 1; i <= n; i++) {
     if(!visited[i]) {
       // using DFS
       bool ans = isCyclicDFS(i, adjList, visited, dfsVisited);
@@ -56,7 +55,6 @@ int detectCycleInDirectedGraph(int n, vector < pair < int, int >> & edges) {
         return true;
     }
   }
-
   return false;
 }
 

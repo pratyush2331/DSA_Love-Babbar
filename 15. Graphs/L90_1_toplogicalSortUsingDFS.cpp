@@ -11,24 +11,25 @@ TC : O(V+E)
 SC : O(V+E)
 */
 
-void topoSort(int node, unordered_map<int, list<int>>& adjList, vector<bool>& visited, stack<int>& s) {
+void topoSort(int node, vector<vector<int>>& adjList, vector<bool>& visited, stack<int>& s) {
     visited[node] = true;
 
-    for(auto i : adjList[node]) {
-        if(!visited[i]) {
-            topoSort(i, adjList, visited, s);
+    for(int nbr : adjList[node]) {
+        if(!visited[nbr]) {
+            topoSort(nbr, adjList, visited, s);
         }
     }
 
+    
     // imp
     s.push(node);
 }
 
 vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
     // Write your code here
-
     // create adjList
-    unordered_map<int, list<int>> adjList;
+    // unordered_map<int, list<int>> adjList;
+    vector<vector<int>> adjList(v); // optimising adjList : unordered_map<int, int> to vector<vector<int>>
     for(int i = 0; i < e; i++) {
         int u = edges[i][0];
         int v = edges[i][1];
@@ -51,7 +52,6 @@ vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
         ans.push_back(s.top());
         s.pop();
     }
-
     return ans;
 }
 
