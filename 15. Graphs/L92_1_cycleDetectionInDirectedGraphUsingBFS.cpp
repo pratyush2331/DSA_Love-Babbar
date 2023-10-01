@@ -56,10 +56,7 @@ int detectCycleInDirectedGraph(int n, vector<pair<int, int>> &edges) {
         }
     }
 
-    if(cnt == n)
-        return false;
-    else
-        return true;
+    return cnt != n;
 }
 
 
