@@ -1,4 +1,4 @@
-// Shortest path in an unweighted undirected graph
+// Shortest path in an unweighted undirected graph - BFS
 // CodeStudio : https://www.codingninjas.com/codestudio/problems/shortest-path-in-an-unweighted-graph_981297
 
 // Approach : using BFS
