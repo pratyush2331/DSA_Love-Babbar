@@ -1,4 +1,5 @@
-// LeetCode-206 : Reverse Linked List
+// 206 : Reverse Linked List
+// LeetCode : https://leetcode.com/problems/reverse-linked-list/
 
 #include<iostream>
 using namespace std;
