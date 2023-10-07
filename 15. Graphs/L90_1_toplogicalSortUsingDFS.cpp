@@ -1,6 +1,13 @@
 // Topological Sort
 // CodeStudio : https://www.codingninjas.com/codestudio/problems/topological-sort_982938
 
+/*
+Topological sorting is a linear ordering of the vertices in a directed acyclic graph (DAG) such that for 
+every directed edge (u, v), vertex u comes before vertex v in the ordering. It's used to represent tasks 
+or dependencies in a way that ensures all prerequisites are completed before a task is started, making it 
+a fundamental concept in project scheduling and dependency management.
+*/
+
 #include <bits/stdc++.h> 
 using namespace std;
 
