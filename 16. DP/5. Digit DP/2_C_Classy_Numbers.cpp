@@ -2,6 +2,13 @@
 // Codeforces : https://codeforces.com/problemset/problem/1036/C
 // Submission : https://codeforces.com/contest/1036/submission/233355392
 
+// Tutorial : https://www.youtube.com/watch?v=pSW4mt0JMOM
+
+// Q. You are given a segment [L,R]. Count the number of classy integers x such that L≤x≤R.
+// Let's call some positive integer classy if its decimal representation contains no more than 3 non-zero digits.
+// For example, numbers 4, 200000, 10203 are classy and numbers 4231, 102306, 7277420000 are not.
+// Constraint : 1 ≤ T ≤ 10^4;           1 ≤ Li ≤ Ri ≤ 10^18;
+
 #include<bits/stdc++.h>
 #define int long long
 
