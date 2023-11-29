@@ -25,6 +25,35 @@ struct Node
 };
 */
 
+
+// Method - 3
+// TC : O(n^2)
+class Solution{
+    int height(Node* root, bool& flag) {
+        if(root == NULL)
+            return 0;
+        
+        int left = height(root->left, flag);
+        int right = height(root->right, flag);
+        
+        // check condn...
+        if(abs(left - right) > 1)
+            flag = 1;
+        
+        return max(left, right) + 1;
+    }
+    
+    public:
+    //Function to check whether a binary tree is balanced or not.
+    bool isBalanced(Node *root) {
+        bool flag = 0;
+        height(root, flag);
+        return !(flag);
+    }
+};
+
+
+// Method - 2
 // Intuition : height wale function call ko hatana hai
 // TC : O(n)
 class Solution{
@@ -54,14 +83,14 @@ class Solution{
     
     public:
     //Function to check whether a binary tree is balanced or not.
-    bool isBalanced(Node *root)
-    {
+    bool isBalanced(Node *root) {
         return isBalancedFast(root).first;
     }
 };
 
+
+// Method - 1
 // TC : O(n^2)
-/*
 class Solution{
 private:
     int height(Node* root) {
@@ -76,8 +105,7 @@ private:
     
 public:
     //Function to check whether a binary tree is balanced or not.
-    bool isBalanced(Node *root)
-    {
+    bool isBalanced(Node *root) {
         if(root == NULL) return 1;
         
         bool left = isBalanced(root->left);
@@ -92,7 +120,7 @@ public:
         }
     }
 };
-*/
+
 
 int main() {
     

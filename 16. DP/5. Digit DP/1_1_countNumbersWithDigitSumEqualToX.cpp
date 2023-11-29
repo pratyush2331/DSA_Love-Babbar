@@ -1,6 +1,10 @@
-// Q. Find the count of the numbers b/w L and R which have sum of digits = X
-// 1 <= L <= R <= 10^18
-// 1 <= X <= 180
+// Sum of digits eqauls X
+
+// Tutorial : 
+
+// Q. Find the count of the numbers b/w L and R which have sum of digits = X.
+// Constraints : 1 <= L <= R <= 10^18;     1 <= X <= 180
+
 
 #include<iostream>
 #include<cstring>
