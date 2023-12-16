@@ -60,7 +60,8 @@ void quickSort(int arr[], int s, int e) {
     // p is pivotIndex
     int p = partition(arr, s, e); // pivot ko sahi jagah me place karke aagaya
     
-    printArray(arr, e-s);
+    // printArray(arr, e-s);
+    
     // left part sort karo
     quickSort(arr, s, p-1);
 
@@ -75,7 +76,7 @@ int main() {
 
     quickSort(arr, 0, n-1);
 
-    // printArray(arr, n);
+    printArray(arr, n);
 
     return 0;
 }
