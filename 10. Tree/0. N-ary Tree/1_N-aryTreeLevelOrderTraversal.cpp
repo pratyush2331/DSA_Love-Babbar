@@ -48,8 +48,7 @@ public:
                     q.push(ele);
                 }
             }
-            if(!temp.empty())
-                ans.push_back(temp);
+            ans.push_back(temp);
             // cout << endl;
         }
 
