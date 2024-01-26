@@ -1,5 +1,5 @@
 // 852. Peak Index in a Mountain Array
-// LeetCode :  https://leetcode.com/problems/peak-index-in-a-mountain-array/description/
+// LeetCode :  https://leetcode.com/problems/peak-index-in-a-mountain-array/
 
 // NOTE: guarenteed mountain array (in Input)
 /*
