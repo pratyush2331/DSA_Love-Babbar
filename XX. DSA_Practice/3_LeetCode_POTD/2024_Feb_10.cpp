@@ -5,9 +5,9 @@
 
 using namespace std;
 
-// /*
 // Method-2 : DP
 // TC: O(n^2), SC: O(n^2)
+// /*
 class Solution {
 public:
 int countSubstrings(string str) {
@@ -46,9 +46,9 @@ int countSubstrings(string str) {
 // */
 
 
-// /*
 // Method-1 : Optimal Approach - iterating to every index of string and moving left and right pointer to check palindrome
 // TC: O(n^2), SC: O(1)
+/*
 class Solution {
 public:
 int countSubstrings(string str) {
@@ -73,7 +73,7 @@ int countSubstrings(string str) {
 
     return cnt;
 }
-};
+// };
 // */
 
 
