@@ -1,17 +1,100 @@
 // 509. Fibonacci Number
 // LeetCOde : https://leetcode.com/problems/fibonacci-number/
 
+/*
+fibonacci series : 
+f(0) = 0, 
+f(1) = 1, 
+f(2) = 1, 
+f(3) = 1, 
+f(4) = 2, 
+f(5) = 3, 
+f(6) = 5,...
+*/
+
 #include<iostream>
 using namespace std;
+
+
+// METHOD-4
+// using DP : matrix exponentiation
+/*
+TC : O(logn)
+SC : O(1)
+*/
+// /*
+class Solution {
+public:
+    // function to multiply 2 matrices
+    vector<vector<int>> matrixMultiply(vector<vector<int>>& a, vector<vector<int>>& b) {
+        int sz = 2; // a.size();
+        vector<vector<int>> ans(sz, vector<int>(sz, 0));
+        for(int i = 0; i < sz; i++) {
+            for(int j = 0; j < sz; j++) {
+                for(int k = 0; k < sz; k++) {
+                    ans[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+        return ans;
+    }
+
+    // function to exponentiate
+    vector<vector<int>> matrixExponentiate(vector<vector<int>>& a, int n) {
+        if(n < 0) {
+            cout << "n can't be less than zero!\n";
+            // exit;
+            vector<vector<int>> ans(2, vector<int>(2, 0));
+            return ans;
+        }
+        if(n == 0) { // return identity matrix
+            int sz = 2; // a.size();
+            vector<vector<int>> ans(sz, vector<int>(sz, 0));
+            ans[0][0] = ans[1][1] = 1;
+            return ans;
+        }
+        if(n == 1) {
+            return a;
+        }
+
+        // binary exponentitation + DP logic
+        vector<vector<int>> temp = matrixExponentiate(a, n/2);
+        vector<vector<int>> ans = matrixMultiply(temp, temp);
+        if(n&1) { // odd power
+            ans = matrixMultiply(ans, a);
+        }
+        return ans;
+    }
+
+    public:
+    int fib(int n) {
+        vector<vector<int>> a = {{1,1}, {1,0}};
+        int sz = 2; // a.size();
+
+        vector<vector<int>> ans = matrixExponentiate(a, n);
+
+        // printing the a^n (fibonacci matrix)
+        // for(int i = 0; i < sz; i++) {
+        //     for(int j = 0; j < sz; j++) {
+        //         cout << ans[i][j] << " ";
+        //     }
+        //     cout << "\n";
+        // }
+
+        return ans[0][1];
+    }
+};
+// */
+
 
 
 // METHOD-3
 // using DP : space optimization
 /*
-TC : O(1)
+TC : O(n)
 SC : O(1)
 */
-// /*
+/*
 class Solution {
     public:
     int fib(int n) {
@@ -35,7 +118,7 @@ class Solution {
         return ans;
     }
 };
-// */
+*/
 
 
 
