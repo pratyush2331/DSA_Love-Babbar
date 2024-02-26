@@ -41,11 +41,11 @@ public:
 
     // function to exponentiate
     vector<vector<int>> matrixExponentiate(vector<vector<int>>& a, int n) {
-        if(n < 0) {
+        if(n < 0) { // fibonacci not possible
             cout << "n can't be less than zero!\n";
-            // exit;
-            vector<vector<int>> ans(2, vector<int>(2, 0));
-            return ans;
+            exit;
+            // vector<vector<int>> ans(2, vector<int>(2, 0));
+            // return ans;
         }
         if(n == 0) { // return identity matrix
             int sz = 2; // a.size();
@@ -81,7 +81,7 @@ public:
         //     cout << "\n";
         // }
 
-        return ans[0][1];
+        return ans[0][1]; // OR ans[1][0];
     }
 };
 // */
