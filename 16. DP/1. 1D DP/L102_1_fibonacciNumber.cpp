@@ -53,7 +53,7 @@ public:
             ans[0][0] = ans[1][1] = 1;
             return ans;
         }
-        if(n == 1) {
+        if(n == 1) { // return the matrix 'a'
             return a;
         }
 
