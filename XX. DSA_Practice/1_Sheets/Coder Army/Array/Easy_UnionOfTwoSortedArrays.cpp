@@ -6,6 +6,10 @@
 using namespace std;
 
 
+/*
+TC : O(m+n)
+SC : O(m+n)
+*/
 class Solution{
     public:
     //Function to return a list containing the union of the two arrays. 
