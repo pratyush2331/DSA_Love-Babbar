@@ -6,6 +6,7 @@
 using namespace std;
 
 
+// approach : simliar to sieve
 /*
 TC : O(N.log(leaves))
 SC : O(leaves)
