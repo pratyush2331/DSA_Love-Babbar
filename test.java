@@ -1,52 +1,47 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
 
-public class test {
-    public static void main(String[] args) {
-        List<Integer> used = new ArrayList<>();
-        used.add(1);
-        used.add(3);
-        used.add(3);
-        // used.add(3);
-        // used.add(1);
+public class test{
 
-        List<Integer> total = new ArrayList<>();
-        total.add(3);
-        total.add(3);
-        total.add(3);
-        // total.add(5);
-        // total.add(5);
-
-        int minPartition = 0;
-
-        List<Integer> sortedTotal = total.stream()
-                .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
-
-        int totalNumber = used.stream().mapToInt(Integer::intValue).sum();
-
-        int counterTotal = 0;
-        int currTotal;
-        while (totalNumber > 0 && counterTotal < sortedTotal.size()) {
-            currTotal = sortedTotal.get(counterTotal);
-            totalNumber -= currTotal;
-
-            if (totalNumber > 0) {
-                minPartition++;
-                counterTotal++;
-            } else if (totalNumber < 0) {
-                totalNumber += currTotal; // Revert the subtraction if totalNumber goes negative
-                minPartition++;
+    int convert(int decimal)
+    {
+        int result = 0;
+        int multiplier = 1;
+        int count =0;
+          while(decimal > 0)
+            {
+              int residue = decimal % 2;
+              if(residue==1)
+                  count++;
+              decimal     = decimal / 2;
+              result      = result + residue * multiplier;
+              multiplier  = multiplier * 10;
             }
+          return count;
+    }
+    boolean isBleak(int m)
+    {
+       int k = convert(m);
+       for(int i=1; i<=k; i++)
+       {
+          if(convert(m-i) == i)
+              return false;
+       }
+       return true;
+    }
+    public static void main(String args[])
+    {
+        MinMax conv = new MinMax();
+        boolean x=conv.isBleak(4);
+        if(x){
+            System.out.println("Number is Bleak");
+        }else{
+            System.out.println("Supported by some number");
         }
-
-        // Handle edge cases where totalNumber becomes negative
-        if (totalNumber > 0) {
-            minPartition++;
-        }
-
-        System.out.println(minPartition);
     }
 }
+    
+    
+    
+    
