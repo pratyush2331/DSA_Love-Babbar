@@ -2,6 +2,11 @@
 // CodeStudio : https://www.codingninjas.com/codestudio/problems/dijkstra-s-shortest-path_920469
 
 /*
+Dijkstra's Algorithm
+- to find shortest path from one node (source node) to ever other node in the weighted directed/undirected graph.
+*/
+
+/*
 TC : O(E logV)
 SC : O(V + E)
 */
