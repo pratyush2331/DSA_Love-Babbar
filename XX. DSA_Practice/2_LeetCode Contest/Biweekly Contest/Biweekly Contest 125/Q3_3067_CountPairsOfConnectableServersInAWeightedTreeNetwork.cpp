@@ -35,18 +35,19 @@ public:
         }
 
         vector<int> fans(n, 0);
-        for(int par = 0; par < n; par++) { // going to all nodes --> TC: O(n * n) = O(n^2)
-            int ans = 0, sum = 0;
+        for(int node = 0; node < n; node++) { // going to all nodes --> TC: O(n * n) = O(n^2) --> since, for every node, every other node is visited once.
+            int sum = 0;
             vector<int> temp;
-            for(auto [ch, d] : gr[par]) {
+            for(auto [ch, d] : gr[node]) {
                 cnt = 0;
-                dfs(ch, par, d); // O(n)
+                dfs(ch, node, d); // O(n)
                 temp.push_back(cnt);
                 sum += cnt;
             }
 
+            int ans = 0;
             for(auto ele : temp) ans += (sum-ele)*ele;
-            fans[par] = ans/2;
+            fans[node] = ans/2;
         }
 
         return fans;
