@@ -8,12 +8,12 @@ using namespace std;
 
 /*
 TC : O(n)
-SC : O(n)
+SC : O(strs.size())
 */
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        unordered_map<string, vector<string>> mp; // SC:O(1)
+        unordered_map<string, vector<string>> mp; // SC:O(strs.size())
         for(auto ele : strs) { // TC:O(n)
             string str = ele;
             sort(str.begin(), str.end());
