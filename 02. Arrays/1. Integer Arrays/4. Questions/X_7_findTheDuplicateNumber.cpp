@@ -5,7 +5,7 @@
 using namespace std;
 
 
-// method-2 : using visited index/number
+// method-3 : using visited index/number
 /*
 TC : O(n) --> linear time to traverse the nums
 SC:  O(1)
@@ -29,7 +29,7 @@ public:
 
 
 
-// method-1 : using slow and fast pointer
+// method-2 : using slow and fast pointer
 /*
 TC : O(n) --> linear time to traverse the nums
 SC:  O(1)
