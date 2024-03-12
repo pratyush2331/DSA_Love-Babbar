@@ -29,6 +29,35 @@ public:
 
 
 
+// method-1 : using slow and fast pointer
+/*
+TC : O(n) --> linear time to traverse the nums
+SC:  O(1)
+*/
+/*
+class Solution {
+    public:
+    int findDuplicate(vector<int>& nums) {
+// method-1 : using map
+        int slow = nums[0];
+        int fast = nums[0];
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while(slow != fast);
+
+        fast = nums[0];
+        while(slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
+};
+*/
+
+
+
 // method-1 : using map
 /*
 TC : O(n) --> linear time to traverse the nums
