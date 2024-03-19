@@ -14,9 +14,9 @@ SC : O(1)
 class Solution {
 public:
     Solution() {
-        std::ios::sync_with_stdio(false);
-        std::cin.tie(nullptr);
-        std::cout.tie(nullptr);
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
     }
 
     bool isIdealPermutation(vector<int>& nums) {
