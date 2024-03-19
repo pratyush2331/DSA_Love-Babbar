@@ -18,17 +18,21 @@ using namespace std;
  * };
  */
 
+/*
+TC : O(n)
+SC : O(n)
+*/
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> ans;
+        vector<vector<int>> ans; // SC:O(1)
 
         if(root == NULL) return ans;
 
         queue<TreeNode*> q;
         q.push(root);
 
-        while(!q.empty()) {
+        while(!q.empty()) { // TC:O(n), SC:O(n)
             int x = q.size();
             vector<int> temp;
             while(x--) {
