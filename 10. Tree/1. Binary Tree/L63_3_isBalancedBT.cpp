@@ -37,9 +37,9 @@ class Solution{
         if(root == NULL)
             return 0;
         
-        int left = height(root->left, flag);
+        int left = height(root->left);
         if(left == -1) return -1; // to avoid unnecessay recursive calls
-        int right = height(root->right, flag);
+        int right = height(root->right);
         if(right == -1) return -1; // to avoid unnecessay recursive calls
         
         // check condn...
@@ -52,7 +52,7 @@ class Solution{
     public:
     //Function to check whether a binary tree is balanced or not.
     bool isBalanced(Node *root) {
-        return height(root, flag) != -1;
+        return height(root) != -1;
     }
 };
 
