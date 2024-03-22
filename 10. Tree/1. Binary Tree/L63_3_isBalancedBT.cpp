@@ -27,18 +27,24 @@ struct Node
 
 
 // Method - 3
-// TC : O(n^2)
+/*
+TC : O(n)
+SC : O(n) --> aux recursive stack space
+*/
+
 class Solution{
-    int height(Node* root, bool& flag) {
+    int height(Node* root) {
         if(root == NULL)
             return 0;
         
         int left = height(root->left, flag);
+        if(left == -1) return -1; // to avoid unnecessay recursive calls
         int right = height(root->right, flag);
+        if(right == -1) return -1; // to avoid unnecessay recursive calls
         
         // check condn...
         if(abs(left - right) > 1)
-            flag = 1;
+            return -1;
         
         return max(left, right) + 1;
     }
@@ -46,9 +52,7 @@ class Solution{
     public:
     //Function to check whether a binary tree is balanced or not.
     bool isBalanced(Node *root) {
-        bool flag = 0;
-        height(root, flag);
-        return !(flag);
+        return height(root, flag) != -1;
     }
 };
 
