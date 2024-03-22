@@ -29,10 +29,10 @@ public:
 
         if(root == NULL) return ans;
 
-        queue<TreeNode*> q;
+        queue<TreeNode*> q; // SC:O(n)
         q.push(root);
 
-        while(!q.empty()) { // TC:O(n), SC:O(n)
+        while(!q.empty()) { // TC:O(n)
             int x = q.size();
             vector<int> temp;
             while(x--) {
