@@ -44,6 +44,9 @@ node* buildTree(node* root) {
     return root;
 }
 
+
+
+
 void levelOrderTraversal(node* root) { // BFS - Breadth First Search
     if(root == NULL) {
         return;
@@ -79,6 +82,13 @@ void reverseLevelOrderTraversal(node* root) {
 }
 */
 
+
+
+
+/*
+TC : O(n)
+SC : O(height)
+*/
 void inorder(node* root) { // LNR
     // base case
     if(root == NULL) return;
@@ -87,6 +97,31 @@ void inorder(node* root) { // LNR
     cout << root->data << " ";
     inorder(root->right);
 }
+
+vector<int> inorderIterative(node* root) {
+    vector<int> ans;
+
+    stack<node*> st;
+    node* curr = root;
+    while(true) {
+        if(curr) {
+            st.push(curr);
+            curr = curr->left;
+        }
+        else {
+            if(st.empty()) break;
+            curr = st.top();
+            st.pop();
+            ans.push_back(curr->data);
+            curr = curr->right;
+        }
+    }
+
+    return ans;
+}
+
+
+
 
 void preorder(node* root) { // NLR
     // base case
@@ -97,6 +132,31 @@ void preorder(node* root) { // NLR
     preorder(root->right);
 }
 
+/*
+TC : O(n)
+SC : O(height)
+*/
+vector<int> preorderIterative(node* root) {
+    vector<int> ans;
+
+    if(root == NULL) return ans;
+
+    stack<node*> st;
+    st.push(root);
+    while(!st.empty()) {
+        node* top = st.top();
+        st.pop();
+        ans.push_back(top->data);
+        if(top->right) st.push(top->right);
+        if(top->left) st.push(top->left);
+    }
+
+    return ans;
+}
+
+
+
+
 void postorder(node* root) { // NLR
     // base case
     if(root == NULL) return;
@@ -105,6 +165,76 @@ void postorder(node* root) { // NLR
     postorder(root->right);
     cout << root->data << " ";
 }
+
+// method-2 : using 1 stack (Iterative Approach)
+/*
+TC : O(2n)
+SC : O(n)
+*/
+vector<int> postorderIterative(node* root) {
+    vector<int> ans;
+
+    if(root == NULL) return ans;
+
+    stack<TreeNode*> st; // SC:O(n)
+    TreeNode* curr = root;
+    while(curr || !st.empty()) { // TC:O(2n)
+        if(curr) {
+            st.push(curr);
+            curr = curr->left;
+        }
+        else {
+            TreeNode* temp = st.top()->right;
+            if(temp == NULL) {
+                temp = st.top();
+                st.pop();
+                ans.push_back(temp->val);
+                while(!st.empty() && temp == st.top()->right) {
+                    temp = st.top();
+                    st.pop();
+                    ans.push_back(temp->val);
+                }
+            }
+            else {
+                curr = temp;
+            }
+        }
+    }
+
+    return ans;
+}
+
+// method-1 : using 2 stacks (Iterative Approach)
+/*
+TC : O(2n)
+SC : O(2n)
+*/
+/*
+vector<int> postorderIterative(node* root) {
+    vector<int> ans;
+
+    if(root == NULL) return ans;
+
+    stack<TreeNode*> st1, st2; // SC:O(2n)
+    st1.push(root);
+    while(!st1.empty()) { // TC:O(n)
+        TreeNode* top = st1.top();
+        st1.pop();
+        st2.push(top);
+        if(top->left) st1.push(top->left);
+        if(top->right) st1.push(top->right);
+    }
+    while(!st2.empty()) { // TC:O(n)
+        ans.push_back(st2.top()->val);
+        st2.pop();
+    }
+
+    return ans;
+}
+*/
+
+
+
 
 void buildFromLevelOrder(node* &root) {
     int data;
