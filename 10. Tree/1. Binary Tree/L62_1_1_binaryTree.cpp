@@ -176,23 +176,23 @@ vector<int> postorderIterative(node* root) {
 
     if(root == NULL) return ans;
 
-    stack<TreeNode*> st; // SC:O(n)
-    TreeNode* curr = root;
+    stack<node*> st; // SC:O(n)
+    node* curr = root;
     while(curr || !st.empty()) { // TC:O(2n)
         if(curr) {
             st.push(curr);
             curr = curr->left;
         }
         else {
-            TreeNode* temp = st.top()->right;
+            node* temp = st.top()->right;
             if(temp == NULL) {
                 temp = st.top();
                 st.pop();
-                ans.push_back(temp->val);
+                ans.push_back(temp->data);
                 while(!st.empty() && temp == st.top()->right) {
                     temp = st.top();
                     st.pop();
-                    ans.push_back(temp->val);
+                    ans.push_back(temp->data);
                 }
             }
             else {
@@ -215,23 +215,65 @@ vector<int> postorderIterative(node* root) {
 
     if(root == NULL) return ans;
 
-    stack<TreeNode*> st1, st2; // SC:O(2n)
+    stack<node*> st1, st2; // SC:O(2n)
     st1.push(root);
     while(!st1.empty()) { // TC:O(n)
-        TreeNode* top = st1.top();
+        node* top = st1.top();
         st1.pop();
         st2.push(top);
         if(top->left) st1.push(top->left);
         if(top->right) st1.push(top->right);
     }
     while(!st2.empty()) { // TC:O(n)
-        ans.push_back(st2.top()->val);
+        ans.push_back(st2.top()->data);
         st2.pop();
     }
 
     return ans;
 }
 */
+
+
+
+// PreOrder, InOrder, PostOrder Traversal using 1 stack (iterative)
+/*
+TC : O(3n)
+SC : O(5n)
+*/
+void preInPostTraversal(node* root) {
+    vector<int> pre, in, post; // SC:O(3n)
+
+    stack<pair<node*,int>> st; // SC:O(2n)
+    st.push({root,1});
+    while(!st.empty()) { // TC:O(3n)
+        auto it = st.top();
+        st.pop();
+
+        if(it.second == 1) {
+            pre.push_back(it.first->data);
+            it.second++;
+            st.push(it);
+
+            if(it.first->left) {
+                st.push({it.first->left, 1});
+            }
+        }
+
+        if(it.second == 2) {
+            in.push(it.first->data);
+            it.second++;
+            st.push(it);
+
+            if(it.first->right) {
+                st.push({it.first->right, 1});
+            }
+        }
+
+        if(it.second == 3) {
+            post.push(it.first->data);
+        }
+    }
+}
 
 
 
