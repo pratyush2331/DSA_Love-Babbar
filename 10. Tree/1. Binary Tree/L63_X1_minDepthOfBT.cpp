@@ -13,20 +13,15 @@ struct Node
 }; */
 
 class Solution{
-  public:
-    /*You are required to complete this method*/
+public:
     int minDepth(Node *root) {
-        if(root == NULL) return 0;
+        if(root == NULL) return 1e9; // ans can't be from the null side of the node, so return 1e9
+        if(root->left == NULL && root->right == NULL) return 1; // ans will be from here, i.e. from leaf node
         
-        int left = minDepth(root->left);
-        int right = minDepth(root->right);
-
-        if(left == 0 || right == 0) {
-            return max(left, right) + 1;
-        }
-        else {
-            return min(left, right) + 1;
-        }
+        int left = solve(root->left, cnt);
+        int right = solve(root->right, cnt);
+        
+        return 1 + min(left, right);
     }
 };
 
