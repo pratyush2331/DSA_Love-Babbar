@@ -5,21 +5,16 @@
 #include<iostream>
 using namespace std;
 
-// TC : O(n)
-bool isIdentical(Node *r1, Node *r2) {
-    if(r1 == NULL && r2 == NULL) return 1;
-    if((r1 == NULL && r2 != NULL) || (r1 != NULL && r2 == NULL)) return 0;
-    
-    bool left = isIdentical(r1->left, r2->left);
-    bool right = isIdentical(r1->right, r2->right);
-    bool sameVal = r1->data == r2->data;
-    
-    if(left && right && sameVal) {
-        return 1;
-    }
-    else {
-        return false;
-    }
+/*
+TC : O(n)
+SC : O(n)
+*/
+bool isSameTree(TreeNode* p, TreeNode* q) {
+    if(p == NULL && q == NULL) return 1;
+    if(p == NULL || q == NULL) return 0;
+    bool left =  isSameTree(p->left, q->left);
+    bool right = isSameTree(p->right, q->right);
+    return (p->val == q->val) && left && right;
 }
 
 int main() {
