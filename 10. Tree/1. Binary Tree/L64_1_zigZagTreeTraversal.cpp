@@ -29,32 +29,20 @@ class Solution {
     	
     	queue<Node*> q;
     	q.push(root);
-    	
     	bool leftToRight = true; // flag
     	while(!q.empty()) {
     	    int size = q.size();
     	    vector<int> temp(size);
-    	    
     	    for(int i = 0; i < size; i++) {
     	        Node* frontNode = q.front();
     	        q.pop();
-    	        
     	        int index = leftToRight ? i : size-i-1;
     	        temp[index] = frontNode->data;
-    	        
-    	        if(frontNode->left) {
-    	            q.push(frontNode->left);
-    	        }
-    	        if(frontNode->right) {
-    	            q.push(frontNode->right);
-    	        }
+    	        if(frontNode->left) q.push(frontNode->left);
+    	        if(frontNode->right) q.push(frontNode->right);
     	    }
-    	    
-    	    leftToRight = !leftToRight; // changing the flag value
-    	    
-    	    for(auto i : temp) {
-    	        ans.push_back(i);
-    	    }
+    	    ans.push_back(temp);
+    	    leftToRight = !leftToRight; // toggling the flag
     	}
     	
     	return ans;
