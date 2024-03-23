@@ -22,8 +22,37 @@ struct Node
 
 **********************************************************/
 
-// Intuition : height wale function call ko hatana hai
-// TC : O(n), SC : O(h)
+
+// Intuition : height wale function call ko hatana hai {STRIVER approach}
+/*
+TC : O(n)
+SC : O(h)
+*/
+class Solution {
+    int solve(TreeNode* root, int& diameter) {
+        if(root == NULL) return 0;
+        int left = solve(root->left, diameter);
+        int right = solve(root->right, diameter);
+        diameter = max(diameter, left+right);
+        return 1 + max(left, right);
+    }
+
+public:
+    int diameterOfBinaryTree(TreeNode* root) {
+        int diameter = 0;
+        solve(root, diameter);
+        return diameter;
+    }
+};
+
+
+
+// Intuition : height wale function call ko hatana hai {CHUTIYA & COMPLEX approach}
+/*
+TC : O(n)
+SC : O(h)
+*/
+/*
 class Solution {
   private:
     // pair --> {diameter, height}
@@ -45,13 +74,17 @@ class Solution {
     }
     
   public:
-    // Function to return the diameter of a Binary Tree.
     int diameter(Node* root) {
         return diameterFast(root).first;
     }
 };
+*/
 
-// TC : O(n^2), SC : O(h)
+
+// naive approach
+/*
+TC : O(n^2), SC : O(h)
+*/
 /*
 class Solution {
   private:

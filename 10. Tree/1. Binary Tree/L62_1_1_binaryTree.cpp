@@ -85,6 +85,40 @@ void reverseLevelOrderTraversal(node* root) {
 
 
 
+void preorder(node* root) { // NLR
+    // base case
+    if(root == NULL) return;
+
+    cout << root->data << " ";
+    preorder(root->left);
+    preorder(root->right);
+}
+
+/*
+TC : O(n)
+SC : O(height)
+*/
+vector<int> preorderIterative(node* root) {
+    vector<int> ans;
+
+    if(root == NULL) return ans;
+
+    stack<node*> st;
+    st.push(root);
+    while(!st.empty()) {
+        node* top = st.top();
+        st.pop();
+        ans.push_back(top->data);
+        if(top->right) st.push(top->right);
+        if(top->left) st.push(top->left);
+    }
+
+    return ans;
+}
+
+
+
+
 /*
 TC : O(n)
 SC : O(height)
@@ -123,40 +157,6 @@ vector<int> inorderIterative(node* root) {
 
 
 
-void preorder(node* root) { // NLR
-    // base case
-    if(root == NULL) return;
-
-    cout << root->data << " ";
-    preorder(root->left);
-    preorder(root->right);
-}
-
-/*
-TC : O(n)
-SC : O(height)
-*/
-vector<int> preorderIterative(node* root) {
-    vector<int> ans;
-
-    if(root == NULL) return ans;
-
-    stack<node*> st;
-    st.push(root);
-    while(!st.empty()) {
-        node* top = st.top();
-        st.pop();
-        ans.push_back(top->data);
-        if(top->right) st.push(top->right);
-        if(top->left) st.push(top->left);
-    }
-
-    return ans;
-}
-
-
-
-
 void postorder(node* root) { // NLR
     // base case
     if(root == NULL) return;
@@ -166,12 +166,39 @@ void postorder(node* root) { // NLR
     cout << root->data << " ";
 }
 
+// method-1 : using 2 stacks (Iterative Approach)
+/*
+TC : O(2n)
+SC : O(2n)
+*/
+vector<int> postorderIterative2(node* root) {
+    vector<int> ans;
+
+    if(root == NULL) return ans;
+
+    stack<node*> st1, st2; // SC:O(2n)
+    st1.push(root);
+    while(!st1.empty()) { // TC:O(n)
+        node* top = st1.top();
+        st1.pop();
+        st2.push(top);
+        if(top->left) st1.push(top->left);
+        if(top->right) st1.push(top->right);
+    }
+    while(!st2.empty()) { // TC:O(n)
+        ans.push_back(st2.top()->data);
+        st2.pop();
+    }
+
+    return ans;
+}
+
 // method-2 : using 1 stack (Iterative Approach)
 /*
 TC : O(2n)
 SC : O(n)
 */
-vector<int> postorderIterative(node* root) {
+vector<int> postorderIterative1(node* root) {
     vector<int> ans;
 
     if(root == NULL) return ans;
@@ -203,35 +230,6 @@ vector<int> postorderIterative(node* root) {
 
     return ans;
 }
-
-// method-1 : using 2 stacks (Iterative Approach)
-/*
-TC : O(2n)
-SC : O(2n)
-*/
-/*
-vector<int> postorderIterative(node* root) {
-    vector<int> ans;
-
-    if(root == NULL) return ans;
-
-    stack<node*> st1, st2; // SC:O(2n)
-    st1.push(root);
-    while(!st1.empty()) { // TC:O(n)
-        node* top = st1.top();
-        st1.pop();
-        st2.push(top);
-        if(top->left) st1.push(top->left);
-        if(top->right) st1.push(top->right);
-    }
-    while(!st2.empty()) { // TC:O(n)
-        ans.push_back(st2.top()->data);
-        st2.pop();
-    }
-
-    return ans;
-}
-*/
 
 
 
