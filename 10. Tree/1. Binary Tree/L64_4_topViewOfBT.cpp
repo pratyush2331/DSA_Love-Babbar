@@ -1,6 +1,11 @@
 // Top View of Binary Tree
 // GFG : https://practice.geeksforgeeks.org/problems/top-view-of-binary-tree/1
 
+/*
+INTERVIEW QUESTION : Can we use recursion ?
+ANSWER : NO
+*/
+
 #include<iostream>
 using namespace std;
 
@@ -13,6 +18,11 @@ struct Node
 };
 */
 
+// level-order-traversal
+/*
+TC : O(n)
+SC : O(n)
+*/
 class Solution {
 public:
     vector<int> topView(Node *root) {
