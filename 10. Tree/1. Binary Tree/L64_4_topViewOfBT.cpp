@@ -13,42 +13,33 @@ struct Node
 };
 */
 
-class Solution
-{
+class Solution {
 public:
-    vector<int> topView(Node *root)
-    {
+    vector<int> topView(Node *root) {
         vector<int> ans;
         
         if(root == NULL) return ans;
         
-        map<int, int> topNode; // map --> (hd, node->data)
-        queue<pair<Node*, int> > q; // queue --> (node, hd)
-        
-        q.push(make_pair(root, 0));
-        
+        map<int, int> mp; // {vertical, val}
+        queue<pair<Node*, int>> q; // {node, vertical}
+        q.push({root, 0});
         while(!q.empty()) {
-            pair<Node*, int> temp = q.front();
+            pair<Node*, int> front = q.front();
             q.pop();
-            
-            Node* frontNode = temp.first;
-            int hd = temp.second;
-            
-            if(topNode.find(hd) == topNode.end()) // checking if `hd` doesn't exist in the map
-                topNode[hd] = frontNode->data;
-            
-            if(frontNode->left)
-                q.push(make_pair(frontNode->left,hd-1));
-            
-            if(frontNode->right)
-                q.push(make_pair(frontNode->right, hd+1));
+            Node* node = front.first;
+            int vertical = front.second;
+            if(mp.find(vertical) == mp.end()) mp[vertical] = node->data;
+            if(node->left) q.push({node->left, vertical-1});
+            if(node->right) q.push({node->right, vertical+1});
         }
         
-        for(auto i : topNode) {
-            ans.push_back(i.second);
+        for(auto ele : mp) {
+            ans.push_back(ele.second);
         }
+        
         return ans;
     }
+
 };
 
 int main() {
