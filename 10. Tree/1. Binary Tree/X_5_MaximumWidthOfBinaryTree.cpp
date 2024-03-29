@@ -24,7 +24,7 @@ public:
                 TreeNode* node = q.front().first;
                 int node_idx = q.front().second - first;
                 q.pop();
-                if(node->left) q.push({node->left, 2ll * node_idx + 1});
+                if(node->left) q.push({node->left, 2ll * node_idx + 1}); // 2ll is IMP, because it can go out of INT range
                 if(node->right) q.push({node->right, 2ll * node_idx + 2});
             }
         }
