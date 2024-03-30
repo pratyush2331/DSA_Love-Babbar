@@ -24,10 +24,10 @@ public:
 
 
 
-// method-0 : Brute Force
+// method-1 : Optimal Approach (Linear Time)
 /*
-TC : O(n^2)
-SC : O(n)
+TC : O(n)
+SC : O(height)
 */
 // This function changes a tree to hold children sum property
 void convertTree(node* root) { // post-order logic --> LRN
@@ -63,7 +63,7 @@ void convertTree(node* root) { // post-order logic --> LRN
 // method-0 : Brute Force
 /*
 TC : O(n^2)
-SC : O(n)
+SC : O(height)
 */
 /*
 void increment(node* root, int diff) { /// will increment the child...
