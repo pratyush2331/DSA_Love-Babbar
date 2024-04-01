@@ -4,31 +4,11 @@
 
 using namespace std;
 
-
-vector<int> inorderIterative(node* root) {
-    vector<int> ans;
-
-    stack<node*> st;
-    node* curr = root;
-    while(true) {
-        if(curr) {
-            st.push(curr);
-            curr = curr->left;
-        }
-        else {
-            if(st.empty()) break;
-            curr = st.top();
-            st.pop();
-            ans.push_back(curr->data);
-            curr = curr->right;
-        }
-    }
-
-    return ans;
-}
-
-
 int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
     
 
     return 0;
