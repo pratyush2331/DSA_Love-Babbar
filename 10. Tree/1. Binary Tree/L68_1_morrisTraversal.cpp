@@ -1,8 +1,8 @@
-// Morris Trvaersal --> for Inorder traversal
+// Morris Trvaersal --> for Inorder traversal [threaded-binary concept]
 // LeetCode : https://leetcode.com/problems/binary-tree-inorder-traversal
 
 /*
-TC : O(n)
+TC : O(3n) = O(n)
 SC : O(1)
 */
 
