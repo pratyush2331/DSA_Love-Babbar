@@ -18,7 +18,7 @@ public:
 
         TreeNode *curr = root, *pred;
         while(curr) {
-            if(curr->left == NULL) { // when no left part
+            if(curr->left == NULL) { // if left part is not present
                 ans.push_back(curr->val);
                 curr = curr->right;
             }
