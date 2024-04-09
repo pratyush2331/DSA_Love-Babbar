@@ -1,6 +1,6 @@
-// Flatten binary tree to linked list
+// 114. Flatten Binary Tree to Linked List
+// LeetCode : https://leetcode.com/problems/flatten-binary-tree-to-linked-list
 // GFG : https://practice.geeksforgeeks.org/problems/flatten-binary-tree-to-linked-list/1
-// LeetCode : https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 
 /*
 Given the root of a binary tree, flatten the tree into a "linked list":
@@ -11,33 +11,106 @@ Given the root of a binary tree, flatten the tree into a "linked list":
 #include<iostream>
 using namespace std;
 
-// TC : O(n), SC : O(1)
-class Solution
-{
-    public:
-    void flatten(Node *root)
-    {
-        // not needed as, n >= 1
-        // if(root ==  NULL) return;
-        
-        Node *current, *predecessor;
-        current = root;
-        
-        while(current != NULL) {
-            if(current->left != NULL) {
-                predecessor = current->left;
-                while(predecessor->right != NULL) {
-                    predecessor = predecessor->right;
+
+// method-3 : using preorder morris-traversal
+/*
+TC : O(n)
+SC : O(1)
+*/
+class Solution {
+public:
+    void flatten(TreeNode* root) {
+        if(root == NULL) return;
+        TreeNode *curr = root, *pred;
+        while(curr) {
+            if(curr->left) {
+                pred = curr->left;
+                while(pred->right) {
+                    pred = pred->right;
                 }
-                
-                predecessor->right = current->right;
-                current->right = current->left;
-                current->left = NULL;
+                pred->right = curr->right;
+                curr->right = curr->left;
+                curr->left = NULL;
             }
-            current = current->right;
+            curr = curr->right;
         }
     }
 };
+
+
+// method-2 : using stack and reverse-preorder-traversal
+/*
+TC : O(n)
+SC : O(n)
+*/
+/*
+class Solution {
+public:
+    void flatten(TreeNode* root) {
+        if(root == NULL) return;
+
+        stack<TreeNode*> st;
+        st.push(root);
+        while(!st.empty()) {
+            TreeNode* curr = st.top();
+            st.pop();
+            if(curr->right) st.push(curr->right);
+            if(curr->left) st.push(curr->left);
+            if(!st.empty()) curr->right = st.top();
+            curr->left = NULL;
+        }
+    }
+};
+*/
+
+
+// method-1 : using reverse-pre-order-traversal
+/*
+TC : O(n)
+SC : O(n)
+*/
+/*
+class Solution {
+public:
+    TreeNode* prev = NULL;
+    void flatten(TreeNode* root) {
+        if(root == NULL) return;
+        flatten(root->right);
+        flatten(root->left);
+        root->right = prev;
+        root->left = NULL;
+        prev = root;
+    }
+};
+*/
+
+
+// method-0 : using post-order-traversal
+/*
+TC : O(n)
+SC : O(n)
+*/
+/*
+class Solution {
+public:
+    void flatten(TreeNode* root) {
+        if(root == NULL) return;
+        flatten(root->left);
+        flatten(root->right);
+        if(root->left) {
+            TreeNode* temp = root->right;
+            root->right = root->left;
+            TreeNode* pred = root->left;
+            while(pred->right) {
+                pred = pred->right;
+            }
+            pred->right = temp;
+            root->left = NULL;
+        }
+    }
+};
+*/
+
 
 int main() {
     
