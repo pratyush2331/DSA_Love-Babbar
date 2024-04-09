@@ -1,4 +1,4 @@
-// Morris Trvaersal --> for Inorder traversal [threaded-binary concept]
+// Morris Trvaersal --> for Inorder traversal [threaded-binary-tree concept]
 // LeetCode : https://leetcode.com/problems/binary-tree-inorder-traversal
 
 /*
