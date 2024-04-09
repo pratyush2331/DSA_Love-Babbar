@@ -1,43 +1,51 @@
-// Morris Trvaersal
-// TC : O(n), SC : O(1)
+// Morris Trvaersal --> for Inorder traversal
+// LeetCode : https://leetcode.com/problems/binary-tree-inorder-traversal
+
+/*
+TC : O(n)
+SC : O(1)
+*/
 
 #include<iostream>
 using namespace std;
 
-// for Inorder traversal
-void morrisTraversal(Node* root) {
-    if(root == NULL)
-        return;
-    
-    Node *current, *predecessor;
-    current = root;
 
-    while(current != NULL) {
-        if(current->left == NULL) {
-            cout << current->data << " ";
-            current = current->right;
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        if(root == NULL) return ans;
+
+        TreeNode *curr = root, *pred;
+        while(curr) {
+            if(curr->left == NULL) { // when no left part
+                ans.push_back(curr->val);
+                curr = curr->right;
+            }
+            else { // if left part is present
+                // get predecessor
+                pred = curr->left;
+                while(pred->right && pred->right != curr) {
+                    pred = pred->right;
+                }
+                
+                // temp link creation
+                if(pred->right == NULL) {
+                    pred->right = curr;
+                    curr = curr->left;
+                }
+                // temp link removal
+                else {
+                    pred->right = NULL;
+                    ans.push_back(curr->val);
+                    curr = curr->right;
+                }
+            }
         }
-        else {
-            // get predecessor
-            predecessor = current->left;
-            while(predecessor->right != NULL && predecessor->right != current) {
-                predecessor = predecessor->right;
-            }
-            
-            // temp link creation
-            if(predecessor->right == NULL) {
-                predecessor->right = current;
-                current = current->left;
-            }
-            // temp link removal
-            else {
-                predecessor->right = NULL;
-                cout << current->data << " ";
-                current = current->right;
-            }
-        }
+        return ans;
     }
-}
+};
+
 
 int main() {
     
