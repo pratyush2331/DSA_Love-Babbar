@@ -30,9 +30,7 @@ node* buildTree(node* root) {
     cin >> data;
     
     // base case
-    if(data == -1) { // -1 ko NULL man rha hun
-        return NULL;
-    }
+    if(data == -1) return NULL;
 
     root = new node(data);
 
@@ -48,9 +46,7 @@ node* buildTree(node* root) {
 
 
 void levelOrderTraversal(node* root) { // BFS - Breadth First Search
-    if(root == NULL) {
-        return;
-    }
+    if(root == NULL) return;
 
     queue<node*> q;
     q.push(root);
@@ -62,12 +58,8 @@ void levelOrderTraversal(node* root) { // BFS - Breadth First Search
             node* frontNode = q.front();
             q.pop();
 
-            if(frontNode->left) {
-                q.push(frontNode->left);
-            }
-            if(frontNode->right) {
-                q.push(frontNode->right);
-            }
+            if(frontNode->left) q.push(frontNode->left);
+            if(frontNode->right) q.push(frontNode->right);
 
             cout << frontNode->data << " ";
         }
@@ -100,7 +92,6 @@ SC : O(height)
 */
 vector<int> preorderIterative(node* root) {
     vector<int> ans;
-
     if(root == NULL) return ans;
 
     stack<node*> st;
@@ -173,7 +164,6 @@ SC : O(2n)
 */
 vector<int> postorderIterative2(node* root) {
     vector<int> ans;
-
     if(root == NULL) return ans;
 
     stack<node*> st1, st2; // SC:O(2n)
