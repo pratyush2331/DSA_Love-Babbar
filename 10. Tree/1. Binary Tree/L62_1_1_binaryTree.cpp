@@ -50,18 +50,14 @@ void levelOrderTraversal(node* root) { // BFS - Breadth First Search
 
     queue<node*> q;
     q.push(root);
-
     while(!q.empty()) {
         int x = q.size();
-        
         while(x--) {
             node* frontNode = q.front();
             q.pop();
-
+            cout << frontNode->data << " ";
             if(frontNode->left) q.push(frontNode->left);
             if(frontNode->right) q.push(frontNode->right);
-
-            cout << frontNode->data << " ";
         }
         cout << endl;
     }
@@ -69,11 +65,36 @@ void levelOrderTraversal(node* root) { // BFS - Breadth First Search
 
 // HOMEWORK : reverse level order traversal
 /*
-void reverseLevelOrderTraversal(node* root) {
-    
-}
+TC : O(n)
+SC : O(n)
 */
+vector<vector<int>> levelOrderBottom(TreeNode* root) {
+    vector<vector<int>> ans;
+    if(root == NULL) return ans;
 
+    queue<TreeNode*> q;
+    q.push(root);
+    while(!q.empty()) {
+        int x = q.size();
+        vector<int> temp;
+        while(x--) {
+            TreeNode* front = q.front();
+            q.pop();
+            temp.push_back(front->val);
+            if(front->left) q.push(front->left);
+            if(front->right) q.push(front->right);
+        }
+        ans.push_back(temp);
+    }
+
+    // reverse ans
+    int s = 0, e = ans.size()-1;
+    while(s < e) {
+        swap(ans[s++], ans[e--]);
+    }
+
+    return ans;
+}
 
 
 
