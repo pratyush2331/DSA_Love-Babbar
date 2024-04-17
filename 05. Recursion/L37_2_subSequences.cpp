@@ -42,7 +42,7 @@ SC : O(2^n) + O(n)
 /*
 void solve(string str, int index, string output, vector<string>& ans) {
     // base case
-    if(index >= str.length()) {
+    if(index == str.length()) {
         if(output != "") { // store in ans, if output is not an empty string
             ans.push_back(output);
         }
@@ -60,9 +60,7 @@ void solve(string str, int index, string output, vector<string>& ans) {
 vector<string> subsequences(string str){
 	vector<string> ans; // to store all subsequences
     string output; // to store 1 subsequence at a time
-
     solve(str, 0, output, ans);
-    
     return ans;
 }
 */
