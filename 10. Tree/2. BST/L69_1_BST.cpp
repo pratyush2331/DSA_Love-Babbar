@@ -75,6 +75,44 @@ void levelOrderTraversal(Node* root) {
     }
 }
 
+
+
+// 701. Insert into a Binary Search Tree
+// LeetCode : https://leetcode.com/problems/insert-into-a-binary-search-tree/description/
+
+// using iteration
+/*
+TC : O(logn) --> traversal in BST
+SC : O(1)
+*/
+Node* insertIntoBST_iteration(Node* root, int val) {
+    if(root == NULL) return new Node(val);
+
+    Node* temp = root;
+    while(temp) {
+        if(temp->val < val) {
+            if(temp->right) temp = temp->right;
+            else {
+                temp->right = new Node(val);
+                break;
+            }
+        }
+        else if(temp->val > val) {
+            if(temp->left) temp = temp->left;
+            else {
+                temp->left = new Node(val);
+                break;
+            }
+        }
+    }
+    return root;
+}
+
+// using recursion
+/*
+TC : O(logn)
+SC : O(logn)
+*/
 Node* insertIntoBST(Node* root, int d) {
     // base case
     if(root == NULL) {
@@ -92,6 +130,8 @@ Node* insertIntoBST(Node* root, int d) {
     }
     return root;
 }
+
+
 
 void takeInput(Node* &root) {
     int data;
