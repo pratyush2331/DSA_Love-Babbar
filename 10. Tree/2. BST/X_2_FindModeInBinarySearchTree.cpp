@@ -34,7 +34,7 @@ class Solution {
 public:
     vector<int> findMode(TreeNode* root) {
         vector<int> ans;
-        inorderTraversal(root, ans); // TC:O(n), SC:O(n)
+        inorderTraversal(root, ans); // TC:O(n)
         return ans;
     }
 };
