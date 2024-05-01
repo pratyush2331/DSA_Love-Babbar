@@ -5,7 +5,7 @@
 using namespace std;
 
 
-// method-0 : using DFS
+// method-1 : using DFS
 /*
 TC : O(2n) = O(n)
 SC : O(n)
