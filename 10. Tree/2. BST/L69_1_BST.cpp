@@ -252,13 +252,50 @@ Node* inorderSuccessor(Node* root, int key) {
     return ans;
 }
 */
-
 // LeetCode : https://leetcode.com/problems/delete-node-in-a-bst/
+// method-1 : changing links
 // TC : O(h)
+class Solution {
+    TreeNode* findMinNode(TreeNode* root) {
+        while(root->right) {
+            root = root->right;
+        }
+        return root;
+    }
+
+    TreeNode* deleteNodeUtil(TreeNode* root, int key) {
+        if(root == NULL) return NULL;
+        if(root->val == key) {
+            if(root->left && root->right) {
+                TreeNode* minNode = findMinNode(root->left); // root->left me min node
+                minNode->right = root->right;
+                return root->left;
+            }
+            else {
+                return (root->left) ? root->left : root->right;
+            }
+        }
+        else if(root->val > key) {
+            root->left = deleteNode(root->left, key);
+        }
+        else {
+            root->right = deleteNode(root->right, key);
+        }
+        return root;
+    }
+
+public:
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        return deleteNodeUtil(root, key);
+    }
+};
+
+// method-0 : updating value
+// TC : O(h)
+/*
 Node* deleteFromBST(Node* root, int val) {
     // base case
-    if(root == NULL)
-        return root;
+    if(root == NULL) return root;
 
     if(root->data == val) {
         // 0 child hai
@@ -303,6 +340,7 @@ Node* deleteFromBST(Node* root, int val) {
     }
     return root;
 }
+*/
 
 int main() {
     Node* root = NULL;

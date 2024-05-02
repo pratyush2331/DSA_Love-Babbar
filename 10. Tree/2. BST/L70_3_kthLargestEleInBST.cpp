@@ -1,6 +1,3 @@
-// Kth largest element in BST
-// GFG : https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
-
 #include<iostream>
 using namespace std;
 
@@ -17,6 +14,8 @@ struct Node {
 };
 */
 
+// Kth largest element in BST
+// GFG : https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
 // using Reverse Morris Traversal (Inorder) - TC : O(n), SC : O(1)
 class Solution
 {
@@ -66,6 +65,31 @@ class Solution
         return reverseMorrisTraversal(root, k);
     }
 };
+
+
+// 230. Kth Smallest Element in a BST
+// LeetCode : https://leetcode.com/problems/kth-smallest-element-in-a-bst
+// using Inorder Traversal - TC : O(n), SC : O(height)
+class Solution {
+    void inorderTraversal(TreeNode* root, int& k, int& ans) {
+        if(root == NULL) return;
+        inorderTraversal(root->left, k, ans);
+        k--;
+        if(k == 0) {
+            ans = root->val;
+            return;
+        }
+        inorderTraversal(root->right, k, ans);
+    }
+
+public:
+    int kthSmallest(TreeNode* root, int k) {
+        int ans = -1;
+        inorderTraversal(root, k, ans);
+        return ans;
+    }
+};
+
 
 int main() {
     
