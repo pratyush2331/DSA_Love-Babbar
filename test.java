@@ -1,47 +1,25 @@
-import java.util.*;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-public class test{
+public class test {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-    int convert(int decimal)
-    {
-        int result = 0;
-        int multiplier = 1;
-        int count =0;
-          while(decimal > 0)
-            {
-              int residue = decimal % 2;
-              if(residue==1)
-                  count++;
-              decimal     = decimal / 2;
-              result      = result + residue * multiplier;
-              multiplier  = multiplier * 10;
-            }
-          return count;
-    }
-    boolean isBleak(int m)
-    {
-       int k = convert(m);
-       for(int i=1; i<=k; i++)
-       {
-          if(convert(m-i) == i)
-              return false;
-       }
-       return true;
-    }
-    public static void main(String args[])
-    {
-        MinMax conv = new MinMax();
-        boolean x=conv.isBleak(4);
-        if(x){
-            System.out.println("Number is Bleak");
-        }else{
-            System.out.println("Supported by some number");
+        List<Integer> list = new ArrayList<>();
+        
+        // Loop until there is no more input available
+        while (scanner.hasNextInt()) {
+            int input = scanner.nextInt();
+            list.add(input);
+        }
+        
+        // Close the scanner
+        scanner.close();
+
+        // Print the list of numbers entered by the user
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " ");
         }
     }
 }
-    
-    
-    
-    
