@@ -46,8 +46,7 @@ void postorder(Node* root) { // NLR
 
 // level order traversal
 void levelOrderTraversal(Node* root) {
-    if(root == NULL)
-        return;
+    if(root == NULL) return;
     
     queue<Node*> q;
     q.push(root);
@@ -160,22 +159,22 @@ Node* maxValInBST(Node* root) {
 }
 
 // PREDECESSOR & SUCCESSOR
+// GFG : https://www.geeksforgeeks.org/problems/predecessor-and-successor/1
 // CodeStudio : https://www.codingninjas.com/codestudio/problems/_893049?topList=love-babbar-dsa-sheet-problems&leftPanelTab=0
 // /*
 // without using maxValInBst()
 Node* inorderPredecessor(Node* root, int key) {
-    if(root == NULL)
-        return NULL;
+    if(root == NULL) return NULL;
     
     Node* ans = NULL;
-    Node* temp = root;
-    while(temp) {
-        if(temp->data < key) {
-            ans = temp;
-            temp = temp->right;
+    Node* curr = root;
+    while(curr) {
+        if(curr->data < key) { // possible ans
+            ans = curr;
+            curr = curr->right;
         }
         else {
-            temp = temp->left;
+            curr = curr->left;
         }
     }
 
@@ -184,18 +183,17 @@ Node* inorderPredecessor(Node* root, int key) {
 
 // without using minValInBst()
 Node* inorderSuccessor(Node* root, int key) {
-    if(root == NULL)
-        return NULL;
+    if(root == NULL) return NULL;
     
     Node* ans = NULL;
-    Node* temp = root;
-    while(temp) {
-        if(temp->data > key) {
-            ans = temp;
-            temp = temp->left;
+    Node* curr = root;
+    while(curr) {
+        if(curr->data > key) { // possible ans
+            ans = curr;
+            curr = curr->left;
         }
         else {
-            temp = temp->right;
+            curr = curr->right;
         }
     }
 
@@ -206,8 +204,7 @@ Node* inorderSuccessor(Node* root, int key) {
 /*
 // using maxValInBst()
 Node* inorderPredecessor(Node* root, int key) {
-    if(root == NULL)
-        return NULL;
+    if(root == NULL) return NULL;
     
     Node* ans = NULL;
     Node* temp = root;
@@ -230,8 +227,7 @@ Node* inorderPredecessor(Node* root, int key) {
 
 // using minValInBst()
 Node* inorderSuccessor(Node* root, int key) {
-    if(root == NULL)
-        return NULL;
+    if(root == NULL) return NULL;
     
     Node* ans = NULL;
     Node* temp = root;
