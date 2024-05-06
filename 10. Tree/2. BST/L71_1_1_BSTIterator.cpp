@@ -21,32 +21,39 @@ using namespace std;
  * };
  */
 
+
+
 // next() and hasNext()
 class BSTIterator {
-    stack<TreeNode*> myStack;
-
-    void pushAll(TreeNode* node) {
-        for(; node != NULL; myStack.push(node), node = node->left);
+    stack<TreeNode*> st;
+    TreeNode* top;
+    void pushAll(TreeNode* root) {
+        while(root) {
+            st.push(root);
+            root = root->left;
+        }
     }
 
-    public:
+public:
     BSTIterator(TreeNode* root) {
+        top = NULL;
+        TreeNode* curr = root;
         pushAll(root);
     }
     
-    // return whether we have a next smallest number
-    bool hasNext() {
-        return !myStack.empty();
+    int next() {
+        top = st.top();
+        st.pop();
+        pushAll(top->right);
+        return top->val;
     }
     
-    // returns the next smallest number
-    int next() {
-        TreeNode* temp = myStack.top();
-        myStack.pop();
-        pushAll(temp->right);
-        return temp->val;
+    bool hasNext() {
+        return !st.empty();
     }
 };
+
+
 
 // HW - before() and hasBefore()
 /*
@@ -76,6 +83,43 @@ class BSTIterator {
     }
 };
 */
+
+
+
+// method-0 : brute-force
+/*
+TC : O(1)
+SC : O(n)
+*/
+/*
+class BSTIterator {
+    int idx;
+    vector<int> inorder;
+    void storeInorder(TreeNode* root, vector<int>& inorder) {
+        if(root == NULL) return;
+        storeInorder(root->left, inorder);
+        inorder.push_back(root->val);
+        storeInorder(root->right, inorder);
+    }
+
+public:
+    BSTIterator(TreeNode* root) {
+        storeInorder(root, inorder);
+        idx = -1;
+    }
+    
+    int next() {
+        return inorder[++idx];
+    }
+    
+    bool hasNext() {
+        if(idx+1 >= 0 && idx+1 < inorder.size()) return true;
+        else return false;
+    }
+};
+*/
+
+
 
 /**
  * Your BSTIterator object will be instantiated and called as such:
