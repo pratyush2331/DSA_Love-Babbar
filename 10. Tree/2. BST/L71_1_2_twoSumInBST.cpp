@@ -4,46 +4,24 @@
 #include<iostream>
 using namespace std;
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 
-// using BSTIterator - TC : O(n), SC : O(2h); h --> height
+// method-2 : using BSTIterator - TC : O(n), SC : O(2h); h --> height
 class BSTIterator {
     stack<TreeNode*> myStack;
+    bool reverse; // reverse ? before() : next()
 
-    // reverse -> true -> before
-    // reverse -> false -> next
-    bool reverse = true;
-
-    void pushAll(TreeNode* node) {
-        for(; node != NULL; ) {
-            myStack.push(node);
-            if(reverse == true) {
-                node = node->right;
-            }
-            else {
-                node = node->left;
-            }
+    void pushAll(TreeNode* root) {
+        while(root) {
+            myStack.push(root);
+            if(!reverse) root = root->left;
+            else root = root->right;
         }
     }
 
     public:
-    BSTIterator(TreeNode* root, bool isReverse) {
-        reverse = isReverse;
+    BSTIterator(TreeNode* root, bool reverse) {
+        this->reverse = isReverse;
         pushAll(root);
-    }
-
-    bool hasNext() {
-        return !myStack.empty();
     }
 
     int next() {
@@ -58,25 +36,22 @@ class BSTIterator {
 class Solution {
     public:
     bool findTarget(TreeNode* root, int k) {
-        if(!root) return false;
-        // for next
-        BSTIterator l(root, false);
-        // for before
-        BSTIterator r(root, true);
+        BSTIterator l(root, false); // for next
+        BSTIterator r(root, true); // for before
 
-        int i = l.next();
-        int j = r.next(); //r.before()
-        while(i < j) {
-            if(i + j == k) return true;
-            else if(i+j < k) i = l.next();
-            else j = r.next();
+        int s = l.next();
+        int e = r.next(); //r.before()
+        while(s < e) {
+            if(s + e == k) return true;
+            else if(s+e < k) s = l.next();
+            else e = r.next();
         }
-
         return false;
     }
 };
 
-// morris traversal - TC : O(3n + n), SC : O(n); h --> height
+
+// method-1 : morris traversal - TC : O(3n + n), SC : O(n); h --> height
 /*
 class Solution {
     void morrisTraversal(TreeNode* root, vector<int> &arr) {
@@ -136,7 +111,8 @@ class Solution {
 };
 */
 
-// simple inorder traversal - TC : O(n+n), SC : O(n+h); h --> height
+
+// method-0 : simple inorder traversal - TC : O(n+n), SC : O(n+h); h --> height
 /*
 class Solution {
     void inorderTraversal(TreeNode* root, vector<int> &arr) {
