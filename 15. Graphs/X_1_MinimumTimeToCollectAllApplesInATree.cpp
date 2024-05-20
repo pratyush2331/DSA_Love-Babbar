@@ -26,7 +26,6 @@ public:
             adj[edges[i][0]].push_back(edges[i][1]);
             adj[edges[i][1]].push_back(edges[i][0]);
         }
-        vector<bool> vis(n, 0);
         return dfs(0, -1, adj, hasApple);
     }
 };
