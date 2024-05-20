@@ -29,6 +29,7 @@ SC : O(V + E)
 #include <bits/stdc++.h>
 using namespace std;
 
+
 void getAdjList(vector<pair<int, int>>& edges, unordered_map<int, set<int>> &adjList) {
     for(int i = 0; i < edges.size(); i++) {
         int u = edges[i].first;
@@ -54,19 +55,14 @@ void BFS(int node, unordered_map<int, set<int>>& adjList, unordered_map<int, boo
         // traverse all neighbours of frontNode
         for(auto i : adjList[frontNode]) { // traversing adjacency list of 'frontNode'
             if(!visited[i]) {
-                q.push(i);
                 visited[i] = true;
+                q.push(i);
             }
         }
     }
 }
 
-vector<int> BFS(int vertex, vector<pair<int, int>> edges)
-{
-    // Write your code here
-
-    // vertex --> total no. of vertices/nodes
-
+vector<int> BFS(int vertex, vector<pair<int, int>> edges) {
     vector<int> ans;
 
     unordered_map<int, set<int>> adjList; // we are using 'set' instead of 'list' because we want answer in sorted order
@@ -74,7 +70,7 @@ vector<int> BFS(int vertex, vector<pair<int, int>> edges)
 
     getAdjList(edges, adjList); // store adjacency list in 'adjList'
 
-    // for connected graph --> no need of for loop, directly call BFS() for 0th node
+    // for connected graph --> no need of for loop, directly call BFS() for starting node
 
     // traverse all components of disconnected graph
     for (int i = 0; i < vertex; i++) {
@@ -85,6 +81,7 @@ vector<int> BFS(int vertex, vector<pair<int, int>> edges)
 
     return ans;
 }
+
 
 int main() {
     
