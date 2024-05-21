@@ -66,22 +66,22 @@ public:
 // using recursion
 /*
 class Solution {
-    void solve(vector<vector<int>>& image, int i, int j, int color, int pixel) {
-        if(i < 0 || j < 0 || i >= image.size() || j >= image[0].size() || image[i][j] != pixel) {
+    void solve(vector<vector<int>>& image, int i, int j, int prevColor, int color) {
+        if(i < 0 || j < 0 || i >= image.size() || j >= image[0].size() || image[i][j] != prevColor) {
             return;
         }
 
         image[i][j] = color;
 
-        solve(image, i, j+1, color, pixel);
-        solve(image, i, j-1, color, pixel);
-        solve(image, i+1, j, color, pixel);
-        solve(image, i-1, j, color, pixel);
+        solve(image, i, j+1, prevColor, color);
+        solve(image, i, j-1, prevColor, color);
+        solve(image, i+1, j, prevColor, color);
+        solve(image, i-1, j, prevColor, color);
     }
 
     public:
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
-        if(image[sr][sc] != color) solve(image, sr, sc, color, image[sr][sc]);
+        if(image[sr][sc] != color) solve(image, sr, sc, image[sr][sc], color);
         return image;
     }
 };
