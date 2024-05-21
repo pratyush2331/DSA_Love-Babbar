@@ -81,12 +81,7 @@ class Solution {
 
     public:
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
-        if (image[sr][sc] == color) {
-            return image;  // If new color is same as current color, no need to do anything
-        }
-
-        solve(image, sr, sc, color, image[sr][sc]);
-
+        if(image[sr][sc] != color) solve(image, sr, sc, color, image[sr][sc]);
         return image;
     }
 };
