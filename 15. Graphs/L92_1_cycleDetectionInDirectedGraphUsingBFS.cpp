@@ -1,63 +1,84 @@
-// Detect Cycle In A Directed Graph
+// Detect Cycle In A Directed Graph using BFS/Topo-sort/Kahn's-algorithm
+// GFG : https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
 // CodeStudio : https://www.codingninjas.com/codestudio/problems/detect-cycle-in-a-directed-graph_1062626
 
 #include<bits/stdc++.h>
 using namespace std;
 
 
-// using BFS - Kahn's Algorithm
+// metho-0 : topo-sort-BFS : using topo array
 /*
-TC : O(V+E)
-SC : O(V+E)
+TC : O(2 * (V + E))
+SC : O(3V)
 */
-
-int detectCycleInDirectedGraph(int n, vector<pair<int, int>> &edges) {
-    // Write your code here.
-
-    // creat adjList
-    unordered_map<int, list<int>> adjList;
-    for(int i = 0; i < edges.size(); i++) {
-        // node value - 1, as index starts from 1, so we are changing 1 to 0
-        int u = edges[i].first - 1;
-        int v = edges[i].second - 1;
-
-        adjList[u].push_back(v);
-    }
-
-    // find all indegrees
-    vector<int> indegree(n);
-    for(auto i : adjList) {
-        for(auto j : i.second) {
-            indegree[j]++;
+class Solution {
+public:
+    bool isCyclic(int V, vector<int> adj[]) {
+        vector<int> indegree(V, 0); // SC:O(V)
+        for(int i = 0; i < V; i++) { // TC:O(V + E)
+            for(auto nbr : adj[i]) {
+                indegree[nbr]++;
+            }
         }
-    }
-
-    // push all nodes with 0 indegree into queue
-    queue<int> q;
-    for(int i = 0; i < n; i++) {
-        if(indegree[i] == 0)
-            q.push(i);
-    }
-
-    // do BFS
-    int cnt = 0;
-    while(!q.empty()) {
-        int frontNode = q.front();
-        q.pop();
-
-        // inc count
-        cnt++;
-
-        // neighbour indegree--
-        for(auto i : adjList[frontNode]) {
-            indegree[i]--;
-            if(indegree[i] == 0)
-                q.push(i);
+        
+        queue<int> q; // SC:O(V)
+        for(int i = 0; i < V; i++) { // TC:O(V)
+            if(indegree[i] == 0) q.push(i);
         }
+        
+        vector<int> topo; // SC:O(V)
+        while(!q.empty()) { // TC:O(V + E)
+            int front = q.front();
+            q.pop();
+            topo.emplace_back(front);
+            
+            for(auto nbr : adj[front]) {
+                indegree[nbr]--;
+                if(indegree[nbr] == 0) q.push(nbr);
+            }
+        }
+        
+        return topo.size() < V;
     }
+};
 
-    return cnt != n;
-}
+// ------------------------------------------------------------------------------------------------------------------------------
+
+// metho-1 : topo-sort-BFS : using cnt
+/*
+TC : O(2 * (V + E))
+SC : O(2V)
+*/
+class Solution {
+public:
+    bool isCyclic(int V, vector<int> adj[]) {
+        vector<int> indegree(V, 0); // SC:O(V)
+        for(int i = 0; i < V; i++) { // TC:O(V + E)
+            for(auto nbr : adj[i]) {
+                indegree[nbr]++;
+            }
+        }
+        
+        queue<int> q; // SC:O(V)
+        for(int i = 0; i < V; i++) { // TC:O(V)
+            if(indegree[i] == 0) q.push(i);
+        }
+        
+        int cnt = 0; // SC:O(1)
+        while(!q.empty()) { // TC:O(V + E)
+            int front = q.front();
+            q.pop();
+            cnt++;
+            
+            for(auto nbr : adj[front]) {
+                indegree[nbr]--;
+                if(indegree[nbr] == 0) q.push(nbr);
+            }
+        }
+        
+        return cnt < V;
+    }
+};
 
 
 int main() {

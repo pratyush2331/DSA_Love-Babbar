@@ -1,8 +1,6 @@
-// Detect cycle in a directed graph
+// Detect cycle in a directed graph using DFS
 // GFG : https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
 // CodeStudio : https://www.codingninjas.com/codestudio/problems/detect-cycle-in-a-directed-graph_1062626
-
-// using DFS
 
 #include<bits/stdc++.h>
 using namespace std;
