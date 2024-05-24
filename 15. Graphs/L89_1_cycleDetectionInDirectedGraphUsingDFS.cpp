@@ -1,62 +1,89 @@
-// Detect Cycle In A Directed Graph
+// Detect cycle in a directed graph
+// GFG : https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
 // CodeStudio : https://www.codingninjas.com/codestudio/problems/detect-cycle-in-a-directed-graph_1062626
+
+// using DFS
 
 #include<bits/stdc++.h>
 using namespace std;
 
 
-// using DFS
+// metho-0 : DFS : using 2 visied array [vis, pathVis]
 /*
 TC : O(V+E)
-SC : O(V+E)
+SC : O(2V)
 */
-
-bool isCyclicDFS(int node, unordered_map<int, list<int>>& adjList, unordered_map<int, bool>& visited, unordered_map<int, bool>& dfsVisited) { // TC: O(V+E)
-  visited[node] = true;
-  dfsVisited[node] = true;
-
-  for(auto i : adjList[node]) {
-    if(!visited[i]) {
-      // dfs ke liye call kardo
-      bool ans = isCyclicDFS(i, adjList, visited, dfsVisited);
-      if(ans == true)
-        return true;
+class Solution {
+    bool dfsCheck(int node, vector<int> adj[], vector<bool>& vis, vector<bool>& pathVis) {
+        vis[node] = 1;
+        pathVis[node] = 1;
+        
+        for(auto nbr : adj[node]) {
+            if(!vis[nbr]) {
+                if(dfsCheck(nbr, adj, vis, pathVis)) return true;
+            }
+            else if(pathVis[nbr]) {
+                return true;
+            }
+        }
+        
+        pathVis[node] = 0;
+        return false;
     }
-    else if(visited[i] && dfsVisited[i]) {
-      // cycle is present
-      return true;
+    
+public:
+    bool isCyclic(int V, vector<int> adj[]) {
+        vector<bool> vis(V, 0);
+        vector<bool> pathVis(V, 0);
+        for(int i = 0; i < V; i++) {
+            if(!vis[i]) {
+                if(dfsCheck(i, adj, vis, pathVis)) return true;
+            }
+        }
+        return false;
     }
-  }
+};
 
-  dfsVisited[node] = false;
-  return false;
-}
+// ----------------------------------------------------------------------------------------------------------------------------
 
-int detectCycleInDirectedGraph(int n, vector<pair<int, int>>& edges) {
-  // Write your code here.
-
-  // create adjList
-  unordered_map<int, list<int>> adjList; // SC: O(E)
-  for(int i = 0; i < edges.size(); i++) {
-    int u = edges[i].first;
-    int v = edges[i].second;
-
-    adjList[u].push_back(v);
-  }
-
-  // call dfs for all components
-  unordered_map<int, bool> visited; // SC: O(E)
-  unordered_map<int, bool> dfsVisited; // SC: O(E)
-  for(int i = 1; i <= n; i++) {
-    if(!visited[i]) {
-      // using DFS
-      bool ans = isCyclicDFS(i, adjList, visited, dfsVisited);
-      if(ans == true)
-        return true;
+// metho-1 : DFS : using 1 visied array [vis]
+/*
+TC : O(V+E)
+SC : O(V)
+*/
+/*
+0 --> not visited
+1 --> visited
+2 --> path visited
+*/
+class Solution {
+    bool dfsCheck(int node, vector<int> adj[], vector<int>& vis) {
+        vis[node] = 2;
+        
+        for(auto nbr : adj[node]) {
+            if(!vis[nbr]) {
+                if(dfsCheck(nbr, adj, vis)) return true;
+            }
+            else if(vis[nbr] == 2) {
+                return true;
+            }
+        }
+        
+        vis[node] = 1;
+        return false;
     }
-  }
-  return false;
-}
+    
+public:
+    bool isCyclic(int V, vector<int> adj[]) {
+        vector<int> vis(V, 0);
+        for(int i = 0; i < V; i++) {
+            if(!vis[i]) {
+                if(dfsCheck(i, adj, vis)) return true;
+            }
+        }
+        return false;
+    }
+};
 
 
 int main() {
