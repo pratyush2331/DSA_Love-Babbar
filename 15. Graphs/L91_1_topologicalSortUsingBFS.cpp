@@ -1,4 +1,5 @@
-// Topological Sort using BFS
+// Topological sort using BFS - Kahn's Algorithm
+// GFG : https://www.geeksforgeeks.org/problems/topological-sort/1
 // CodeStudio : https://www.codingninjas.com/codestudio/problems/topological-sort_982938
 
 /*
@@ -8,59 +9,44 @@ or dependencies in a way that ensures all prerequisites are completed before a t
 a fundamental concept in project scheduling and dependency management.
 */
 
+/*
+TC : O(2 * (V+E))
+SC : O(2V)
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
 
-// Kahn's Algorithm - Toplogical Sort using BFS
-/*
-TC : O(V+E)
-SC : O(V+E)
-*/
-
-vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
-    // creat adjList
-    vector<vector<int>> adjList(v);
-    for(int i = 0; i < e; i++) {
-        int u = edges[i][0];
-        int v = edges[i][1];
-        
-        adjList[u].push_back(v);
-    }
-
-    // find all indegrees
-    vector<int> indegree(v);
-    for(int i = 0; i < v; i++) {
-        for(int nbr : adjList[i]) {
-            indegree[nbr]++;
-        }
-    }
-
-    // push all nodes with 0 indegree into queue
-    queue<int> q;
-    for(int i = 0; i < v; i++) {
-        if(!indegree[i]) q.push(i);
-    }
-
-    // do BFS
-    vector<int> ans;
-    while(!q.empty()) {
-        int top = q.front();
-        q.pop();
-
-        // imp : store ans
-        ans.push_back(frontNode);
-
-        // decrement neighbour's indegree by 1
-        for(int nbr : adjList[top]) {
-            indegree[nbr]--;
-            if(!indegree[nbr]) {
-                q.push(nbr);
-            }
-        }
-    }
-    return ans;
-}
+class Solution {
+public:
+	vector<int> topoSort(int V, vector<int> adj[]) {
+	    vector<int> indegree(V, 0); // SC:O(V)
+	    for(int i = 0; i < V; i++) { // TC:O(V + E)
+	        for(auto nbr : adj[i]) {
+	            indegree[nbr]++;
+	        }
+	    }
+	    
+	    queue<int> q; // SC:O(V)
+	    for(int i = 0; i < V; i++) { // TC:O(V)
+	        if(indegree[i] == 0) q.push(i);
+	    }
+	    
+	    vector<int> topo; // SC:O(1)
+	    while(!q.empty()) { // TC:O(V + E)
+	        int front = q.front();
+	        q.pop();
+	        topo.emplace_back(front);
+	        
+	        for(auto nbr : adj[front]) {
+	            indegree[nbr]--;
+	            if(indegree[nbr] == 0) q.push(nbr);
+	        }
+	    }
+	    return topo;
+	}
+};
 
 
 int main() {
