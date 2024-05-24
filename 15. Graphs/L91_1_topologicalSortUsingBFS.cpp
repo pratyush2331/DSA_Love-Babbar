@@ -1,4 +1,4 @@
-// Topological Sort
+// Topological Sort using BFS
 // CodeStudio : https://www.codingninjas.com/codestudio/problems/topological-sort_982938
 
 /*

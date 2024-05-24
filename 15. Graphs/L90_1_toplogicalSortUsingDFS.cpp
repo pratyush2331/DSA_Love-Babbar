@@ -1,4 +1,4 @@
-// Topological Sort
+// Topological Sort using DFS
 // CodeStudio : https://www.codingninjas.com/codestudio/problems/topological-sort_982938
 
 /*
