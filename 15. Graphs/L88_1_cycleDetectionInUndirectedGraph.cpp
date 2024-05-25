@@ -61,6 +61,7 @@ class Solution {
         for(int i = 0; i < V; i++) { // TC:O(V)
             if(!vis[i]) {
                 if(BFS(i, adj, vis)) return true;
+                // if(DFS(i, -1, adj, vis)) return true;
             }
         }
         return false;
