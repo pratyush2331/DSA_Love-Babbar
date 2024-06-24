@@ -16,7 +16,7 @@ class Solution {
 
     // flag --> true ==> -(nums[i]) nahi kr skta hai
     // flag --> false ==> -(nums[i]) kr skta hai
-    ll solve(int idx, bool flag, vector<int>& nums,N vector<vector<ll>>& dp) {
+    ll solve(int idx, bool flag, vector<int>& nums, vector<vector<ll>>& dp) {
         if(idx == n) {
             return 0;
         }
