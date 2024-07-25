@@ -1,5 +1,5 @@
 // 
-    
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -11,7 +11,7 @@ void dbg_out(Head H, Tail... T) { cerr << ' ' << H; dbg_out(T...); }
 using ll = long long;
 
 void run() {
-    cout << "Hi" << endl;
+    
 }
 
 int main() {

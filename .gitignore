@@ -2,3 +2,5 @@
 .exe
 **/*.cph
 .cph
+**/*.bin
+.bin

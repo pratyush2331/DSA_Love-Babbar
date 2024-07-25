@@ -1,3 +1,6 @@
+// B1. Bouquet (Easy Version)
+// Codeforces : https://codeforces.com/contest/1995/problem/B1
+
 #include<bits/stdc++.h>
 using namespace std;
 

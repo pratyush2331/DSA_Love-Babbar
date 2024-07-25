@@ -159,3 +159,107 @@
 
 //     cout << solution(A) << "\n";
 // }
+
+
+
+// ----------------------------------------------------------------------------------------------------------------------
+
+
+// Salesforce 2024 Intern- Q. A
+
+/*
+#include<bits/stdc++.h>
+using namespace std;
+
+void dbg_out() { cerr << endl; }
+template<typename Head, typename... Tail> 
+void dbg_out(Head H, Tail... T) { cerr << ' ' << H; dbg_out(T...); }
+#define dbg(...) cerr << '[' << __FILE__ << ':' << __LINE__ << '] (' << #__VA_ARGS__ << '):', dbg_out(__VA_ARGS__)
+
+using ll = long long;
+
+void run() {
+    int n, k;
+    cin >> n >> k;
+
+    vector<int> arr(n);
+    int mini = INT_MAX, maxi = INT_MIN;
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+        mini = min(mini, arr[i]);
+        maxi = max(maxi, arr[i]);
+    }
+
+    int ans = 0;
+    if(maxi-mini > k) {
+        ans = abs(maxi-mini-2*k);
+    }
+    else {
+        ans = maxi-mini;
+    }
+
+    cout << ans << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    
+    int t = 1;
+    // cin >> t;
+    while(t--) run();
+        
+    return 0;
+}
+*/
+
+
+
+
+// Salesforce 2024 Intern- Q. B
+/*
+#include<bits/stdc++.h>
+using namespace std;
+
+void dbg_out() { cerr << endl; }
+template<typename Head, typename... Tail> 
+void dbg_out(Head H, Tail... T) { cerr << ' ' << H; dbg_out(T...); }
+#define dbg(...) cerr << '[' << __FILE__ << ':' << __LINE__ << '] (' << #__VA_ARGS__ << '):', dbg_out(__VA_ARGS__)
+
+using ll = long long;
+
+
+void run() {
+    int n, m, x;
+    cin >> n >> m >> x;
+
+    vector<ll> dp(x + 1, 0);
+    dp[0] = 1;
+
+    for (int i = 1; i <= n; ++i) {
+        vector<ll> new_dp(x + 1, 0);
+        for (int j = 0; j <= x; ++j) {
+            for (int k = 1; k <= m && j + k <= x; ++k) {
+                new_dp[j + k] += dp[j];
+            }
+        }
+        dp = new_dp;
+    }
+
+    cout << dp[x] << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    
+    int t = 1;
+    // cin >> t;
+    while(t--) run();
+        
+    return 0;
+}
+*/
+
+// --------------------------------------------------------------------------------------------------------------------
+

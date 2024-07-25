@@ -1,4 +1,5 @@
-// 
+// A. Diagonals
+// Codeforces : https://codeforces.com/contest/1995/problem/A
 
 #include<bits/stdc++.h>
 
