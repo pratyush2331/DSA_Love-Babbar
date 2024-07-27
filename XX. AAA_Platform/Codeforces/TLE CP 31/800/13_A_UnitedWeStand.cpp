@@ -1,4 +1,5 @@
-// 
+// A. United We Stand
+// Codeforces : https://codeforces.com/problemset/problem/1859/A
 
 #include<bits/stdc++.h>
 using namespace std;
