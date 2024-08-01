@@ -11,25 +11,34 @@ void run() {
     cin >> n;
 
     vector<int> a(n);
+    int mini = INT_MAX, maxi = INT_MIN;
     for(int i = 0; i < n; i++) {
         cin >> a[i];
+        mini = min(mini, a[i]);
+        maxi = max(maxi, a[i]);
     }
 
-    dequeue<int> b, c;
-    bool isDiff = 0;
+    if(mini == maxi) { // impossible case --> all elts are equal
+        cout << -1 << "\n";
+        return;
+    }
+
+    vector<int> b, c;
     for(int i = 0; i < n; i++) {
-        if(isPrime(a[i])) b.push_back(a[i]);
-        else c.push_back(a[i]);
-        if(i-1 >= 0 && a[i] != a[i-1]) isDiff = 1;
+        if(a[i] == maxi) c.push_back(a[i]);
+        else b.push_back(a[i]);
     }
 
-    if(a.empty()) {
-        do {
-            a.push_back(b.front());
-            b.pop_front();
-        } while(a[0] == b.front() && !b.empty());
+    // answer printing
+    cout << b.size() << " " << c.size() << "\n";
+    for(auto ele : b) {
+        cout << ele << " ";
     }
-
+    cout << "\n";
+    for(auto ele : c) {
+        cout << ele << " ";
+    }
+    cout << "\n";
 }
 
 int main() {
