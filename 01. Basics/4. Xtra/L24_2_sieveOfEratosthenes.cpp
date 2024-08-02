@@ -9,30 +9,32 @@ total primes strictly less than n
 #include<vector>
 using namespace std;
 
+using ll = long long;
+
 
 // Method-2: Sieve of Eratosthenes, TC : O(n*log(logn))
-// /*
+
 // class Solution {
-// public:
-    int countPrimes(int n) {
-        vector<bool> prime(n+1, true); // sb ko prime kr de rhe h
-
-        prime[0] = prime[1] = false; // 0 aur 1 ko non-prime kr diye
-
-        int count = 0;
+    int sieve(int n) {
+        vector<bool> is_prime(n+1, true);
+        is_prime[0] = is_prime[1] = false;
+        int cnt = 0;
         for(int i = 2; i < n; i++) {
-            if(prime[i]) {
-                // cout << i << " ";
-                count++;
-                for(long long j = 2*i; j < n; j = j+i) {
-                    prime[j] = false;
+            if(is_prime[i]) {
+                cnt++;
+                for(ll j = 1LL*i*i; j < n; j += i) {
+                    is_prime[j] = false;
                 }
             }
         }
-        return count;
+        return cnt;
+    }
+
+// public:
+    int countPrimes(int n) {
+        return sieve(n);
     }
 // };
-// */
 
 
 // Method-1: Normal Method, TC : O(n*√n)
