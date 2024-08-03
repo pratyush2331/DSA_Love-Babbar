@@ -1,4 +1,5 @@
-// 
+// A. Legs
+// Codeforces : https://codeforces.com/contest/1996/problem/A
 
 #include<bits/stdc++.h>
 using namespace std;

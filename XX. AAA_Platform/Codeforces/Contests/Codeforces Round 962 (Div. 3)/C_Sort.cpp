@@ -1,4 +1,7 @@
- #include <bits/stdc++.h>
+// C. Sort
+// Codeforces : https://codeforces.com/contest/1996/problem/C
+
+#include <bits/stdc++.h>
 using namespace std;
 
 void dbg_out() { cerr << endl; }

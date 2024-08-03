@@ -1,4 +1,5 @@
-// 
+// B. Scale
+// Codeforces : https://codeforces.com/contest/1996/problem/B
 
 #include<bits/stdc++.h>
 using namespace std;
