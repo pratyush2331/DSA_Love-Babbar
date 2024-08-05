@@ -1,14 +1,10 @@
-// 
+// G. D-Function
+// Codeforces : https://codeforces.com/contest/1985
 
 #include<bits/stdc++.h>
 using namespace std;
 
-#define F first
-#define S second
-
 using ll = long long;
-using pii = pair<int, int>;
-using pll = pair<ll, ll>;
 
 void run() {
     
