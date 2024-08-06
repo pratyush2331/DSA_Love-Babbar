@@ -24,8 +24,8 @@ public:
     }
 
     void unionBySize(int u, int v) { // TC: O(4α) = constant
-        int ulp_u = parent[u];
-        int ulp_v = parent[v];
+        int ulp_u = findUPar(u);
+        int ulp_v = findUPar(v);
 
         if(ulp_u == ulp_v) return;
         if(size[ulp_u] < size[ulp_v]) {
@@ -60,8 +60,8 @@ public:
     }
 
     void unionBySize(int u, int v) { // TC: O(4α) = constant
-        int ulp_u = parent[u];
-        int ulp_v = parent[v];
+        int ulp_u = findUPar(u);
+        int ulp_v = findUPar(v);
 
         if(ulp_u == ulp_v) return;
         if(rank[ulp_u] < rank[ulp_v]) {
