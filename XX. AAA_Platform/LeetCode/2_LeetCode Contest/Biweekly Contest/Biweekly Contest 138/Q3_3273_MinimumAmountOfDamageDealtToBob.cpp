@@ -11,19 +11,27 @@ public:
     long long minDamage(int power, vector<int>& damage, vector<int>& health) {
         int n = damage.size();
 
-        vector<pair<ll, ll>> a;
+        vector<pair<ll, ll>> ratio(n);
         for(int i=0; i<n; i++) {
-            a.push_back({damage[i], (health[i]+power-1)/power});
+            ll timeToDefeat;
+            if(health[i] % power == 0) timeToDefeat = health[i] / power;
+            else timeToDefeat = 1 + (health[i] / power);
+            ratio[i] = {damage[i], timeToDefeat};
         }
         
-        sort(begin(a),end(a),[&](pair<ll, ll>&x, pair<ll, ll>&y){
-            return x.first*y.second>x.second*y.first;
+        sort(begin(ratio),end(ratio),[&](pair<ll, ll>&a, pair<ll, ll>&b){
+            double impactA = (double)a.first / (double)a.second;
+            double impactB = (double)b.first / (double)b.second;
+            return impactA > impactB;
         });
         
-        long long ans = 0, res = 0;
-        for(auto [x, y]: a) res+=x;
-        for(auto [x, y]: a) {
-            ans+=res*y;res-=x;
+        long long ans = 0, totalDamage = 0;
+        for(auto dmg : damage) {
+            totalDamage += dmg;
+        }
+        for(auto [x, y]: ratio) {
+            ans += totalDamage*y;
+            totalDamage -= x;
         }
         
         return ans;
