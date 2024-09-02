@@ -6,34 +6,32 @@ using namespace std;
 
 
 class Solution {
-public:
     #define ll long long
+
+public:
     long long minDamage(int power, vector<int>& damage, vector<int>& health) {
         int n = damage.size();
 
-        vector<pair<ll, ll>> ratio(n);
-        for(int i=0; i<n; i++) {
-            ll timeToDefeat;
-            if(health[i] % power == 0) timeToDefeat = health[i] / power;
-            else timeToDefeat = 1 + (health[i] / power);
-            ratio[i] = {damage[i], timeToDefeat};
+        vector<pair<ll, ll>> fact(n);
+        for(int i = 0; i < n; i++) {
+            ll time = (health[i] % power == 0) ? health[i] / power : 1 + (health[i] / power);
+            fact[i] = {damage[i], time};
         }
-        
-        sort(begin(ratio),end(ratio),[&](pair<ll, ll>&a, pair<ll, ll>&b){
-            double impactA = (double)a.first / (double)a.second;
-            double impactB = (double)b.first / (double)b.second;
-            return impactA > impactB;
+
+        sort(begin(fact), end(fact), [&](pair<ll, ll>& a, pair<ll, ll>& b){
+            return (double)a.first / (double)a.second > (double)b.first / (double)b.second;
         });
-        
-        long long ans = 0, totalDamage = 0;
+
+        ll ans = 0, totDmg = 0;
         for(auto dmg : damage) {
-            totalDamage += dmg;
+            totDmg += dmg;
         }
-        for(auto [x, y]: ratio) {
-            ans += totalDamage*y;
-            totalDamage -= x;
+
+        for(auto [dmg, time] : fact) {
+            ans += totDmg * time;
+            totDmg -= dmg;
         }
-        
+
         return ans;
     }
 };
