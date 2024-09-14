@@ -18,25 +18,23 @@ public:
         for(int i = 0; i < n; i++) {
             dp[i][i] = nums[i];
         }
-        
-        for(int st = n-1; st >= 0; st--) {
-            for(int end = st+1; end < n; end++) {
-                dp[st][end] = dp[st][end-1] ^ dp[st+1][end];
+
+        for(int s = n-1; s >= 0; s--) {
+            for(int e = s+1; e < n; e++) {
+                dp[s][e] = dp[s][e-1] ^ dp[s+1][e];
             }
         }
-
-        for(int st = n-1; st >= 0; st--) {
-            for(int end = st+1; end < n; end++) {
-                dp[st][end] = max(dp[st][end], max(dp[st][end-1], dp[st+1][end]));
+        for(int s = n-1; s >= 0; s--) {
+            for(int e = s+1; e < n; e++) {
+                dp[s][e] = max(dp[s][e], max(dp[s][e-1], dp[s+1][e]));
             }
         }
 
         vector<int> ans;
-        for(vector<int>& quer: queries) {
-            int st = quer[0], end = quer[1];
-            ans.push_back(dp[st][end]);
+        for(auto q : queries) {
+            int s = q[0], e = q[1];
+            ans.emplace_back(dp[s][e]);
         }
-
         return ans;
     }
 };
