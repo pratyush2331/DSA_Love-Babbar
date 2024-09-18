@@ -16,9 +16,9 @@ class Solution {
 
     ll solve(int i1, int i2, vector<int>& a, vector<int>& b) {
         if(i1 == 4) return 0LL;
-        if(i2 == b.size()) return -1e6;
+        if(i2 == b.size()) return -1e12;
 
-        if(dp[i1][i2] != -1e6) return dp[i1][i2];
+        if(dp[i1][i2] != -1e12) return dp[i1][i2];
 
         // take
         ll take = 1LL * a[i1] * b[i2] + solve(i1+1, i2+1, a, b);
@@ -31,7 +31,7 @@ class Solution {
 
 public:
     long long maxScore(vector<int>& a, vector<int>& b) {
-        dp.resize(4, vector<ll>(b.size(), -1e6));
+        dp.resize(4, vector<ll>(b.size(), -1e12));
         return solve(0, 0, a, b);
     }
 };
