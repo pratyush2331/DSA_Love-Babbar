@@ -1,4 +1,5 @@
-// 
+// B. Battle for Survive
+// Codeforces : https://codeforces.com/contest/2013/problem/B
 
 #include<bits/stdc++.h>
 using namespace std;

@@ -1,4 +1,5 @@
-// 
+// A. Zhan's Blender
+// Codeforces : https://codeforces.com/contest/2013/problem/A
 
 #include<bits/stdc++.h>
 using namespace std;

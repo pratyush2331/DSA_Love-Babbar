@@ -1,4 +1,5 @@
-// 
+// C. Password Cracking
+// Codeforces : https://codeforces.com/contest/2013/problem/C
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -10,11 +11,11 @@ using ll = long long;
 using pii = pair<int, int>;
 using pll = pair<ll, ll>;
 
-int ask(string s) {
+bool ask(string s) {
     cout << "? " << s << endl;
     cout.flush();
     
-    int res;
+    bool res;
     cin >> res;
     return res;
 }
@@ -25,30 +26,30 @@ void run() {
     string password = "";
     bool flag = true;
 
-    for (int i = 0; i < n; i++) {
-        if (flag) {
-            if (ask(password + '0')) {
+    for(int i = 0; i < n; i++) {
+        if(flag) {
+            if(ask(password + '0')) {
                 password += '0';
                 continue;
             }
-            if (ask(password + '1')) {
+            if(ask(password + '1')) {
                 password += '1';
                 continue;
             }
             flag = false;
         }
-        if (!flag) {
-            if (ask('0' + password)) {
+        if(!flag) {
+            if(ask('0' + password)) {
                 password = '0' + password;
                 continue;
             }
-            else {
+            else{
                 password = '1' + password;
             }
         }
     }
 
-    cout << "! " << password << endl;
+    cout << "! " << password << "\n";
     cout.flush();
 }
 
