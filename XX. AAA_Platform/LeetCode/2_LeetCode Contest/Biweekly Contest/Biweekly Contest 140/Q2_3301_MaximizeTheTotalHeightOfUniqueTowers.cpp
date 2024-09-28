@@ -5,6 +5,37 @@
 using namespace std;
 
 
+// method-1 : greedy
+/*
+TC : O(n.logn)
+SC : O(1) --? excluding sorting space
+*/
+#define ll long long
+class Solution {
+public:
+    long long maximumTotalSum(vector<int>& ht) {
+        // IMP : height can't be <= 0
+        ll sum = 0LL;
+
+        sort(ht.begin(), ht.end());
+        ll max_h = ht.back();
+        for (int i =  ht.size()-1; i >= 0; i--) {
+            if(max_h <= 0) return -1;
+            max_h = min(max_h, 1LL * ht[i]);
+            sum += max_h;
+            max_h--;
+        }
+
+        return sum;
+    }
+};
+
+
+// method-0 : using Binary Search + map
+/*
+TC : O(n.logn)
+SC : O(n)
+*/
 #define ll long long
 class Solution {
 public:
