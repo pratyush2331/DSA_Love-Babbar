@@ -1,6 +1,6 @@
 // multiset - STL
 // -same as set
-//only diff is : can contains duplicates
+// only diff is : can contains duplicates
 
 #include<iostream>
 #include<set>
