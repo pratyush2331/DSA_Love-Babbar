@@ -11,7 +11,11 @@ using pii = pair<int, int>;
 using pll = pair<ll, ll>;
 
 void run() {
-    
+    int a = 9999999;
+    while(a) {
+        cout << (a&1) << " ";
+        a >>= 1;
+    }
 }
 
 int main() {
@@ -19,7 +23,7 @@ int main() {
     cin.tie(0);
     
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while(t--) run();
     
     return 0;
