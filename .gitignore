@@ -4,3 +4,5 @@
 .cph
 **/*.bin
 .bin
+**/*.txt
+.txt
