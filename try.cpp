@@ -1,77 +1,65 @@
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-#include <stack>
-using namespace std;
-
-int findBalancedServers(vector<int>& capacity) {
-    int n = capacity.size();
-
-    // Step 1: Calculate prefix sum
-    vector<int> prefixSum(n, 0);
-    prefixSum[0] = capacity[0];
-    for (int j = 1; j < n; ++j) {
-        prefixSum[j] = capacity[j] + prefixSum[j - 1];
+class Solution {
+public:
+    Solution() {
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
     }
 
-    int stable = 0;
-    vector<pair<int, int>> check;
-    unordered_map<int, vector<int>> d;
+    vector<int> leftmostBuildingQueries(vector<int>& heights, vector<vector<int>>& queries) {
+        int n = heights.size();
 
-    // Step 2: Iterate through the array
-    for (int i = 0; i < n; ++i) {
-        int num = capacity[i];
-
-        if (d.find(num) != d.end()) {
-            stack<int> stack;
-            vector<int>& indices = d[num];
-            bool found = false;
-
-            while (!indices.empty()) {
-                int curI = indices.back();
-                indices.pop_back();
-
-                if (i - curI + 1 >= 3) {
-                    found = true;
-                    if (prefixSum[i - 1] - prefixSum[curI] == num) {
-                        check.push_back({curI, i});
-                        stable++;
-                    }
-                    break;
-                }
-
-                stack.push(curI);
-            }
-
-            // Restore the remaining indices
-            while (!stack.empty()) {
-                indices.push_back(stack.top());
-                stack.pop();
-            }
+        // Find next greater element for every index in heights
+        vector<int> nextGreater(n, -1);
+        stack<int> s;
+        for (int i = n - 1; i >= 0; i--) {
+            while (!s.empty() && heights[i] >= heights[s.top()]) s.pop();
+            if (!s.empty()) nextGreater[i] = s.top();
+            s.push(i);
         }
 
-        d[num].push_back(i);
+        unordered_map<long long, int> memo;
+
+        // Hash function for pair<int, int>
+        auto hashKey = [](int a, int b) -> long long {
+            return static_cast<long long>(a) * 1e5 + b;  // Ensures unique key for (a, b)
+        };
+
+        int m = queries.size();
+        vector<int> ans(m, -1);
+        for (int i = 0; i < m; i++) {
+            int a = queries[i][0];
+            int b = queries[i][1];
+            if (a > b) swap(a, b);
+
+            // Check memoization
+            long long key = hashKey(a, b);
+            if (memo.find(key) != memo.end()) {
+                ans[i] = memo[key];
+                continue;
+            }
+
+            int j = b;
+            if (a == b || heights[a] < heights[b]) {
+                ans[i] = j;
+                memo[key] = j;
+                continue;
+            }
+            if (a != b && heights[a] == heights[b]) j = nextGreater[j];
+            while (j != -1 && j < n) {
+                if (heights[j] > heights[a] && heights[j] >= heights[b]) {
+                    ans[i] = j;  // Found a valid building
+                    memo[key] = j;
+                    break;
+                }
+                j = nextGreater[j];
+            }
+
+            // If no valid building is found, memoize -1
+            if (ans[i] == -1) {
+                memo[key] = -1;
+            }
+        }
+        return ans;
     }
-
-    // Print the valid indices (optional, for debugging)
-    cout << "valid indices: ";
-    for (const auto& p : check) {
-        cout << "(" << p.first << ", " << p.second << ") ";
-    }
-    cout << endl;
-
-    return stable;
-}
-
-int main() {
-    int n;
-    cin >> n;
-    
-    vector<int> capacity(n);
-    for(int i = 0; i < n; i++) {
-        cin >> capacity[i];
-    }
-
-    cout << findBalancedServers(capacity) << endl;
-    return 0;
-}
+};
