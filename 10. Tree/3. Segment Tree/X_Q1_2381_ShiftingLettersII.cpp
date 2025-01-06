@@ -5,6 +5,39 @@
 using namespace std;
 
 
+// method-1 : using difference array technique
+/*
+TC : O(m+n)
+SC : O(n)
+*/
+class Solution {
+public:
+    string shiftingLetters(string s, vector<vector<int>>& shifts) {
+        // making diff[] array
+        vector<int> diff(s.length()); //  SC:O(n)
+        for(auto& shift : shifts) { // TC:O(m)
+            int l = shift[0], r = shift[1], val = shift[2] ? 1 : -1;
+            diff[l] += val;
+            if(r+1 < s.length()) diff[r+1] -= val;
+        }
+
+        // calculating ans using prefix diff[] array
+        string ans = s;
+        for(int i = 0; i < s.length(); i++) { // TC:O(n)
+            if(i-1 >= 0) diff[i] += diff[i-1];
+            int res = (s[i] - 'a' + diff[i]) % 26;
+            ans[i] = 'a' + ((res < 0) ? res + 26 : res);
+        }
+        return ans;
+    }
+};
+
+
+// method-0 : segment tree (with lazy propagation)
+/*
+TC : O(n.logn + m.logn)
+SC : O(n)
+*/
 /* Segment Tree Lazy Propogation Code (Not Generic Code) */
 class SegTree{
 public:
