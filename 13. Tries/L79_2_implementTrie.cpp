@@ -35,7 +35,7 @@ class Trie {
             return;
         }
 
-        // assumption - word will be in CAPS
+        // assumption - word will be in smalls
         int index = word[0] - 'a';
         TrieNode* child;
         // present
@@ -63,7 +63,7 @@ class Trie {
             return root->isTerminal;
         }
 
-        // assumption - word will be in CAPS
+        // assumption - word will be in smalls
         int index = word[0] - 'a';
         TrieNode* child;
         // present
@@ -90,7 +90,7 @@ class Trie {
             return true;
         }
 
-        // assumption - word will be in CAPS
+        // assumption - word will be in smalls
         int index = word[0] - 'a';
         TrieNode* child;
         // present
