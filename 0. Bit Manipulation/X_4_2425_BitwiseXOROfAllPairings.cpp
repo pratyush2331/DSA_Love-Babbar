@@ -1,4 +1,5 @@
-// 
+// 2425. Bitwise XOR of All Pairings
+// LeetCode : https://leetcode.com/problems/bitwise-xor-of-all-pairings/
 
 #include<bits/stdc++.h>
 using namespace std;
