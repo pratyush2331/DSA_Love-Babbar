@@ -1,26 +1,25 @@
-// 
+// Array / Vector
+// searching, sorting
+// searching --> linear search, binary search
+// sorting --> insertions sort, selection sort, bubble sort, quick sort, merge sort,...
 
 #include<bits/stdc++.h>
 using namespace std;
 
-#define F first
-#define S second
-
-using ll = long long;
-using pii = pair<int, int>;
-using pll = pair<ll, ll>;
-
-void run() {
-    
+int find(vector<int>& arr, int target) {
+    for(int i = 0; i < arr.size(); i++) {
+        if(arr[i] == target) return i;
+    }
+    return -1;
 }
 
 int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    
-    int t = 1;
-    cin >> t;
-    while(t--) run();
+    vector<int> arr = {1, 4, -1, 0, 4, 10, 11};
+
+    // linear search
+    int val = 10;
+    int found = find(arr, val);
+    cout << val << " found at index : " << found << endl;
     
     return 0;
 }
