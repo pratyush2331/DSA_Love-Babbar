@@ -7,17 +7,17 @@ using namespace std;
 
 // used 2 hash maps (ball --> color; color --> ball[])
 /*
-TC : O(Q.log(limit))
-SC : O(limit)
+TC : O(Q.log(Q))
+SC : O(Q)
 */
 class Solution {
 public:
     vector<int> queryResults(int limit, vector<vector<int>>& queries) {
-        unordered_map<int, int> bc; // {ball, color}; SC:O(limit)
-        unordered_map<int, set<int>> cb; // {color, balls}; SC:O(limit)
+        unordered_map<int, int> bc; // {ball, color}; SC:O(Q)
+        unordered_map<int, set<int>> cb; // {color, balls}; SC:O(Q)
         vector<int> ans(queries.size());
         int i = 0;
-        for(auto& qry : queries) { // TC:O(Q.log(limit))
+        for(auto& qry : queries) { // TC:O(Q.log(Q))
             int ball = qry[0], color = qry[1];
             if(bc.count(ball)) {
                 cb[bc[ball]].erase(ball);
