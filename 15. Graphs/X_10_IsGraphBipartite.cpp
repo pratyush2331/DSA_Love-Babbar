@@ -25,13 +25,14 @@ class Solution {
     bool check_BFS(int node, vector<vector<int>>& graph, vector<int>& color) {
         queue<int> q; // SC:O(n)
         q.push(node);
+        color[node] = 0;
         while(!q.empty()) { // TC:O(n)
             int front = q.front();
             q.pop();
             for(auto nbr : graph[front]) {
                 if(color[nbr] == -1) {
-                    color[nbr] = !color[front];
                     q.push(nbr);
+                    color[nbr] = !color[front];
                 }
                 else if(color[nbr] == color[front]) {
                     return false;
