@@ -1,12 +1,71 @@
-// Shortest Path in Weighted Directed Acyclic Graph
-// Coding Ninjas Article : https://www.codingninjas.com/codestudio/library/shortest-path-in-a-directed-acyclic-graph
+// Shortest path in Directed Acyclic Graph
+// GFG : https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1
 
 /*
 TC : O(V + E)
 SC : O(V + E)
 */
 
+class Solution {
+    void topoSort(int node, vector<bool>& vis, vector<pair<int, int>> adj[], stack<int>& st) {
+        vis[node] = 1;
+        for(auto& nbr : adj[node]) {
+            if(!vis[nbr.first]) topoSort(nbr.first, vis, adj, st);
+        }
+        st.push(node);
+    }
+    
+    public:
+    vector<int> shortestPath(int V, int E, vector<vector<int>>& edges) {
+        // it's given it's DAG, so no need to check cycle
+        // building graph
+        vector<pair<int, int>> adj[V];
+        for(int i = 0; i < E; i++) {
+            int u = edges[i][0];
+            int v = edges[i][1];
+            int wt = edges[i][2];
+            
+            adj[u].push_back({v, wt});
+        }
+        
+        // get TopoSort
+        vector<bool> vis(V, false);
+        stack<int> st;
+        for(int i = 0; i < V; i++) {
+            if(!vis[i]) topoSort(i, vis, adj, st);
+        }
+        
+        // do the distance thing
+        vector<int> dist(V, 1e9);
+        dist[0] = 0; // dist of src from src is 0
+        while(!st.empty()) {
+            auto& u = st.top();
+            st.pop();
+            
+            if (dist[u] != 1e9) {
+                for(auto& nbr : adj[u]) {
+                    int v = nbr.first;
+                    int wt = nbr.second;
+                    
+                    if(dist[u] + wt < dist[v]) dist[v] = dist[u] + wt;
+                }
+            }
+            else dist[u] = -1;
+        }
+        
+        return dist;
+    }
+};
 
+
+
+// Shortest Path in Weighted Directed Acyclic Graph
+/*
+TC : O(V + E)
+SC : O(V + E)
+*/
+// Coding Ninjas Article : https://www.codingninjas.com/codestudio/library/shortest-path-in-a-directed-acyclic-graph
+/*
 #include<iostream>
 #include<vector>
 #include<unordered_map>
@@ -109,3 +168,4 @@ int main() {
     
     return 0;
 }
+*/
