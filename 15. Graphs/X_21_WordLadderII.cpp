@@ -21,7 +21,6 @@ class Solution {
         queue<vector<string>> q;
         q.push({beginWord});
         int lvl = 1;
-        bool lastLvl = 0;
         vector<vector<string>> ans;
 
         while(!q.empty()) {
@@ -40,7 +39,6 @@ class Solution {
                 st.erase(word); // remove word from set, to avoid cycles and redundant paths
 
                 if(word == endWord) { // endWord found
-                    lastLvl = 1; // marking last level, for shortest path
                     if(ans.empty() || ans[0].size() == vec.size()) {
                         ans.push_back(vec);
                     }
