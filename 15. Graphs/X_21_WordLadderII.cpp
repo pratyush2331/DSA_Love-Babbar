@@ -1,6 +1,6 @@
 // 126. Word Ladder II
 // LeetCode : https://leetcode.com/problems/word-ladder-ii/
-// GFG : https://www.geeksforgeeks.org/word-ladder-ii/
+// GFG : https://www.geeksforgeeks.org/problems/word-ladder-ii/0
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -25,7 +25,7 @@ class Solution {
         vector<vector<string>> ans;
 
         while(!q.empty()) {
-            if(lastLvl) { // if last level is reached, break the loop
+            if(!ans.empty()) { // if last level is reached, break the loop
                 break;
             }
             
