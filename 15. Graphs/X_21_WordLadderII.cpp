@@ -6,6 +6,88 @@
 using namespace std;
 
 
+// method-1 : BFS + DFS
+// working in LeetCode
+// approach : BFS from beginWord till we reach endWord
+// then dfs from endWord to beginWord, to find all the pathsh
+class Solution {
+    vector<vector<string>> ans;
+    unordered_map<string, int> mp;
+    string begWord;
+
+    void dfs(string& word, vector<string>& seq) {
+        if(word == begWord) {
+            reverse(seq.begin(), seq.end());
+            ans.push_back(seq);
+            reverse(seq.begin(), seq.end());
+            return;
+        }
+
+        for(int i = 0; i < word.length(); i++) {
+            char originalCh = word[i];
+            int lvl = mp[word];
+            for(char ch = 'a'; ch <= 'z'; ch++) {
+                word[i] = ch;
+                if(mp[word] + 1 == lvl) {
+                    seq.push_back(word);
+                    dfs(word, seq);
+                    seq.pop_back();
+                }
+            }
+            word[i] = originalCh;
+        }
+    }
+
+public:
+    vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_set<string> st(wordList.begin(), wordList.end());
+
+        queue<string> q;
+        q.push(beginWord);
+        mp[beginWord] = 1;
+        st.erase(beginWord);
+        int lvl = 1;
+
+        while(!q.empty()) {
+            int x = q.size();
+            
+            while(x--) {
+                string word = q.front();
+                q.pop();
+
+                if(word == endWord) {
+                    break;
+                }
+
+                for(int i = 0; i < beginWord.length(); i++) {
+                    char originalCh = word[i];
+                    for(char ch = 'a'; ch <= 'z'; ch++) {
+                        word[i] = ch;
+                        if(st.find(word) != st.end()) {
+                            q.push(word);
+                            mp[word] = lvl + 1;
+                            st.erase(word);
+                        }
+                    }
+                    word[i] = originalCh;
+                }
+            }
+            lvl++;
+        }
+
+        if(mp[endWord]) { // transformation possible
+            begWord = beginWord;
+            vector<string> seq;
+            seq.push_back(endWord);
+            dfs(endWord, seq);
+        }
+
+        return ans;
+    }
+};
+
+
+// method-0
 // WARN : will give MLE/TLE in LeetCode, but works fine in GFG
 // approach : BFS from beginWord
 // only change is : we need to keep track of the path
