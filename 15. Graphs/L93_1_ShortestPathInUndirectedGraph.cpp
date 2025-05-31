@@ -6,7 +6,7 @@
 using namespace std;
 
 
-// BFS
+// approach: queue + BFS
 /*
 TC : O(V + E)
 TC : O(V)
