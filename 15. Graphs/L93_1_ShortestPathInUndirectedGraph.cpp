@@ -27,9 +27,8 @@ class Solution {
             
             for (int& v : adj[u]) {
                 if (dist[v] == 1e9) {
-                    dist[v] = dist[u] + 1;
+                    dist[v] = dist[u] + 1; // since unit weight graph
                     q.push(v);
-                    
                 }
             }
         }

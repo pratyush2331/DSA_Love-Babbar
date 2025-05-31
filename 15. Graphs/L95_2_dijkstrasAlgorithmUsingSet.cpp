@@ -3,7 +3,7 @@
 
 /*
 Dijkstra's Algorithm
-- to find shortest path from one node (source node) to ever other node in the weighted directed/undirected graph.
+- to find shortest path from one node (source node) to every other node in the weighted directed/undirected graph.
 */
 
 /*
@@ -31,12 +31,11 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
     }
     
     // Initialize distance from source to all vertices as infinity
-    vector<int> dist(vertices);
-    fill_n(dist.begin(), vertices, INF);
+    vector<int> dist(vertices, INF);
 
     // set to store nodes and their distances {node, distance}
     // we can also use min heap
-    set<pair<int,int>> st;
+    set<pair<int,int>> st; // {node, distance}
     // distance from sorce to source = 0
     dist[source] = 0;
     st.insert({0,source});
