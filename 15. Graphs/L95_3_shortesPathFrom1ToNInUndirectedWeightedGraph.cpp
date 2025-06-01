@@ -12,13 +12,12 @@ using namespace std;
 #define INF INT_MAX
 
 class Solution {
-    public:
+  public:
     vector<int> shortestPath(int n, int m, vector<vector<int>>& edges) {
         // Code here
         // n -> no. of vertices
         // m -> no. of edges
         // shortest path from 1 to n = ??
-        
         // create adjList
         unordered_map<int, list<pair<int,int>>> adjList;
         for(int i = 0; i < m; i++) {
@@ -33,10 +32,7 @@ class Solution {
         vector<int> dist(n+1, INF);
         dist[1] = 0;
         
-        vector<int> parent(n+1); // 1 based indexing
-        for(int i = 0; i < n; i++) {
-            parent[i] = i;
-        }
+        vector<int> parent(n+1, -1); // 1 based indexing
         
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
         pq.push({0, 1});
@@ -66,11 +62,12 @@ class Solution {
         // get the path from n to 1 using parent array
         vector<int> path;
         int node = n;
-        while(parent[node] != node) {
+        while(parent[node] != -1) {
             path.push_back(node);
             node = parent[node];
         }
         path.push_back(1);
+        path.push_back(dist[n]);
         // reverse to get path from 1 to n
         reverse(path.begin(), path.end());
         
