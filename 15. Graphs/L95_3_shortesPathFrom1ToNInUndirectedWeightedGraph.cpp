@@ -25,8 +25,8 @@ class Solution {
             int v = edges[i][1];
             int w = edges[i][2];
             
-            adjList[u].push_back(make_pair(v,w));
-            adjList[v].push_back(make_pair(u,w));
+            adjList[u].push_back({v,w});
+            adjList[v].push_back({u,w});
         }
         
         vector<int> dist(n+1, INF);
@@ -49,7 +49,7 @@ class Solution {
                     dist[neighbor.first] = nodeDistance + neighbor.second;
     
                     // push record in priority queue
-                    pq.push(make_pair(dist[neighbor.first], neighbor.first));
+                    pq.push({dist[neighbor.first], neighbor.first});
                     
                     // update parent
                     parent[neighbor.first] = topNode;
