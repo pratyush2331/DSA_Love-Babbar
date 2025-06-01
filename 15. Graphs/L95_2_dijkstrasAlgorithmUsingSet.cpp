@@ -35,7 +35,7 @@ vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int sour
 
     // set to store nodes and their distances {node, distance}
     // we can also use min heap
-    set<pair<int,int>> st; // {node, distance}
+    set<pair<int,int>> st; // {distance, node}
     // distance from sorce to source = 0
     dist[source] = 0;
     st.insert({0,source});
