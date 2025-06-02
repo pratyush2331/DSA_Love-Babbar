@@ -18,7 +18,7 @@ public:
         int m = heights.size();
         int n = heights[0].size();
         vector<vector<int>> dist(m, vector<int>(n, 1e9));
-        // // min-heap {diff, {x, y}}; SC: O(m * n)
+        // min-heap {diff, {x, y}}; SC: O(m * n)
         priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater<pair<int, pair<int, int>>>> pq;
         dist[0][0] = 0;
         pq.push({0, {0, 0}});
@@ -64,15 +64,15 @@ public:
         int m = heights.size();
         int n = heights[0].size();
         vector<vector<int>> dist(m, vector<int>(n, 1e9));
-        queue<pair<int, pair<int, int>>> pq; // {diff, {x, y}}
+        queue<pair<int, pair<int, int>>> q; // {diff, {x, y}}
         dist[0][0] = 0;
-        pq.push({0, {0, 0}});
+        q.push({0, {0, 0}});
 
-        while(!pq.empty()) {
-            int diff = pq.front().first;
-            int x = pq.front().second.first;
-            int y = pq.front().second.second;
-            pq.pop();
+        while(!q.empty()) {
+            int diff = q.front().first;
+            int x = q.front().second.first;
+            int y = q.front().second.second;
+            q.pop();
 
             for(int i = 0; i < 4; i++) {
                 int new_x = x + del[i].first;
@@ -82,7 +82,7 @@ public:
                     int newEffort = max(diff, abs(heights[x][y] - heights[new_x][new_y]));
                     if(newEffort < dist[new_x][new_y]) {
                         dist[new_x][new_y] = newEffort;
-                        pq.push({newEffort, {new_x, new_y}});
+                        q.push({newEffort, {new_x, new_y}});
                     }
                 }
             }
