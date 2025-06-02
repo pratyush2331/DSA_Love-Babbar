@@ -1,6 +1,5 @@
 // 1091. Shortest Path in Binary Matrix
 // LeetCode : https://leetcode.com/problems/shortest-path-in-binary-matrix/
-// GFG : https://practice.geeksforgeeks.org/problems/shortest-path-in-binary-matrix/1
 
 #include<bits/stdc++.h>
 using namespace std;
