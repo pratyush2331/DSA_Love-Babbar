@@ -1,6 +1,14 @@
 // Bellman Ford Algorithm
 // CodeStudio : https://www.codingninjas.com/studio/problems/bellmon-ford_2041977
 
+
+/*
+* It's used for directed graphs with -ve weights.
+* Helps to detect -ve cycle in directed graphs.
+* Can be used for undirected or directed graphs with +ve weights, or +ve cycles. 
+  But, it's better to use Dijkstra's algorithm, because of lesser TC.
+*/
+
 /*
 TC : O(V * E)
 SC : O(V)
