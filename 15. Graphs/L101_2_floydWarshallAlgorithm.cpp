@@ -1,6 +1,13 @@
 // Floyd Warshall Algorithm (MSSP: Multi Source Shortest Path)
 // GFG : https://practice.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1
 
+
+/*
+* Helps to detect -ve cycle as well.
+* If the graph does not contain any -ve cycle, then it's better to apply Dijkstra's algorithm for every individual node.
+  Beacause, Floyd Warshall is O(V^3) and Dijkstra's is O(E + VlogV) for every node.
+*/
+
 /*
 TC : O(V^3)
 SC : O(V^2), as we are using the 'input matrix' to solve our problem
