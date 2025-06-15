@@ -1,4 +1,4 @@
-// Floyd Warshall Algorithm
+// Floyd Warshall Algorithm (MSSP: Multi Source Shortest Path)
 // GFG : https://practice.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1
 
 /*

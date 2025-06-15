@@ -1,4 +1,4 @@
-// Bellman Ford Algorithm
+// Bellman Ford Algorithm (SSSP: Single Source Shortest Path)
 // CodeStudio : https://www.codingninjas.com/studio/problems/bellmon-ford_2041977
 
 
