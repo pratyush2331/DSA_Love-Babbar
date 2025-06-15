@@ -38,13 +38,9 @@ int bellmonFord(int n, int m, int src, int dest, vector<vector<int>> &edges) {
         int wt = edges[j][2];
 
         if(dist[u] != 1e9 && ((dist[u] + wt) < dist[v])) {
-            flag = true;
-            break;
+            return 1e9; // negative cycle detected
         }
     }
-
-    // -ve cycle is present, so solution is not possible
-    if(flag) return 1e9;
 
     return dist[dest];
 }
