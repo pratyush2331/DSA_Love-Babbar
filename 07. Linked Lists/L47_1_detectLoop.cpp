@@ -1,5 +1,5 @@
 // Detect Loop in a LL
-// LeetCode : https://leetcode.com/problems/linked-list-cycle-ii/description/
+// LeetCode : https://leetcode.com/problems/linked-list-cycle/
 
 #include<iostream>
 #include<map>
