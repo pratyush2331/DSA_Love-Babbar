@@ -2,8 +2,10 @@
 // CodeStudio : https://www.codingninjas.com/codestudio/problems/aggressive-cows_1082559
 
 /* ----------------------------------------------PROBLEM STATEMENT----------------------------------------------
-Given an array of length ‘N’, where each element denotes the position of a stall. Now you have ‘N’ stalls and an integer ‘K’ which denotes the number of cows that are aggressive. To prevent the cows from hurting each other, you need to assign the cows to the stalls, such that the minimum distance between any two of them is as large as possible. Return the largest minimum distance.
-Given an array of length ‘N’, where each element denotes the position of a stall. Now you have ‘N’ stalls and an integer ‘K’ which denotes the number of cows that are aggressive. To prevent the cows from hurting each other, you need to assign the cows to the stalls, such that the minimum distance between any two of them is as large as possible. Return the largest minimum distance.
+Given an array of length ‘N’, where each element denotes the position of a stall. 
+Now you have ‘N’ stalls and an integer ‘K’ which denotes the number of cows that are aggressive. 
+To prevent the cows from hurting each other, you need to assign the cows to the stalls, 
+such that the minimum distance between any two of them is as large as possible. Return the largest minimum distance.
 --------------------------------------------------------------------------------------------------------------- */
 
 /*
@@ -46,8 +48,8 @@ int aggressiveCows(vector<int> &stalls, int k)
     sort(stalls.begin(), stalls.end());
     int n = stalls.size();
     
-    int s = 0;
-    int e = stalls[n-1];
+    int s = 1;
+    int e = stalls[n-1] - stalls[0];
     int mid = s + (e-s)/2;
     int ans = -1;
     while(s <= e) {

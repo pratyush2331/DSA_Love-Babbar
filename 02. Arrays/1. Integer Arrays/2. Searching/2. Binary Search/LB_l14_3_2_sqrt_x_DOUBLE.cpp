@@ -23,7 +23,7 @@ long long int sqrtInteger(int x) {
     while(s <= e) {
         long long int square = mid*mid;
         if(square == x) return mid;
-        if(square < x) {
+        else if(square < x) {
             ans = mid;
             s = mid+1;
         }
@@ -38,7 +38,7 @@ double morePrecision(int x, int precision, int tempSol) {
     double ans = tempSol;
 
     for(int i = 0; i < precision; i++) {
-        factor = factor/10;
+        factor /= 10;
         for(double j = ans; j*j <= x; j += factor) {
             ans = j;
         }

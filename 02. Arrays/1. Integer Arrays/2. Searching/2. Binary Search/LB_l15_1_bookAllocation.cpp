@@ -1,6 +1,7 @@
 // Allocate Books
 // InterviewBit : https://www.interviewbit.com/problems/allocate-books/
 // CodeStudio : https://www.codingninjas.com/codestudio/problems/allocate-books_1090540
+// Similar to: Painter's Partition, Ship Packages Within D Days
 
 /* -----------------------------------------------PROBLEM STATEMENT---------------------------------------------------
 Given an array of integers A of size N and an integer B.
@@ -70,14 +71,13 @@ int books(vector<int>& A, int B) {
     
     if(n < B) return -1; // check if (noOfBooks < noOfStudents) and return -1
     
-    int s = 0;
-    
-    int sum = 0;
+    int sum = 0, maxi = INT_MIN;
     for(int i = 0; i < n; i++) {
+        maxi = max(maxi, A[i]);
         sum += A[i];
     }
     
-    int e = sum;
+    int s = maxi, int e = sum;
     int mid = s + (e-s)/2;
     int ans = -1;
     while(s <= e) {

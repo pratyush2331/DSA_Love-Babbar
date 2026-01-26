@@ -1,5 +1,5 @@
 // 33. Search in Rotated Sorted Array
-// LeetCode : https://leetcode.com/problems/search-in-rotated-sorted-array/submissions/956804836/
+// LeetCode : https://leetcode.com/problems/search-in-rotated-sorted-array/
 
 /*
 Example 1:

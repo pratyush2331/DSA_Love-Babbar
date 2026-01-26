@@ -23,7 +23,7 @@ int mySqrt(int x) {
     while(s <= e) {
         long long int square = mid*mid;
         if(square == x) return mid;
-        if(square < x) {
+        else if(square < x) {
             ans = mid;
             s = mid+1;
         }

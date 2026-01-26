@@ -25,6 +25,7 @@ void printArray(int arr[], int size)
 }
 
 // Method-1: 3-pointer approach || Dutch National Flag Algorithm
+// checking 0, 1, 2 with 'j' pointer only
 // TC : O(n)
 void sort012(int arr[], int size) {
     int i=0, j=0, k=size-1;

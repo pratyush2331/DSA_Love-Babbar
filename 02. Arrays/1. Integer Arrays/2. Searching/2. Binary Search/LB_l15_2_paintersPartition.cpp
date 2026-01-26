@@ -51,14 +51,13 @@ int findLargestMinDistance(vector<int> &boards, int k)
 {
     int n = boards.size();
 
-    int s = 0;
-
-    int sum = 0;
+    int sum = 0, maxi = INT_MIN;
     for(int i  = 0; i < n; i++) {
+        maxi = max(maxi, boards[i]);
         sum += boards[i];
     }
 
-    int e = sum;
+    int s = maxi, e = sum;
     int mid = s + (e-s)/2;
     int ans = -1;
     while(s <= e) {
