@@ -13,17 +13,12 @@ SC:  O(1)
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-        std::ios_base::sync_with_stdio(false);
-        std::cin.tie(nullptr);
-        std::cout.tie(nullptr);
-
-        int n = nums.size();
         for(int ele : nums) {
-            int idx = abs(ele)-1;
-            if(nums[idx] < 0) return idx+1;
+            int idx = abs(ele);
+            if(nums[idx] < 0) return (idx);
             nums[idx] = -nums[idx];
         }
-        return -1;
+        return -1; // this line won't execute
     }
 };
 
