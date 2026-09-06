@@ -29,7 +29,7 @@ public:
 
 
 
-// method-2 : using slow and fast pointer
+// method-2 : using Floyd's Cycle Detection Algorithm (slow and fast pointer)
 /*
 TC : O(n) --> linear time to traverse the nums
 SC:  O(1)
