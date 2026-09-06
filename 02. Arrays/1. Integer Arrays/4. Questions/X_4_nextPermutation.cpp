@@ -10,36 +10,33 @@ TC : O(3n)
 SC : O(1)
 */
 
+/*
+TC : O(n)
+SC : O(1)
+*/
 class Solution {
-    private:
-    void reverse(vector<int>& nums, int s, int e) {
-        while(s < e) {
-            swap(nums[s++], nums[e--]);
-        }
-    }
-    
-    public:
+public:
     void nextPermutation(vector<int>& nums) {
         int n = nums.size();
+        int min_index = -1; // to store min_index pivot, where nums[min_index] < right_val while iterating R->L
 
-        int index = -1;
-        for(int i = n-2; i >= 0; i--) { // TC: O(n)
-            if(nums[i] < nums[i+1]) {
-                index = i;
+        for(int i = n-2; i >= 0; i--) { // iterating R->L; TC:O(n)
+            if(nums[i] < nums[i+1]) { // finding min_index pivot
+                min_index = i; // store it
                 break;
             }
         }
-        
-        if(index != -1) {
-            for(int i = n-1; i > index; i--){ // TC: O(n)
-                if(nums[i] > nums[index]){
-                    swap(nums[i], nums[index]);
+
+        if(min_index != -1) { // if we found min_index pivot, then find the successor (next_smallest_val > pivot_val) [n-1, min_index+1] while iterating R->L
+            for(int i = n-1; i > min_index; i--) { // iterate R->L [n-1, min_index+1]; TC:O(n)
+                if(nums[i] > nums[min_index]) { // check for val > nums[min_index]
+                    swap(nums[i], nums[min_index]); // swap(val, nums[min_index])
                     break;
                 }
             }
         }
 
-        reverse(nums, index+1, n-1); // TC: O(n)
+        reverse(nums.begin() + min_index + 1, nums.end()); // reverse descending_suffix [min_index + 1, n-1]; TC:O(n)
     }
 };
 

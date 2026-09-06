@@ -25,16 +25,36 @@ void printArray(int arr[], int size)
 }
 
 // Method-1: 3-pointer approach || Dutch National Flag Algorithm
-// checking 0, 1, 2 with 'j' pointer only
-// TC : O(n)
-void sort012(int arr[], int size) {
-    int i=0, j=0, k=size-1;
-    while(j <= k) {
-        if(arr[j] == 0) swap(arr[i++], arr[j++]);
-        else if(arr[j] == 1) j++;
-        else swap(arr[j], arr[k--]);
+/*
+TC : O(n)
+SC : O(1)
+
+ALGORITHM (Dutch National Flag):
+[0, low-1] --> all 0s
+[low, mid-1] --> all 1s
+[mid, high] --> unprocessed
+[high+1, n-1] --> all 2s
+*/
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int low = 0, mid = 0, high = nums.size()-1;
+        while(mid <= high) { // TC : O(n)
+            if(nums[mid] == 0) {
+                swap(nums[low], nums[mid]);
+                low++;
+                mid++;
+            }
+            else if(nums[mid] == 1) {
+                mid++;
+            }
+            else if(nums[mid] == 2) {
+                swap(nums[mid], nums[high]);
+                high--;
+            }
+        }
     }
-}
+};
 
 // Method-2: Counting Sort
 // TC : O(n)

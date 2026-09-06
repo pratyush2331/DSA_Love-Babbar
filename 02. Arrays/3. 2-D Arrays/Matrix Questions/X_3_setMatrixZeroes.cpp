@@ -7,63 +7,49 @@ using namespace std;
 
 // OPTIMAL SOLUTION
 /*
-TC : O(n*m)
+TC : O(m.n)
 SC : O(1)
 */
 class Solution {
-    public:
+public:
     void setZeroes(vector<vector<int>>& matrix) {
-        int n = matrix.size();
-        int m = matrix[0].size();
-        
-        bool firstRowZero = false;
-        bool firstColZero = false;
-        
-        // Check if the first row and first column need to be set to zero
-        for (int j = 0; j < m; j++) { // TC: O(m)
-            if (matrix[0][j] == 0) {
-                firstRowZero = true;
-                break;
-            }
+        int m = matrix.size();
+        int n = matrix[0].size();
+
+        int col0 = 1, row0 = 1;
+        for(int i = 0; i < m; i++) { // checking 0 in 0th-column; TC:O(m)
+            if(!matrix[i][0]) col0 = 0;
         }
-        
-        for (int i = 0; i < n; i++) { // TC: O(n)
-            if (matrix[i][0] == 0) {
-                firstColZero = true;
-                break;
-            }
+        for(int j = 0; j < n; j++) { // checking 0 in 0th-row; TC:O(n)
+            if(!matrix[0][j]) row0 = 0;
         }
-        
-        // Mark the corresponding entry in the first row and first column as zero
-        for (int i = 1; i < n; i++) { // TC: O(n*m)
-            for (int j = 1; j < m; j++) {
-                if (matrix[i][j] == 0) {
+
+        for(int i = 1; i < m; i++) { // checking any cell is 0 except from 0th-row,col; TC:O(m.n)
+            for(int j = 1; j < n; j++) {
+                if(!matrix[i][j]) { // mark it's row & col as 0 in 0th-row,col
                     matrix[i][0] = 0;
                     matrix[0][j] = 0;
                 }
             }
         }
-        
-        // Set the elements in rows and columns (excluding the first row and first column) to zero
-        for (int i = 1; i < n; i++) { // TC: O(n*m)
-            for (int j = 1; j < m; j++) {
-                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
+
+        for(int i = 1; i < m; i++) { // fill all remaining corresponding cols & rows with 0 if 0th-row,col is marked with 0; TC:O(m.n)
+            for(int j = 1; j < n; j++) {
+                if(!matrix[i][0] || !matrix[0][j]) {
                     matrix[i][j] = 0;
                 }
             }
         }
-        
-        // Set the first row to zero if necessary
-        if (firstRowZero) { // TC: O(m)
-            for (int j = 0; j < m; j++) {
-                matrix[0][j] = 0;
+
+        if(!col0) { // fill 0th col with 0; TC:O(m)
+            for(int i = 0; i < m; i++) {
+                matrix[i][0] = 0;
             }
         }
-        
-        // Set the first column to zero if necessary
-        if (firstColZero) { // TC: O(n)
-            for (int i = 0; i < n; i++) {
-                matrix[i][0] = 0;
+
+        if(!row0) { // fill 0th row with 0; TC:O(n)
+            for(int j = 0; j < n; j++) {
+                matrix[0][j] = 0;
             }
         }
     }

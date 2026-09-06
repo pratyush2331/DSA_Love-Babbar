@@ -4,17 +4,21 @@
 #include<iostream>
 using namespace std;
 
-// Kadane's Algorithm - TC : O(n), SC : O(1)
+// Kadane's Algorithm
+/*
+TC : O(n)
+SC : O(1)
+*/
 class Solution {
-    public:
+public:
     int maxSubArray(vector<int>& nums) {
-        int ans = INT_MIN, sum = 0;
-        for(int i = 0; i < nums.size(); i++) {
-            sum += nums[i];
-            ans = max(ans, sum);
-            if(sum < 0) sum = 0;
+        int sum = 0, maxSum = INT_MIN;
+        for(int& num : nums) { // iterate through nums; TC:O(n)
+            sum += num; // add current_val to sum
+            if(sum > maxSum) maxSum = sum; // update maxSum, if required
+            if(sum < 0) sum = 0; // reset sum=0 (iff it has -ve val), as it'll only decrease the subarray_sum
         }
-        return ans;
+        return maxSum;
     }
 };
 
