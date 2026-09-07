@@ -17,7 +17,6 @@ using namespace std;
 TC : O(3n) = O(n)
 SC : O(1)
 */
-/*
 class Solution{
     public:
     vector<int> findTwoElement(vector<int> arr, int n) {
@@ -58,7 +57,6 @@ class Solution{
         return {x,y}; 
     }
 };
-*/
 
 
 
@@ -94,7 +92,6 @@ class Solution{
 TC : O(n) --> in one traverse
 SC : O(1)
 */
-/*
 class Solution{
     public:
     vector<int> findTwoElement(vector<int> arr, int n) {
@@ -120,7 +117,6 @@ class Solution{
         return {x,y}; 
     }
 };
-*/
 
 
 int main() {

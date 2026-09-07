@@ -1,4 +1,7 @@
-// GFG : Count Inversions
+// Count Inversions
+// GFG : https://practice.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+// Coding Ninjas : https://www.codingninjas.com/studio/problems/count-inversions_615
+
 /*
 Example 1:
 Input: N = 5, arr[] = {2, 4, 1, 3, 5}
@@ -28,69 +31,63 @@ Constraints:
 1 ≤ arr[i] ≤ 1018
 */
 
-#include<iostream>
+
+/*
+TC : O(n.logn) --> merge sort TC
+SC : O(n) --> merge sort space
+*/
+
+#include<bits/stdc++.h>
+
 using namespace std;
 
-void merge(long long arr[], long long int &count, long long int start, long long int mid, long long int end){
-    long long temp[end-start+1];
-    long long int i=start;
-    long long int j=mid+1;
-    long long int k=0;
-    while(i<=mid && j<=end){
-        if(arr[i]>arr[j]){
-            temp[k++]=arr[j++];
-            count+= mid-i+1;
+
+class Solution {
+    int merge(int low, int mid, int high, vector<int>& arr) {
+        int n = high - low + 1;
+        vector<int> temp(n);
+        int idx = 0, i = low, j = mid+1;
+        int inversions = 0;
+        while(i <= mid && j <= high) {
+            if(arr[i] <= arr[j]) temp[idx++] = arr[i++];
+            else {
+                temp[idx++] = arr[j++];
+                // all elements from i to mid are > arr[j]
+                inversions += mid - i + 1;
+            }
         }
-        else{
-            temp[k++]=arr[i++];
+        while(i <= mid) {
+            temp[idx++] = arr[i++];
         }
-    }
-    while(i<=mid){
-        temp[k++]=arr[i++];
-    }
-    while(j<=end){
-        temp[k++]=arr[j++];
+        while(j <= high) {
+            temp[idx++] = arr[j++];
+        }
+        
+        for(int idx = 0; idx < n; idx++) {
+            arr[low+idx] = temp[idx];
+        }
+        return inversions;
     }
     
-    for(long long int i=start; i<=end; i++){
-        arr[i]=temp[i-start];
+    int mergeSort(int low, int high, vector<int>& arr) {
+        if(low >= high) return 0;
+        int mid = low + (high - low) / 2;
+        int inversions = 0;
+        inversions += mergeSort(low, mid, arr);
+        inversions += mergeSort(mid+1, high, arr);
+        inversions += merge(low, mid, high, arr);
+        return inversions;
     }
-}
 
-void mergeSort(long long arr[], long long int &count, long long int start, long long int end){
-    if(start<end){
-        long long int mid=start+(end-start)/2;
-        mergeSort(arr,count,start,mid);
-        mergeSort(arr,count,mid+1,end);
-        merge(arr,count,start,mid,end);
+  public:
+    int inversionCount(vector<int> &arr) {
+        return mergeSort(0, arr.size()-1, arr);
     }
-}
+};
 
-long long int inversionCount(long long arr[], long long N)
-{
-    long long int count=0;
-    mergeSort(arr,count,0,N-1);
-    return count;
-}
 
 int main() {
-    long long t;
-    cin >> t;
-
-    while(t--) {
-        long long n;
-        cin >> n;
-
-        long long* arr = new long long[n];
-
-        for(long long i = 0; i < n; i++) {
-            cin >> arr[i];
-        }
-
-        cout << "Inversion Count = " << inversionCount(arr, n);
-
-        delete[] arr;
-    }
     
+
     return 0;
 }
